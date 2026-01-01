@@ -125,7 +125,7 @@ export default function RootLayout({
 
   // Structured data for the App
   // When app is live, this includes the actual download URL
-  const softwareAppSchema = {
+  const softwareAppSchema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     name: "DayRoute",
@@ -133,11 +133,6 @@ export default function RootLayout({
     applicationCategory: "BusinessApplication",
     description:
       "Route planner and job scheduler for field service professionals in Australia. Features multi-stop routing, job cards, receipt scanning, and vehicle logbook.",
-    // Only include download URL when app is live
-    ...(IS_APP_LIVE && {
-      installUrl: APP_STORE_URL,
-      downloadUrl: APP_STORE_URL,
-    }),
     offers: [
       {
         "@type": "Offer",
@@ -177,6 +172,12 @@ export default function RootLayout({
       worstRating: "1",
     },
   };
+
+  // Add download URLs only when app is live (avoids TypeScript spread error)
+  if (IS_APP_LIVE) {
+    softwareAppSchema.installUrl = APP_STORE_URL;
+    softwareAppSchema.downloadUrl = APP_STORE_URL;
+  }
 
   return (
     <html lang="en-AU" className="dark">
