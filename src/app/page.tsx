@@ -18,6 +18,12 @@ import { Button } from "../components/ui/button";
 import { Card, CardContent } from "../components/ui/card";
 import { Input } from "../components/ui/input";
 import { useState } from "react";
+import {
+  getDownloadUrl,
+  getDownloadCta,
+  isComingSoon,
+  IS_APP_LIVE,
+} from "../lib/app-store-config";
 
 /**
  * Features shown in the grid section.
@@ -89,6 +95,11 @@ export default function HomePage() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
+  // Get download URL and CTA from centralized config
+  const downloadUrl = getDownloadUrl();
+  const downloadCta = getDownloadCta();
+  const comingSoon = isComingSoon();
+
   const handleWaitlist = async (e: React.FormEvent) => {
     e.preventDefault();
     // In production, this would submit to an API
@@ -139,28 +150,50 @@ export default function HomePage() {
             </div>
 
             {/* CTAs - stack on mobile, row on tablet+ */}
-            <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-4 sm:px-0">
+            {/* download anchor for deep linking */}
+            <div id="download" className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-4 sm:px-0">
               <Button 
                 size="lg" 
                 className="w-full sm:w-auto min-h-[48px] text-base gap-2"
                 asChild
               >
-                <Link href="#download" id="download">
+                <Link 
+                  href={downloadUrl}
+                  target={IS_APP_LIVE ? "_blank" : undefined}
+                  rel={IS_APP_LIVE ? "noopener noreferrer" : undefined}
+                >
                   <Download className="h-5 w-5" />
-                  Coming Soon on App Store
+                  {downloadCta}
                 </Link>
               </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="w-full sm:w-auto min-h-[48px] text-base"
-                asChild
-              >
-                <Link href="#waitlist">
-                  Join the Waitlist
-                  <ChevronRight className="ml-1 h-4 w-4" />
-                </Link>
-              </Button>
+              {/* Show waitlist button only when app is coming soon */}
+              {comingSoon && (
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="w-full sm:w-auto min-h-[48px] text-base"
+                  asChild
+                >
+                  <Link href="#waitlist">
+                    Join the Waitlist
+                    <ChevronRight className="ml-1 h-4 w-4" />
+                  </Link>
+                </Button>
+              )}
+              {/* Show "Learn more" when app is live */}
+              {!comingSoon && (
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="w-full sm:w-auto min-h-[48px] text-base"
+                  asChild
+                >
+                  <Link href="/features">
+                    Learn More
+                    <ChevronRight className="ml-1 h-4 w-4" />
+                  </Link>
+                </Button>
+              )}
             </div>
           </div>
         </div>
@@ -461,9 +494,13 @@ export default function HomePage() {
                   className="w-full sm:w-auto min-h-[48px] gap-2"
                   asChild
                 >
-                  <Link href="#download">
+                  <Link 
+                    href={downloadUrl}
+                    target={IS_APP_LIVE ? "_blank" : undefined}
+                    rel={IS_APP_LIVE ? "noopener noreferrer" : undefined}
+                  >
                     <Download className="h-5 w-5" />
-                    Coming Soon on App Store
+                    {downloadCta}
                   </Link>
                 </Button>
                 <Button 

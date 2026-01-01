@@ -6,6 +6,11 @@ import { Menu, X, Download } from "lucide-react";
 import { Button } from "./ui/button";
 import { cn } from "../lib/utils";
 import { Logo } from "./logo";
+import {
+  getDownloadUrl,
+  getDownloadCta,
+  isComingSoon,
+} from "../lib/app-store-config";
 
 /**
  * Navigation links for the header.
@@ -26,9 +31,17 @@ const navigation = [
  * Mobile (<md): Logo + hamburger, collapsible full-width menu panel
  * 
  * Touch targets are minimum 44x44px for accessibility.
+ * 
+ * Uses centralized app-store-config for download links.
+ * When the app is live on App Store, links automatically update.
  */
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Get download URL and CTA text from centralized config
+  const downloadUrl = getDownloadUrl();
+  const downloadCta = getDownloadCta();
+  const comingSoon = isComingSoon();
 
   // Close mobile menu on route change or escape key
   useEffect(() => {
@@ -80,13 +93,16 @@ export function Header() {
 
           {/* Desktop CTAs - hidden on mobile */}
           <div className="hidden md:flex md:items-center md:gap-3">
-            <Button variant="outline" size="sm" asChild>
-              <Link href="/#waitlist">Join Waitlist</Link>
-            </Button>
+            {/* Show waitlist when coming soon, hide when app is live */}
+            {comingSoon && (
+              <Button variant="outline" size="sm" asChild>
+                <Link href="/#waitlist">Join Waitlist</Link>
+              </Button>
+            )}
             <Button size="sm" asChild>
-              <Link href="/#download" className="gap-2">
+              <Link href={downloadUrl} className="gap-2">
                 <Download className="h-4 w-4" />
-                <span className="hidden lg:inline">Download App</span>
+                <span className="hidden lg:inline">{downloadCta}</span>
                 <span className="lg:hidden">Download</span>
               </Link>
             </Button>
@@ -96,7 +112,7 @@ export function Header() {
           <div className="flex items-center gap-2 md:hidden">
             {/* Compact download button on mobile */}
             <Button size="sm" asChild className="h-10 px-3">
-              <Link href="/#download">
+              <Link href={downloadUrl}>
                 <Download className="h-4 w-4" />
               </Link>
             </Button>
@@ -164,28 +180,31 @@ export function Header() {
             
             {/* CTA buttons - full width, large touch targets */}
             <div className="space-y-3 pt-2">
-              <Button 
-                variant="outline" 
-                className="w-full h-12 text-base" 
-                asChild
-              >
-                <Link 
-                  href="/#waitlist"
-                  onClick={() => setMobileMenuOpen(false)}
+              {/* Show waitlist when app is coming soon */}
+              {comingSoon && (
+                <Button 
+                  variant="outline" 
+                  className="w-full h-12 text-base" 
+                  asChild
                 >
-                  Join Waitlist
-                </Link>
-              </Button>
+                  <Link 
+                    href="/#waitlist"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Join Waitlist
+                  </Link>
+                </Button>
+              )}
               <Button 
                 className="w-full h-12 text-base gap-2" 
                 asChild
               >
                 <Link 
-                  href="/#download"
+                  href={downloadUrl}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <Download className="h-5 w-5" />
-                  Download App
+                  {downloadCta}
                 </Link>
               </Button>
             </div>

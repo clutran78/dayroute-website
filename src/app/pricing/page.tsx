@@ -10,6 +10,13 @@ import {
   CardHeader,
   CardTitle,
 } from "../../components/ui/card";
+import {
+  getDownloadUrl,
+  getDownloadCta,
+  APP_STORE_URL,
+  IS_APP_LIVE,
+  REVENUECAT_PRODUCTS,
+} from "../../lib/app-store-config";
 
 // =============================================================================
 // METADATA - Updated for correct pricing
@@ -27,10 +34,12 @@ export const metadata: Metadata = {
 
 // =============================================================================
 // SOLO OPERATOR PLANS - Pro Monthly & Pro Yearly
+// These product IDs match RevenueCat/App Store Connect configuration.
 // =============================================================================
 const soloPlans = [
   {
     id: "pro_monthly",
+    productId: REVENUECAT_PRODUCTS.proMonthly, // Links to App Store product ID
     name: "Pro Monthly",
     subtitle: "For solo operators",
     price: "$19",
@@ -52,6 +61,7 @@ const soloPlans = [
   },
   {
     id: "pro_yearly",
+    productId: REVENUECAT_PRODUCTS.proYearly, // Links to App Store product ID
     name: "Pro Yearly",
     subtitle: "Best value for solo operators",
     price: "$190",
@@ -75,10 +85,13 @@ const soloPlans = [
 
 // =============================================================================
 // TEAM PLANS - Team 3 & Team 10 (Monthly & Yearly options)
+// These product IDs match RevenueCat/App Store Connect configuration.
 // =============================================================================
 const teamPlans = [
   {
     id: "team_3",
+    monthlyProductId: REVENUECAT_PRODUCTS.team3Monthly, // Links to App Store product ID
+    yearlyProductId: REVENUECAT_PRODUCTS.team3Yearly,   // Links to App Store product ID
     name: "Team",
     subtitle: "Up to 3 users",
     monthlyPrice: "$49",
@@ -98,6 +111,8 @@ const teamPlans = [
   },
   {
     id: "team_10",
+    monthlyProductId: REVENUECAT_PRODUCTS.team10Monthly, // Links to App Store product ID
+    yearlyProductId: REVENUECAT_PRODUCTS.team10Yearly,   // Links to App Store product ID
     name: "Team",
     subtitle: "Up to 10 users",
     monthlyPrice: "$99",
@@ -240,7 +255,14 @@ export default function PricingPage() {
                     size="lg"
                     asChild
                   >
-                    <Link href="/#download">Start 7-day free trial</Link>
+                    {/* Links to App Store when live, or download section when coming soon */}
+                    <Link
+                      href={getDownloadUrl()}
+                      target={IS_APP_LIVE ? "_blank" : undefined}
+                      rel={IS_APP_LIVE ? "noopener noreferrer" : undefined}
+                    >
+                      Start 7-day free trial
+                    </Link>
                   </Button>
                 </CardFooter>
               </Card>
@@ -351,7 +373,14 @@ export default function PricingPage() {
                     variant={plan.isBestValue ? "default" : "outline"}
                     asChild
                   >
-                    <Link href="/#download">Start 7-day free trial</Link>
+                    {/* Links to App Store when live, or download section when coming soon */}
+                    <Link
+                      href={getDownloadUrl()}
+                      target={IS_APP_LIVE ? "_blank" : undefined}
+                      rel={IS_APP_LIVE ? "noopener noreferrer" : undefined}
+                    >
+                      Start 7-day free trial
+                    </Link>
                   </Button>
                 </CardFooter>
               </Card>
@@ -463,9 +492,14 @@ export default function PricingPage() {
                 className="w-full sm:w-auto min-h-[48px] gap-2"
                 asChild
               >
-                <Link href="/#download">
+                {/* Links to App Store when live, uses centralized config */}
+                <Link 
+                  href={getDownloadUrl()}
+                  target={IS_APP_LIVE ? "_blank" : undefined}
+                  rel={IS_APP_LIVE ? "noopener noreferrer" : undefined}
+                >
                   <Download className="h-5 w-5" />
-                  Coming Soon on App Store
+                  {getDownloadCta()}
                 </Link>
               </Button>
             </div>

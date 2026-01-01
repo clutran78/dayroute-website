@@ -1,0 +1,25 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "XXXXXXXXXX.com.dayroute.app",
+        "paths": [
+          "/download",
+          "/app",
+          "/subscribe",
+          "/subscribe/*"
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": [
+      "XXXXXXXXXX.com.dayroute.app"
+    ]
+  },
+  "appclips": {
+    "apps": []
+  }
+}
+
