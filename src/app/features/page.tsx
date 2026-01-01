@@ -424,23 +424,23 @@ export default function FeaturesPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 sm:py-32">
+      <section className="py-16 sm:py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold">
               Ready to work smarter?
             </h2>
-            <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="mt-3 sm:mt-4 text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-2">
               Download DayRoute and start planning efficient routes today.
             </p>
-            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button size="lg" asChild>
+            <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-4 sm:px-0">
+              <Button size="lg" className="w-full sm:w-auto min-h-[48px] gap-2" asChild>
                 <Link href="/#download">
-                  <Smartphone className="mr-2 h-5 w-5" />
+                  <Smartphone className="h-5 w-5" />
                   Coming Soon on App Store
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" asChild>
+              <Button size="lg" variant="outline" className="w-full sm:w-auto min-h-[48px]" asChild>
                 <Link href="/pricing">View pricing</Link>
               </Button>
             </div>

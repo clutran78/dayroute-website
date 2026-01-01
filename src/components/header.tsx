@@ -1,96 +1,194 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Download } from "lucide-react";
 import { Button } from "./ui/button";
 import { cn } from "../lib/utils";
 import { Logo } from "./logo";
 
+/**
+ * Navigation links for the header.
+ * These appear in both desktop nav and mobile menu.
+ */
 const navigation = [
   { name: "Features", href: "/features" },
   { name: "Pricing", href: "/pricing" },
   { name: "Use Cases", href: "/use-cases" },
+  { name: "FAQ", href: "/faq" },
   { name: "Support", href: "/support" },
 ];
 
+/**
+ * Responsive Header Component
+ * 
+ * Desktop (md+): Horizontal nav with logo left, links center, CTAs right
+ * Mobile (<md): Logo + hamburger, collapsible full-width menu panel
+ * 
+ * Touch targets are minimum 44x44px for accessibility.
+ */
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  // Close mobile menu on route change or escape key
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMobileMenuOpen(false);
+    };
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
+  }, []);
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border/50">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-lg border-b border-border/50">
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          {/* Logo - orange/red pin with green curvy route */}
-          <Link href="/" className="flex items-center gap-2">
-            <Logo size={40} />
-            <span className="text-xl font-bold">DayRoute</span>
+          {/* Logo */}
+          <Link 
+            href="/" 
+            className="flex items-center gap-2 min-h-[44px] min-w-[44px]"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            <Logo size={36} className="shrink-0" />
+            <span className="text-lg sm:text-xl font-bold">DayRoute</span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex md:items-center md:gap-8">
+          {/* Desktop Navigation - hidden on mobile */}
+          <div className="hidden md:flex md:items-center md:gap-1 lg:gap-2">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                className="px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground rounded-lg hover:bg-secondary/50"
               >
                 {item.name}
               </Link>
             ))}
           </div>
 
-          {/* Desktop CTAs */}
+          {/* Desktop CTAs - hidden on mobile */}
           <div className="hidden md:flex md:items-center md:gap-3">
             <Button variant="outline" size="sm" asChild>
-              <Link href="#waitlist">Join Waitlist</Link>
+              <Link href="/#waitlist">Join Waitlist</Link>
             </Button>
             <Button size="sm" asChild>
-              <Link href="#download">Download App</Link>
+              <Link href="/#download" className="gap-2">
+                <Download className="h-4 w-4" />
+                <span className="hidden lg:inline">Download App</span>
+                <span className="lg:hidden">Download</span>
+              </Link>
             </Button>
           </div>
 
-          {/* Mobile menu button */}
-          <button
-            type="button"
-            className="md:hidden -m-2.5 inline-flex items-center justify-center rounded-md p-2.5"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            <span className="sr-only">Toggle menu</span>
-            {mobileMenuOpen ? (
-              <X className="h-6 w-6" aria-hidden="true" />
-            ) : (
-              <Menu className="h-6 w-6" aria-hidden="true" />
-            )}
-          </button>
+          {/* Mobile: Download button + Menu button */}
+          <div className="flex items-center gap-2 md:hidden">
+            {/* Compact download button on mobile */}
+            <Button size="sm" asChild className="h-10 px-3">
+              <Link href="/#download">
+                <Download className="h-4 w-4" />
+              </Link>
+            </Button>
+            
+            {/* Hamburger menu button - 44x44 minimum touch target */}
+            <button
+              type="button"
+              className="inline-flex items-center justify-center rounded-lg p-2.5 min-h-[44px] min-w-[44px] hover:bg-secondary/50 transition-colors"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-expanded={mobileMenuOpen}
+              aria-label="Toggle navigation menu"
+            >
+              <span className="sr-only">
+                {mobileMenuOpen ? "Close menu" : "Open menu"}
+              </span>
+              {mobileMenuOpen ? (
+                <X className="h-6 w-6" aria-hidden="true" />
+              ) : (
+                <Menu className="h-6 w-6" aria-hidden="true" />
+              )}
+            </button>
+          </div>
         </div>
       </nav>
 
-      {/* Mobile menu */}
+      {/* Mobile menu panel - slides down */}
       <div
         className={cn(
-          "md:hidden transition-all duration-300 ease-in-out overflow-hidden",
-          mobileMenuOpen ? "max-h-96 border-b border-border" : "max-h-0"
+          "md:hidden fixed inset-x-0 top-16 bottom-0 z-40 transition-all duration-300 ease-in-out",
+          mobileMenuOpen 
+            ? "opacity-100 pointer-events-auto" 
+            : "opacity-0 pointer-events-none"
         )}
       >
-        <div className="px-4 py-4 space-y-2 bg-background">
-          {navigation.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className="block rounded-xl px-4 py-3 text-base font-medium text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {item.name}
-            </Link>
-          ))}
-          <div className="pt-4 space-y-2">
-            <Button variant="outline" className="w-full" asChild>
-              <Link href="#waitlist">Join Waitlist</Link>
-            </Button>
-            <Button className="w-full" asChild>
-              <Link href="#download">Download App</Link>
-            </Button>
+        {/* Backdrop */}
+        <div 
+          className="absolute inset-0 bg-background/80 backdrop-blur-sm"
+          onClick={() => setMobileMenuOpen(false)}
+        />
+        
+        {/* Menu content */}
+        <div 
+          className={cn(
+            "relative bg-background border-b border-border shadow-xl transition-transform duration-300",
+            mobileMenuOpen ? "translate-y-0" : "-translate-y-4"
+          )}
+        >
+          <div className="px-4 py-6 space-y-1 max-h-[calc(100vh-4rem)] overflow-y-auto">
+            {/* Navigation links - large touch targets (min 48px height) */}
+            {navigation.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="flex items-center rounded-xl px-4 py-4 text-base font-medium text-foreground hover:bg-secondary transition-colors min-h-[48px]"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {item.name}
+              </Link>
+            ))}
+            
+            {/* Divider */}
+            <div className="py-4">
+              <div className="border-t border-border" />
+            </div>
+            
+            {/* CTA buttons - full width, large touch targets */}
+            <div className="space-y-3 pt-2">
+              <Button 
+                variant="outline" 
+                className="w-full h-12 text-base" 
+                asChild
+              >
+                <Link 
+                  href="/#waitlist"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Join Waitlist
+                </Link>
+              </Button>
+              <Button 
+                className="w-full h-12 text-base gap-2" 
+                asChild
+              >
+                <Link 
+                  href="/#download"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <Download className="h-5 w-5" />
+                  Download App
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       </div>
