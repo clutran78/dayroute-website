@@ -331,10 +331,10 @@ export default function TermsPage() {
                 <p className="text-muted-foreground mt-4">
                   <strong>Email:</strong>{" "}
                   <a
-                    href="mailto:legal@dayroute.com.au"
+                    href="mailto:admin@dayroute.com.au"
                     className="text-primary hover:underline"
                   >
-                    legal@dayroute.com.au
+                    admin@dayroute.com.au
                   </a>
                 </p>
                 <p className="text-muted-foreground mt-2">

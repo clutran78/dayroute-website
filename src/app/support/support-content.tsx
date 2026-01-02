@@ -63,7 +63,7 @@ export function SupportContent() {
       icon: Mail,
       title: "Not receiving login emails",
       description:
-        "Check your spam folder. Add noreply@dayroute.com.au to contacts. If using work email, try a personal email instead.",
+        "Check your spam folder. Add yourhelp@dayroute.com.au to contacts. If using work email, try a personal email instead.",
     },
     {
       icon: Calendar,
@@ -252,10 +252,10 @@ export function SupportContent() {
               <span className="text-sm">
                 Or email us directly at{" "}
                 <a
-                  href="mailto:support@dayroute.com.au"
+                  href="mailto:yourhelp@dayroute.com.au"
                   className="text-primary hover:underline font-medium"
                 >
-                  support@dayroute.com.au
+                  yourhelp@dayroute.com.au
                 </a>
               </span>
             </div>

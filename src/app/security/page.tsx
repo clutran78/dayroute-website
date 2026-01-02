@@ -290,10 +290,10 @@ export default function SecurityPage() {
                 <p className="text-muted-foreground">
                   Contact us at{" "}
                   <a
-                    href="mailto:support@dayroute.com.au"
+                    href="mailto:yourhelp@dayroute.com.au"
                     className="text-primary hover:underline"
                   >
-                    support@dayroute.com.au
+                    yourhelp@dayroute.com.au
                   </a>{" "}
                   to request deletion of your account and any data we hold.
                 </p>

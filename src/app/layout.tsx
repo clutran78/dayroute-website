@@ -118,7 +118,7 @@ export default function RootLayout({
     },
     contactPoint: {
       "@type": "ContactPoint",
-      email: "support@dayroute.com.au",
+      email: "yourhelp@dayroute.com.au",
       contactType: "customer support",
     },
   };

@@ -67,7 +67,7 @@ const faqs = [
       {
         question: "How do I delete my data?",
         answer:
-          "To delete local data, you can uninstall the app or use the in-app settings to clear specific data. To delete your account (email and authentication data from our servers), contact us at support@dayroute.com.au and we'll process your request.",
+          "To delete local data, you can uninstall the app or use the in-app settings to clear specific data. To delete your account (email and authentication data from our servers), contact us at yourhelp@dayroute.com.au and we'll process your request.",
       },
     ],
   },
@@ -132,7 +132,7 @@ const faqs = [
       {
         question: "I'm not receiving the login magic link email",
         answer:
-          "Check your spam/junk folder. Add noreply@dayroute.com.au to your contacts. If using a work email, your IT department may be blocking the emails — try a personal email instead. Still having issues? Contact support@dayroute.com.au.",
+          "Check your spam/junk folder. Add noreply@dayroute.com.au to your contacts. If using a work email, your IT department may be blocking the emails — try a personal email instead. Still having issues? Contact yourhelp@dayroute.com.au.",
       },
       {
         question: "Calendar sync isn't working",

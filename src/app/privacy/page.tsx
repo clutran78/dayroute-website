@@ -317,10 +317,10 @@ export default function PrivacyPage() {
                 <p className="text-muted-foreground mt-4">
                   <strong>Email:</strong>{" "}
                   <a
-                    href="mailto:privacy@dayroute.com.au"
+                    href="mailto:admin@dayroute.com.au"
                     className="text-primary hover:underline"
                   >
-                    privacy@dayroute.com.au
+                    admin@dayroute.com.au
                   </a>
                 </p>
                 <p className="text-muted-foreground mt-2">

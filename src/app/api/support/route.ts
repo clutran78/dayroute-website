@@ -46,8 +46,8 @@ export async function POST(request: NextRequest) {
 
     // Send email via Resend
     await resend.emails.send({
-      from: "DayRoute Support <noreply@dayroute.com.au>",
-      to: ["support@dayroute.com.au"],
+      from: "DayRoute Support <yourhelp@dayroute.com.au>",
+      to: ["yourhelp@dayroute.com.au"],
       replyTo: email,
       subject: `Support Request from ${name}`,
       text: `
