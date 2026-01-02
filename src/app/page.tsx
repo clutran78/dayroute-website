@@ -122,6 +122,11 @@ export default function HomePage() {
               <span>Built for Australian mobile professionals</span>
             </div>
 
+            {/* Warm pre-heading */}
+            <p className="text-sm sm:text-base text-muted-foreground mb-3">
+              G&apos;day. Flat-out all day on the road?
+            </p>
+
             {/* Headline - responsive text sizes */}
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">
               Plan smarter routes.
@@ -131,9 +136,9 @@ export default function HomePage() {
 
             {/* Subheadline */}
             <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-2">
-              DayRoute is a field-service day planner for tradies, cleaners,
-              maintenance workers, NDIS providers, and home-visit clinicians in
-              Australia.
+              DayRoute is a field-service day planner for Aussie tradies, cleaners, 
+              maintenance crews, NDIS providers and home-visit clinicians. It helps 
+              turn a messy day of jobs and driving into a clear, organised run.
             </p>
 
             {/* Benefit bullets - stack on mobile, inline on larger screens */}
