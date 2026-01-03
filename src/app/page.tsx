@@ -46,39 +46,39 @@ const appScreenshots = [
 const features = [
   {
     icon: Route,
-    title: "Multi-stop route optimisation",
+    title: "Smart daily routes",
     description:
-      "Reduce driving time with smart routing powered by Google Maps. See ETAs for every stop.",
+      "Drop in your jobs and let DayRoute plan the best order. Reduce back-tracking, save fuel and fit in more paid work.",
   },
   {
     icon: Calendar,
-    title: "Daily job scheduling",
+    title: "Job cards & reminders",
     description:
-      "Job cards with client info, time, location. Sync with your phone calendar.",
+      "Store client details, notes, photos and job status in one place. Get reminders so nothing slips through the cracks.",
   },
   {
-    icon: Clock,
-    title: "Booking reminders",
+    icon: Smartphone,
+    title: "Tap-to-navigate",
     description:
-      "Never miss an appointment with 30-minute and 1-hour reminders.",
+      "Open your favourite maps app (Apple/Google) with one tap from each job. No more copy-pasting addresses.",
   },
   {
     icon: Receipt,
-    title: "Receipt scanner with AI",
+    title: "Logbook & expenses",
     description:
-      "Snap receipts, AI extracts the details. Track expenses for BAS time.",
+      "Track work kilometres, fuel, receipts and other deductible expenses as you go. Export reports that make BAS and tax time easier.",
   },
   {
     icon: Car,
-    title: "Vehicle logbook",
+    title: "Automatic mileage tracking",
     description:
-      "GPS trip recording for tax purposes. Background tracking only when you start a trip.",
+      "GPS trip recording for tax purposes. Start a trip and let DayRoute log the kilometres in the background.",
   },
   {
     icon: Users,
-    title: "Team features",
+    title: "Built for solo operators & small teams",
     description:
-      "Share routes, manage permissions, approve expenses. Built for small teams.",
+      "Start on your own, then add team members as you grow. Keep everyone on the same schedule and reduce 'where are you?' calls.",
   },
 ];
 
@@ -378,11 +378,11 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold">
-              Everything you need to run your day
+              Why DayRoute beats paper diaries and spreadsheets
             </h2>
             <p className="mt-3 sm:mt-4 text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-2">
-              From route planning to expense tracking, DayRoute handles the
-              admin so you can focus on the work.
+              Cut the admin, not your hours. DayRoute helps you plan the day, get to every job on time, 
+              and keep your books in order – without spreadsheets or paper diaries.
             </p>
           </div>
 
@@ -585,16 +585,63 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ===== MINI FAQ ===== */}
+      <section className="py-16 sm:py-24 border-t border-border">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-10 sm:mb-12">
+            Quick answers
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+            <div className="p-5 sm:p-6 rounded-2xl bg-card border border-border">
+              <h3 className="font-semibold text-base sm:text-lg mb-2">Who is DayRoute for?</h3>
+              <p className="text-sm sm:text-base text-muted-foreground">
+                Tradies, cleaners, gardeners, NDIS providers, home-visit nurses, pest control, 
+                mobile groomers – anyone who visits multiple locations each day.
+              </p>
+            </div>
+            <div className="p-5 sm:p-6 rounded-2xl bg-card border border-border">
+              <h3 className="font-semibold text-base sm:text-lg mb-2">Will it work offline?</h3>
+              <p className="text-sm sm:text-base text-muted-foreground">
+                Yes. Your schedule and job details are stored on your device. 
+                You only need internet to sync or optimise a new route.
+              </p>
+            </div>
+            <div className="p-5 sm:p-6 rounded-2xl bg-card border border-border">
+              <h3 className="font-semibold text-base sm:text-lg mb-2">When will the iOS app be available?</h3>
+              <p className="text-sm sm:text-base text-muted-foreground">
+                We&apos;re submitting to the App Store very soon. Join the waitlist 
+                to get notified the moment it&apos;s live.
+              </p>
+            </div>
+            <div className="p-5 sm:p-6 rounded-2xl bg-card border border-border">
+              <h3 className="font-semibold text-base sm:text-lg mb-2">Is there a free trial?</h3>
+              <p className="text-sm sm:text-base text-muted-foreground">
+                Yes! Every plan includes a 7-day free trial. No credit card required 
+                to start – just download and go.
+              </p>
+            </div>
+          </div>
+          <div className="mt-8 text-center">
+            <Button variant="outline" asChild>
+              <Link href="/faq">
+                See all FAQs
+                <ChevronRight className="ml-1 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* ===== WAITLIST ===== */}
       <section id="waitlist" className="py-16 sm:py-24 lg:py-32 bg-card/50">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold">
-              Be the first to know
+              Get early access
             </h2>
             <p className="mt-3 sm:mt-4 text-base sm:text-lg text-muted-foreground px-2">
-              DayRoute is coming soon to the App Store. Join the waitlist to get
-              early access and launch updates.
+              Join the waitlist to get early access, launch pricing and behind-the-scenes updates. 
+              No spam – just useful stuff.
             </p>
 
             {submitted ? (

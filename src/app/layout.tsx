@@ -17,11 +17,11 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 export const metadata: Metadata = {
   metadataBase: new URL("https://dayroute.com.au"),
   title: {
-    default: "DayRoute - Route Planner for Tradies & Field Service in Australia",
+    default: "DayRoute – Route Planner & Job Manager for Tradies & Mobile Pros in Australia",
     template: "%s | DayRoute",
   },
   description:
-    "Plan smarter routes. Finish jobs faster. DayRoute is the field-service day planner for tradies, cleaners, maintenance workers, NDIS providers, and home-visit clinicians in Australia.",
+    "Plan smarter routes, manage jobs & track expenses. DayRoute is the day planner for Aussie tradies, cleaners, NDIS providers & mobile pros. BAS-ready logbook included.",
   keywords: [
     "route planner",
     "field service management",
