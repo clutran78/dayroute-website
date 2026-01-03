@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import Image from "next/image";
 import {
   Route,
   Calendar,
@@ -45,7 +44,6 @@ const coreFeatures = [
       "Job status updates (pending, in progress, completed)",
       "Notes and special instructions",
     ],
-    screenshot: "/screenshots/today.png",
   },
   {
     icon: Route,
@@ -58,7 +56,6 @@ const coreFeatures = [
       "Google Maps integration",
       "One-tap navigation to each stop",
     ],
-    screenshot: "/screenshots/route-map.png",
   },
   {
     icon: MapPin,
@@ -71,7 +68,6 @@ const coreFeatures = [
       "Distance and time estimates",
       "Visual route line",
     ],
-    screenshot: "/screenshots/google-maps.png",
   },
   {
     icon: Bell,
@@ -81,10 +77,9 @@ const coreFeatures = [
     details: [
       "Customisable reminder times",
       "Push notifications",
-      "SMS & iMessage 'On My Way' alerts",
+      "SMS client notifications (coming soon)",
       "Calendar integration",
     ],
-    screenshot: "/screenshots/eta-message.png",
   },
 ];
 
@@ -128,7 +123,6 @@ const financialFeatures = [
       "Category suggestions",
       "Stored on-device for privacy",
     ],
-    screenshot: "/screenshots/bas-summary.png",
   },
   {
     icon: DollarSign,
@@ -141,20 +135,18 @@ const financialFeatures = [
       "Income vs expense reports",
       "Export-ready data",
     ],
-    screenshot: "/screenshots/bas-summary.png",
   },
   {
     icon: FileText,
     title: "Invoice Creation",
     description:
-      "Create professional invoices from completed jobs. Send to clients via SMS, WhatsApp or export as PDF.",
+      "Create professional invoices from completed jobs. Send to clients or export as PDF.",
     details: [
       "Professional templates",
       "Auto-fill from job details",
-      "Send via SMS or WhatsApp",
+      "Track paid vs unpaid",
       "PDF export",
     ],
-    screenshot: "/screenshots/invoice.png",
   },
   {
     icon: Car,
@@ -167,7 +159,6 @@ const financialFeatures = [
       "Business vs personal trips",
       "ATO-compliant records",
     ],
-    screenshot: "/screenshots/trip-tracking.png",
   },
 ];
 
@@ -254,56 +245,36 @@ export default function FeaturesPage() {
             <h2 className="text-3xl font-bold">Daily planning made simple</h2>
           </div>
 
-          <div className="space-y-12 lg:space-y-16">
-            {coreFeatures.map((feature, index) => (
-              <div 
-                key={feature.title} 
-                className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 lg:gap-12 items-center`}
-              >
-                {/* Screenshot - hidden on mobile, shown on tablet+ */}
-                <div className="hidden md:block w-full lg:w-1/2">
-                  <div className="relative aspect-[9/16] max-w-[280px] mx-auto rounded-3xl overflow-hidden shadow-2xl border border-border/50">
-                    <Image
-                      src={feature.screenshot}
-                      alt={`${feature.title} screenshot`}
-                      fill
-                      className="object-cover"
-                    />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {coreFeatures.map((feature) => (
+              <Card key={feature.title} className="overflow-hidden">
+                <CardContent className="p-6 sm:p-8">
+                  <div className="flex items-start gap-4">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary/10">
+                      <feature.icon className="h-6 w-6 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold mb-2">
+                        {feature.title}
+                      </h3>
+                      <p className="text-muted-foreground mb-4">
+                        {feature.description}
+                      </p>
+                      <ul className="space-y-2">
+                        {feature.details.map((detail) => (
+                          <li
+                            key={detail}
+                            className="flex items-center gap-2 text-sm"
+                          >
+                            <Check className="h-4 w-4 text-primary shrink-0" />
+                            {detail}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
-                </div>
-                
-                {/* Content */}
-                <div className="w-full lg:w-1/2">
-                  <Card className="overflow-hidden">
-                    <CardContent className="p-6 sm:p-8">
-                      <div className="flex items-start gap-4">
-                        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary/10">
-                          <feature.icon className="h-6 w-6 text-primary" />
-                        </div>
-                        <div>
-                          <h3 className="text-xl font-semibold mb-2">
-                            {feature.title}
-                          </h3>
-                          <p className="text-muted-foreground mb-4">
-                            {feature.description}
-                          </p>
-                          <ul className="space-y-2">
-                            {feature.details.map((detail) => (
-                              <li
-                                key={detail}
-                                className="flex items-center gap-2 text-sm"
-                              >
-                                <Check className="h-4 w-4 text-primary shrink-0" />
-                                {detail}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
@@ -368,56 +339,36 @@ export default function FeaturesPage() {
             <h2 className="text-3xl font-bold">Track money in and out</h2>
           </div>
 
-          <div className="space-y-12 lg:space-y-16">
-            {financialFeatures.map((feature, index) => (
-              <div 
-                key={feature.title} 
-                className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 lg:gap-12 items-center`}
-              >
-                {/* Screenshot - hidden on mobile, shown on tablet+ */}
-                <div className="hidden md:block w-full lg:w-1/2">
-                  <div className="relative aspect-[9/16] max-w-[280px] mx-auto rounded-3xl overflow-hidden shadow-2xl border border-border/50">
-                    <Image
-                      src={feature.screenshot}
-                      alt={`${feature.title} screenshot`}
-                      fill
-                      className="object-cover"
-                    />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {financialFeatures.map((feature) => (
+              <Card key={feature.title} className="overflow-hidden">
+                <CardContent className="p-6 sm:p-8">
+                  <div className="flex items-start gap-4">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary/10">
+                      <feature.icon className="h-6 w-6 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold mb-2">
+                        {feature.title}
+                      </h3>
+                      <p className="text-muted-foreground mb-4">
+                        {feature.description}
+                      </p>
+                      <ul className="space-y-2">
+                        {feature.details.map((detail) => (
+                          <li
+                            key={detail}
+                            className="flex items-center gap-2 text-sm"
+                          >
+                            <Check className="h-4 w-4 text-primary shrink-0" />
+                            {detail}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
-                </div>
-                
-                {/* Content */}
-                <div className="w-full lg:w-1/2">
-                  <Card className="overflow-hidden">
-                    <CardContent className="p-6 sm:p-8">
-                      <div className="flex items-start gap-4">
-                        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary/10">
-                          <feature.icon className="h-6 w-6 text-primary" />
-                        </div>
-                        <div>
-                          <h3 className="text-xl font-semibold mb-2">
-                            {feature.title}
-                          </h3>
-                          <p className="text-muted-foreground mb-4">
-                            {feature.description}
-                          </p>
-                          <ul className="space-y-2">
-                            {feature.details.map((detail) => (
-                              <li
-                                key={detail}
-                                className="flex items-center gap-2 text-sm"
-                              >
-                                <Check className="h-4 w-4 text-primary shrink-0" />
-                                {detail}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
@@ -467,44 +418,6 @@ export default function FeaturesPage() {
                   </div>
                 </CardContent>
               </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Mobile Screenshot Gallery - only visible on mobile */}
-      <section className="py-16 md:hidden bg-card/50">
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold">See DayRoute in action</h2>
-            <p className="mt-2 text-muted-foreground">Swipe through screenshots</p>
-          </div>
-          
-          {/* Horizontal scroll gallery */}
-          <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory -mx-4 px-4">
-            {[
-              { src: "/screenshots/today.png", label: "Daily Schedule" },
-              { src: "/screenshots/route-map.png", label: "Route Planning" },
-              { src: "/screenshots/google-maps.png", label: "Navigation" },
-              { src: "/screenshots/complete-job.png", label: "Job Completion" },
-              { src: "/screenshots/invoice.png", label: "Invoicing" },
-              { src: "/screenshots/invoice-share.png", label: "Send Invoice" },
-              { src: "/screenshots/bas-summary.png", label: "BAS Summary" },
-              { src: "/screenshots/odometer.png", label: "Odometer" },
-              { src: "/screenshots/trip-tracking.png", label: "Trip Tracking" },
-              { src: "/screenshots/eta-message.png", label: "ETA Messages" },
-            ].map((item) => (
-              <div key={item.src} className="flex-shrink-0 snap-center">
-                <div className="relative w-48 aspect-[9/16] rounded-2xl overflow-hidden shadow-lg border border-border/50">
-                  <Image
-                    src={item.src}
-                    alt={item.label}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <p className="mt-2 text-center text-sm text-muted-foreground">{item.label}</p>
-              </div>
             ))}
           </div>
         </div>
