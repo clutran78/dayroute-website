@@ -154,6 +154,19 @@ export default function HomePage() {
               ))}
             </div>
 
+            {/* "Perfect for" chips in hero */}
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-2 px-2">
+              <span className="text-xs sm:text-sm text-muted-foreground">Perfect for:</span>
+              {["Tradies", "Cleaners", "NDIS Providers", "Home-visit Clinicians"].map((industry) => (
+                <span
+                  key={industry}
+                  className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-xs sm:text-sm font-medium text-primary"
+                >
+                  {industry}
+                </span>
+              ))}
+            </div>
+
             {/* CTAs - stack on mobile, row on tablet+ */}
             {/* download anchor for deep linking */}
             <div id="download" className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-4 sm:px-0">
@@ -200,25 +213,49 @@ export default function HomePage() {
                 </Button>
               )}
             </div>
+
+            {/* Proof line */}
+            <p className="mt-6 text-xs sm:text-sm text-muted-foreground italic">
+              Built by an Aussie tradie turned app founder for field crews who live on the road.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* ===== INDUSTRIES BANNER ===== */}
-      <section className="border-y border-border bg-card/30">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-          <div className="flex flex-wrap items-center justify-center gap-x-4 sm:gap-x-8 gap-y-2 sm:gap-y-3">
-            <span className="text-xs sm:text-sm text-muted-foreground w-full sm:w-auto text-center sm:text-left">
-              Perfect for:
-            </span>
-            {industries.map((industry) => (
-              <span
-                key={industry}
-                className="text-xs sm:text-sm font-medium text-foreground/80"
-              >
-                {industry}
-              </span>
-            ))}
+      {/* ===== 3-COLUMN BENEFITS ===== */}
+      <section className="py-16 sm:py-20 bg-card/30 border-y border-border">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 lg:gap-12">
+            {/* Benefit 1 */}
+            <div className="text-center">
+              <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 mb-4">
+                <Route className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-semibold mb-2">Drive less, earn more</h3>
+              <p className="text-sm sm:text-base text-muted-foreground">
+                Multi-stop routes that cut backtracking and traffic. Less fuel, less stress, more billable jobs per day.
+              </p>
+            </div>
+            {/* Benefit 2 */}
+            <div className="text-center">
+              <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 mb-4">
+                <Calendar className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-semibold mb-2">Stay on top of every job</h3>
+              <p className="text-sm sm:text-base text-muted-foreground">
+                Job cards with reminders, notes and status. No more &quot;which client is next?&quot; moments.
+              </p>
+            </div>
+            {/* Benefit 3 */}
+            <div className="text-center">
+              <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 mb-4">
+                <Receipt className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-semibold mb-2">Know where your money goes</h3>
+              <p className="text-sm sm:text-base text-muted-foreground">
+                Logbook, expenses, receipts and BAS-ready export. Your accountant will actually like you.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -473,6 +510,11 @@ export default function HomePage() {
 
             <p className="mt-3 sm:mt-4 text-xs sm:text-sm text-muted-foreground">
               No spam. Unsubscribe anytime.
+            </p>
+
+            {/* Trust note */}
+            <p className="mt-6 text-xs text-muted-foreground/70">
+              Your data is stored securely and never sold. You control your information at all times.
             </p>
           </div>
         </div>
