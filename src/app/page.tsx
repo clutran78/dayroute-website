@@ -17,7 +17,7 @@ import {
 import { Button } from "../components/ui/button";
 import { Card, CardContent } from "../components/ui/card";
 import { Input } from "../components/ui/input";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   getDownloadUrl,
   getDownloadCta,
@@ -96,11 +96,24 @@ export default function HomePage() {
   const [submitted, setSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [showFloatingCta, setShowFloatingCta] = useState(false);
 
   // Get download URL and CTA from centralized config
   const downloadUrl = getDownloadUrl();
   const downloadCta = getDownloadCta();
   const comingSoon = isComingSoon();
+
+  // Show floating CTA after scrolling past hero section
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      // Show after scrolling 400px (past hero)
+      setShowFloatingCta(scrollY > 400);
+    };
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleWaitlist = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -319,11 +332,12 @@ export default function HomePage() {
 
           <div className="mt-10 sm:mt-12 text-center">
             <Button 
-              variant="outline" 
-              className="min-h-[44px] animate-pulse hover:animate-none border-primary/50 hover:border-primary hover:bg-primary/10" 
+              variant="default" 
+              className="min-h-[44px] bg-gradient-to-r from-primary to-primary/80 shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:scale-105 transition-all duration-300 ring-2 ring-primary/20 ring-offset-2 ring-offset-background" 
               asChild
             >
               <Link href="/features">
+                <Sparkles className="mr-2 h-4 w-4" />
                 View all features
                 <ChevronRight className="ml-1 h-4 w-4" />
               </Link>
@@ -599,6 +613,26 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ===== FLOATING CTA - View Features ===== */}
+      <div 
+        className={`fixed bottom-6 right-6 z-50 transition-all duration-500 ${
+          showFloatingCta 
+            ? 'translate-y-0 opacity-100' 
+            : 'translate-y-20 opacity-0 pointer-events-none'
+        }`}
+      >
+        <Button 
+          size="lg"
+          className="shadow-2xl shadow-primary/40 bg-gradient-to-r from-primary via-primary to-emerald-500 hover:scale-110 transition-transform duration-300 rounded-full px-6 py-6 text-base font-semibold animate-bounce"
+          asChild
+        >
+          <Link href="/features">
+            <Sparkles className="mr-2 h-5 w-5" />
+            See All Features
+          </Link>
+        </Button>
+      </div>
     </div>
   );
 }
