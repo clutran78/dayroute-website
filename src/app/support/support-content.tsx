@@ -203,16 +203,22 @@ export function SupportContent() {
             {/* Big email button - opens user's email app */}
             <Button 
               size="lg" 
-              className="mt-8 text-lg px-8 py-6 h-auto"
+              className="mt-8 text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 h-auto w-full sm:w-auto max-w-sm mx-auto"
               asChild
             >
-              <a href="mailto:yourhelp@dayroute.com.au?subject=DayRoute%20Support%20Request">
-                <Mail className="mr-3 h-5 w-5" />
-                Email Us: yourhelp@dayroute.com.au
+              <a 
+                href="mailto:yourhelp@dayroute.com.au?subject=DayRoute%20Support%20Request"
+                className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3"
+              >
+                <Mail className="h-6 w-6 sm:h-5 sm:w-5" />
+                <span className="flex flex-col sm:flex-row sm:gap-1">
+                  <span>Email Us</span>
+                  <span className="text-sm sm:text-base opacity-90">yourhelp@dayroute.com.au</span>
+                </span>
               </a>
             </Button>
 
-            <p className="mt-6 text-sm text-muted-foreground">
+            <p className="mt-6 text-xs sm:text-sm text-muted-foreground px-4">
               This will open your email app so you can send us a message directly.
             </p>
           </div>
