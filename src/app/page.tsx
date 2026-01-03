@@ -662,6 +662,8 @@ export default function HomePage() {
                 >
                   <Input
                     type="email"
+                    name="email"
+                    autoComplete="email"
                     placeholder="Enter your email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
