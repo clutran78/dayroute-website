@@ -1,63 +1,19 @@
-"use client";
-
-import { useState } from "react";
 import Link from "next/link";
 import {
   Mail,
-  MessageSquare,
   RefreshCw,
   Settings,
   HelpCircle,
   ChevronRight,
-  Check,
   AlertCircle,
-  Smartphone,
   Calendar,
   MapPin,
   Camera,
-  Send,
 } from "lucide-react";
 import { Button } from "../../components/ui/button";
-import { Input } from "../../components/ui/input";
-import { Textarea } from "../../components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
 
 export function SupportContent() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState("");
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setError("");
-
-    try {
-      const response = await fetch("/api/support", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        setSubmitted(true);
-        setFormData({ name: "", email: "", message: "" });
-      } else {
-        const data = await response.json();
-        setError(data.error || "Something went wrong. Please try again.");
-      }
-    } catch {
-      setError("Failed to send message. Please email us directly.");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
   const troubleshootingTopics = [
     {
       icon: Mail,
@@ -234,131 +190,31 @@ export function SupportContent() {
         </div>
       </section>
 
-      {/* Contact Form */}
+      {/* Contact Support - Simple email button */}
       <section id="contact" className="py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold">Contact Support</h2>
-              <p className="mt-4 text-muted-foreground">
-                Can&apos;t find what you need? Send us a message and we&apos;ll get back
-                to you.
-              </p>
-            </div>
+          <div className="max-w-2xl mx-auto text-center">
+            <h2 className="text-3xl font-bold">Contact Support</h2>
+            <p className="mt-4 text-muted-foreground">
+              Can&apos;t find what you need? Email us and we&apos;ll get back to you
+              within 1-2 business days.
+            </p>
 
-            {/* Email option */}
-            <div className="flex items-center justify-center gap-4 mb-8 p-4 rounded-2xl bg-secondary">
-              <Mail className="h-5 w-5 text-primary" />
-              <span className="text-sm">
-                Or email us directly at{" "}
-                <a
-                  href="mailto:yourhelp@dayroute.com.au"
-                  className="text-primary hover:underline font-medium"
-                >
-                  yourhelp@dayroute.com.au
-                </a>
-              </span>
-            </div>
+            {/* Big email button - opens user's email app */}
+            <Button 
+              size="lg" 
+              className="mt-8 text-lg px-8 py-6 h-auto"
+              asChild
+            >
+              <a href="mailto:yourhelp@dayroute.com.au?subject=DayRoute%20Support%20Request">
+                <Mail className="mr-3 h-5 w-5" />
+                Email Us: yourhelp@dayroute.com.au
+              </a>
+            </Button>
 
-            {submitted ? (
-              <Card className="border-primary/50 bg-primary/5">
-                <CardContent className="p-8 text-center">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 mx-auto mb-4">
-                    <Check className="h-6 w-6 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2">Message sent!</h3>
-                  <p className="text-muted-foreground">
-                    Thanks for reaching out. We&apos;ll get back to you as soon as
-                    possible, usually within 1-2 business days.
-                  </p>
-                </CardContent>
-              </Card>
-            ) : (
-              <Card>
-                <CardContent className="p-6 sm:p-8">
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div>
-                      <label
-                        htmlFor="name"
-                        className="block text-sm font-medium mb-2"
-                      >
-                        Name
-                      </label>
-                      <Input
-                        id="name"
-                        type="text"
-                        placeholder="Your name"
-                        value={formData.name}
-                        onChange={(e) =>
-                          setFormData({ ...formData, name: e.target.value })
-                        }
-                        required
-                      />
-                    </div>
-
-                    <div>
-                      <label
-                        htmlFor="email"
-                        className="block text-sm font-medium mb-2"
-                      >
-                        Email
-                      </label>
-                      <Input
-                        id="email"
-                        type="email"
-                        placeholder="you@example.com"
-                        value={formData.email}
-                        onChange={(e) =>
-                          setFormData({ ...formData, email: e.target.value })
-                        }
-                        required
-                      />
-                    </div>
-
-                    <div>
-                      <label
-                        htmlFor="message"
-                        className="block text-sm font-medium mb-2"
-                      >
-                        Message
-                      </label>
-                      <Textarea
-                        id="message"
-                        placeholder="How can we help?"
-                        value={formData.message}
-                        onChange={(e) =>
-                          setFormData({ ...formData, message: e.target.value })
-                        }
-                        required
-                        rows={5}
-                      />
-                    </div>
-
-                    {error && (
-                      <div className="flex items-center gap-2 text-sm text-red-500">
-                        <AlertCircle className="h-4 w-4" />
-                        {error}
-                      </div>
-                    )}
-
-                    <Button
-                      type="submit"
-                      className="w-full"
-                      disabled={isSubmitting}
-                    >
-                      {isSubmitting ? (
-                        "Sending..."
-                      ) : (
-                        <>
-                          <Send className="mr-2 h-4 w-4" />
-                          Send Message
-                        </>
-                      )}
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
-            )}
+            <p className="mt-6 text-sm text-muted-foreground">
+              This will open your email app so you can send us a message directly.
+            </p>
           </div>
         </div>
       </section>
