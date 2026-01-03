@@ -20,7 +20,6 @@ const footerLinks = {
     { name: "Security", href: "/security" },
   ],
   support: [
-    { name: "Help Centre", href: "/support" },
     { name: "FAQ", href: "/faq" },
     { name: "Contact", href: "/support#contact" },
   ],
