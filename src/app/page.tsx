@@ -333,7 +333,7 @@ export default function HomePage() {
           <div className="mt-10 sm:mt-12 text-center">
             <Button 
               variant="default" 
-              className="min-h-[44px] bg-gradient-to-r from-primary to-primary/80 shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:scale-105 transition-all duration-300 ring-2 ring-primary/20 ring-offset-2 ring-offset-background" 
+              className="min-h-[44px] bg-gradient-to-r from-primary to-primary/80 shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:scale-105 transition-all duration-300 ring-2 ring-primary/20 ring-offset-2 ring-offset-background animate-pulse hover:animate-none" 
               asChild
             >
               <Link href="/features">
