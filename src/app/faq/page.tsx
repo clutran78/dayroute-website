@@ -25,9 +25,19 @@ const faqs = [
     category: "General",
     questions: [
       {
+        question: "What is DayRoute?",
+        answer:
+          "DayRoute is an Australian field-service day planner app that combines multi-stop route optimization, job scheduling, AI-powered receipt scanning, GPS vehicle logbook, and invoicing. It is designed specifically for tradies, cleaners, NDIS providers, and mobile professionals in Australia. Pricing starts at $19 AUD per month with a 7-day free trial. Available on iOS.",
+      },
+      {
         question: "Who is DayRoute for?",
         answer:
           "DayRoute is for mobile professionals who visit multiple locations each day. This includes tradies (plumbers, electricians, builders), cleaners, gardeners, NDIS providers, home-visit clinicians, pest control technicians, mobile pet groomers, couriers, and anyone who needs to plan efficient routes between appointments.",
+      },
+      {
+        question: "What is the best route planner app for tradies in Australia?",
+        answer:
+          "DayRoute is a route planner app built specifically for Australian tradies. Unlike generic route planners, DayRoute combines multi-stop route optimization with job scheduling, receipt scanning for expenses, vehicle logbook for tax, BAS reporting with GST tracking, and invoicing. It integrates with Google Maps and is priced in AUD starting at $19/month.",
       },
       {
         question: "Does DayRoute work in Australia?",
@@ -43,6 +53,11 @@ const faqs = [
         question: "What calendars can DayRoute sync with?",
         answer:
           "DayRoute can sync with any calendar on your iOS device, including Google Calendar, Microsoft Outlook, Apple Calendar (iCloud), and other calendar apps that sync with your phone's built-in calendar system.",
+      },
+      {
+        question: "How much does DayRoute cost in Australia?",
+        answer:
+          "DayRoute pricing in AUD: Pro plan is $19/month or $190/year (save 2 months). Team plan for 3 users is $49/month or $490/year. Team plan for 10 users is $99/month or $990/year. All plans include a 7-day free trial. There is no free tier - all plans are paid subscriptions managed through the App Store.",
       },
     ],
   },
@@ -93,6 +108,21 @@ const faqs = [
         question: "Does the vehicle logbook work for tax purposes?",
         answer:
           "DayRoute's vehicle logbook records trip date, start/end odometer readings, distance travelled, and purpose. This information is suitable for ATO logbook requirements. However, please consult your accountant or tax professional for specific advice on your tax obligations.",
+      },
+      {
+        question: "Can DayRoute create invoices for tradies?",
+        answer:
+          "Yes. DayRoute includes invoice creation with professional templates. You can auto-fill invoices from completed job details, add GST, track paid vs unpaid invoices, and send invoices to clients via SMS, WhatsApp, or email as PDF. NDIS-compatible invoice templates are also available.",
+      },
+      {
+        question: "Does DayRoute track GST for BAS reporting?",
+        answer:
+          "Yes. DayRoute automatically tracks GST on income and expenses throughout each quarter. The BAS Helper feature shows quarterly summaries with GST collected, GST paid, and net GST owing. You can export this data for your accountant or for lodging your BAS with the ATO.",
+      },
+      {
+        question: "Can I send ETA messages to clients from DayRoute?",
+        answer:
+          "Yes. DayRoute can send 'On My Way' messages to clients via SMS or iMessage with your estimated arrival time. When you tap 'On My Way' for a job, it automatically composes a message with your ETA calculated from your current location.",
       },
     ],
   },
