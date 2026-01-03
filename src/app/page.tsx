@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import {
   Calendar,
   Clock,
@@ -13,17 +14,30 @@ import {
   Check,
   Sparkles,
   Download,
+  ChevronLeft,
 } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Card, CardContent } from "../components/ui/card";
 import { Input } from "../components/ui/input";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   getDownloadUrl,
   getDownloadCta,
   isComingSoon,
   IS_APP_LIVE,
 } from "../lib/app-store-config";
+
+// App screenshots for the showcase
+const appScreenshots = [
+  { src: "/screenshots/today.png", label: "Daily Schedule", description: "See all your jobs at a glance" },
+  { src: "/screenshots/route-map.png", label: "Route Planning", description: "Optimised routes on the map" },
+  { src: "/screenshots/google-maps.png", label: "Navigation", description: "One-tap Google Maps integration" },
+  { src: "/screenshots/complete-job.png", label: "Job Completion", description: "Quick complete or create invoice" },
+  { src: "/screenshots/invoice.png", label: "Invoicing", description: "Professional invoices in seconds" },
+  { src: "/screenshots/eta-message.png", label: "Client Alerts", description: "SMS 'On My Way' messages" },
+  { src: "/screenshots/trip-tracking.png", label: "Trip Tracking", description: "Automatic mileage logging" },
+  { src: "/screenshots/bas-summary.png", label: "BAS Reports", description: "Tax-ready expense summaries" },
+];
 
 /**
  * Features shown in the grid section.
@@ -291,6 +305,70 @@ export default function HomePage() {
                 Logbook, expenses, receipts and BAS-ready export. Your accountant will actually like you.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== APP SCREENSHOTS SHOWCASE ===== */}
+      <section className="py-16 sm:py-24 overflow-hidden bg-gradient-to-b from-background via-primary/5 to-background">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10 sm:mb-14">
+            <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary mb-4">
+              <Smartphone className="h-4 w-4" />
+              See It In Action
+            </div>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold">
+              Built for the road
+            </h2>
+            <p className="mt-3 sm:mt-4 text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+              A clean, fast app designed for tradies and field workers on the go
+            </p>
+          </div>
+        </div>
+
+        {/* Horizontal scrolling screenshots */}
+        <div className="relative">
+          <div 
+            className="flex gap-4 sm:gap-6 overflow-x-auto pb-6 px-4 sm:px-8 snap-x snap-mandatory scrollbar-hide"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {/* Spacer for centering on larger screens */}
+            <div className="shrink-0 w-4 sm:w-8 lg:w-[calc((100vw-1280px)/2)]" />
+            
+            {appScreenshots.map((screenshot, index) => (
+              <div 
+                key={screenshot.label}
+                className="shrink-0 snap-center group"
+              >
+                {/* Phone frame with screenshot */}
+                <div className="relative w-[200px] sm:w-[240px] lg:w-[280px] aspect-[9/19.5] rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-gray-800 bg-gray-900 group-hover:scale-105 group-hover:shadow-primary/20 transition-all duration-300">
+                  {/* Notch */}
+                  <div className="absolute top-2 left-1/2 -translate-x-1/2 w-20 h-5 bg-gray-900 rounded-full z-10" />
+                  <Image
+                    src={screenshot.src}
+                    alt={screenshot.label}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 640px) 200px, (max-width: 1024px) 240px, 280px"
+                  />
+                </div>
+                {/* Label */}
+                <div className="mt-4 text-center">
+                  <p className="font-semibold text-sm sm:text-base">{screenshot.label}</p>
+                  <p className="text-xs sm:text-sm text-muted-foreground">{screenshot.description}</p>
+                </div>
+              </div>
+            ))}
+            
+            {/* Spacer for centering on larger screens */}
+            <div className="shrink-0 w-4 sm:w-8 lg:w-[calc((100vw-1280px)/2)]" />
+          </div>
+          
+          {/* Scroll hint */}
+          <div className="text-center mt-4 text-sm text-muted-foreground flex items-center justify-center gap-2">
+            <ChevronLeft className="h-4 w-4 animate-pulse" />
+            <span>Swipe to explore</span>
+            <ChevronRight className="h-4 w-4 animate-pulse" />
           </div>
         </div>
       </section>
