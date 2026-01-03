@@ -94,6 +94,8 @@ const benefits = [
 export default function HomePage() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
   // Get download URL and CTA from centralized config
   const downloadUrl = getDownloadUrl();
@@ -102,8 +104,28 @@ export default function HomePage() {
 
   const handleWaitlist = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In production, this would submit to an API
-    setSubmitted(true);
+    setIsLoading(true);
+    setError("");
+    
+    try {
+      const response = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      
+      const data = await response.json();
+      
+      if (response.ok) {
+        setSubmitted(true);
+      } else {
+        setError(data.error || 'Failed to join waitlist');
+      }
+    } catch {
+      setError('Network error. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -296,7 +318,11 @@ export default function HomePage() {
           </div>
 
           <div className="mt-10 sm:mt-12 text-center">
-            <Button variant="outline" className="min-h-[44px]" asChild>
+            <Button 
+              variant="outline" 
+              className="min-h-[44px] animate-pulse hover:animate-none border-primary/50 hover:border-primary hover:bg-primary/10" 
+              asChild
+            >
               <Link href="/features">
                 View all features
                 <ChevronRight className="ml-1 h-4 w-4" />
@@ -490,22 +516,32 @@ export default function HomePage() {
                 </p>
               </div>
             ) : (
-              <form
-                onSubmit={handleWaitlist}
-                className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 max-w-md mx-auto px-2 sm:px-0"
-              >
-                <Input
-                  type="email"
-                  placeholder="Enter your email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  className="flex-1 h-12 text-base"
-                />
-                <Button type="submit" className="h-12 px-6 text-base">
-                  Join Waitlist
-                </Button>
-              </form>
+              <div className="mt-6 sm:mt-8 max-w-md mx-auto px-2 sm:px-0">
+                <form
+                  onSubmit={handleWaitlist}
+                  className="flex flex-col sm:flex-row gap-3"
+                >
+                  <Input
+                    type="email"
+                    placeholder="Enter your email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    disabled={isLoading}
+                    className="flex-1 h-12 text-base"
+                  />
+                  <Button 
+                    type="submit" 
+                    className="h-12 px-6 text-base"
+                    disabled={isLoading}
+                  >
+                    {isLoading ? 'Joining...' : 'Join Waitlist'}
+                  </Button>
+                </form>
+                {error && (
+                  <p className="mt-3 text-sm text-red-500">{error}</p>
+                )}
+              </div>
             )}
 
             <p className="mt-3 sm:mt-4 text-xs sm:text-sm text-muted-foreground">
