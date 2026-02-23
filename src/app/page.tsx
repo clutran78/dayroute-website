@@ -403,6 +403,15 @@ export default function HomePage() {
               </div>
             ))}
           </div>
+
+          <div className="mt-10 sm:mt-12 text-center">
+            <Button variant="outline" className="min-h-[44px]" asChild>
+              <Link href="/industries">
+                See all supported industries
+                <ChevronRight className="ml-1 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
         </div>
       </section>
 

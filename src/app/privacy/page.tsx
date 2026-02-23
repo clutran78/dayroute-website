@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Privacy Policy - How DayRoute Handles Your Data",
   description:
     "DayRoute Privacy Policy. Learn how we collect, use, and protect your personal information. Receipts stored on-device. Minimal data collection. Australian privacy practices.",
+  alternates: { canonical: "/privacy" },
   openGraph: {
     title: "DayRoute Privacy Policy",
     description: "How DayRoute handles and protects your personal data.",

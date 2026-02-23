@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Support - Get Help with DayRoute",
   description:
     "Get help with DayRoute. Contact support, restore purchases, manage subscriptions, and find troubleshooting tips for login, calendar, location, and receipt scanning issues.",
+  alternates: { canonical: "/support" },
   openGraph: {
     title: "DayRoute Support - We're Here to Help",
     description:

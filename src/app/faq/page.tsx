@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   title: "FAQ - Frequently Asked Questions About DayRoute",
   description:
     "Find answers to common questions about DayRoute. Learn about features, pricing, data privacy, calendar sync, location tracking, subscriptions, and more.",
+  alternates: { canonical: "/faq" },
   openGraph: {
     title: "DayRoute FAQ - Your Questions Answered",
     description:

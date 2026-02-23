@@ -18,6 +18,7 @@ export const metadata: Metadata = {
   title: "Security - How DayRoute Protects Your Data",
   description:
     "Learn how DayRoute keeps your data secure. Passwordless login, on-device receipt storage, minimal data collection, and transparent privacy practices for Australian users.",
+  alternates: { canonical: "/security" },
   openGraph: {
     title: "DayRoute Security - Your Data, Protected",
     description:

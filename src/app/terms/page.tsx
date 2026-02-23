@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Terms of Use - DayRoute Service Agreement",
   description:
     "DayRoute Terms of Use. Subscription terms, usage guidelines, and service agreement for the DayRoute field service planning app.",
+  alternates: { canonical: "/terms" },
   openGraph: {
     title: "DayRoute Terms of Use",
     description: "Terms and conditions for using DayRoute.",

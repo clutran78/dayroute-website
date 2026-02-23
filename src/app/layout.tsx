@@ -34,6 +34,9 @@ export const metadata: Metadata = {
     "vehicle logbook",
     "receipt scanner",
   ],
+  alternates: {
+    canonical: "/",
+  },
   authors: [{ name: "DayRoute" }],
   creator: "DayRoute",
   
@@ -343,10 +346,11 @@ export default function RootLayout({
   return (
     <html lang="en-AU" className="dark">
       <head>
-        <link rel="canonical" href="https://dayroute.com.au" />
+        {/* IMPORTANT: Do NOT add a hardcoded <link rel="canonical"> here.
+            Each page sets its own canonical via metadata.alternates.
+            A global canonical would tell Google every page is a duplicate of the homepage. */}
         
         {/* Apple Smart App Banner - shows download banner in Safari on iOS */}
-        {/* This meta tag is also set in metadata.other, but we include it here for clarity */}
         <meta name="apple-itunes-app" content={`app-id=${APPLE_APP_ID}`} />
         
         {/* Structured Data - Organization (establishes entity for AI) */}

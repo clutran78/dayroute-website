@@ -20,6 +20,7 @@ export const metadata: Metadata = {
   title: "Pricing - Plans for Tradies, NDIS Providers & Field Service Teams",
   description:
     "DayRoute pricing for Australian tradies, NDIS providers, cleaners & mobile service professionals. Pro from $19/month. Team plans from $49/month. All plans include 7-day free trial.",
+  alternates: { canonical: "/pricing" },
   openGraph: {
     title: "DayRoute Pricing - Plans for Every Business Size",
     description:

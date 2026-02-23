@@ -20,6 +20,7 @@ export const metadata: Metadata = {
   title: "Use Cases - Route Planning for Tradies, Cleaners, NDIS & More",
   description:
     "See how DayRoute helps tradies, cleaners, gardeners, NDIS providers, home-visit clinicians, and mobile service professionals across Australia plan efficient routes and manage jobs.",
+  alternates: { canonical: "/use-cases" },
   openGraph: {
     title: "DayRoute Use Cases - For Every Mobile Service Professional",
     description:

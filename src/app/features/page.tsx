@@ -26,6 +26,7 @@ export const metadata: Metadata = {
   title: "Features - Route Planning, Job Scheduling & Expense Tracking",
   description:
     "Explore DayRoute features: multi-stop route optimisation, daily job scheduling, receipt scanner with AI, vehicle logbook, team management, and more for Australian field service professionals.",
+  alternates: { canonical: "/features" },
   openGraph: {
     title: "DayRoute Features - Field Service Management for Australia",
     description:
