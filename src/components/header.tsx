@@ -6,11 +6,7 @@ import { Menu, X, Download } from "lucide-react";
 import { Button } from "./ui/button";
 import { cn } from "../lib/utils";
 import { Logo } from "./logo";
-import {
-  getDownloadUrl,
-  getDownloadCta,
-  isComingSoon,
-} from "../lib/app-store-config";
+import { APP_STORE_URL } from "../lib/links";
 
 /**
  * Navigation links for the header.
@@ -27,23 +23,16 @@ const navigation = [
 /**
  * Responsive Header Component
  * 
- * Desktop (md+): Horizontal nav with logo left, links center, CTAs right
+ * Desktop (md+): Horizontal nav with logo left, links centre, CTAs right
  * Mobile (<md): Logo + hamburger, collapsible full-width menu panel
  * 
  * Touch targets are minimum 44x44px for accessibility.
- * 
- * Uses centralized app-store-config for download links.
- * When the app is live on App Store, links automatically update.
+ * Download CTA reads from src/lib/links.ts (single source of truth).
  */
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Get download URL and CTA text from centralized config
-  const downloadUrl = getDownloadUrl();
-  const downloadCta = getDownloadCta();
-  const comingSoon = isComingSoon();
-
-  // Close mobile menu on route change or escape key
+  // Close mobile menu on escape key
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape") setMobileMenuOpen(false);
@@ -91,18 +80,19 @@ export function Header() {
             ))}
           </div>
 
-          {/* Desktop CTAs - hidden on mobile */}
+          {/* Desktop CTA */}
           <div className="hidden md:flex md:items-center md:gap-3">
-            {/* Show waitlist when coming soon, hide when app is live */}
-            {comingSoon && (
-              <Button variant="outline" size="sm" asChild>
-                <Link href="/#waitlist">Join Waitlist</Link>
-              </Button>
-            )}
             <Button size="sm" asChild>
-              <Link href={downloadUrl} className="gap-2">
+              <Link
+                href={APP_STORE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="gap-2"
+                data-cta="app_store"
+                data-location="nav"
+              >
                 <Download className="h-4 w-4" />
-                <span className="hidden lg:inline">{downloadCta}</span>
+                <span className="hidden lg:inline">Download on the App Store</span>
                 <span className="lg:hidden">Download</span>
               </Link>
             </Button>
@@ -110,9 +100,14 @@ export function Header() {
 
           {/* Mobile: Download button + Menu button */}
           <div className="flex items-center gap-2 md:hidden">
-            {/* Compact download button on mobile */}
             <Button size="sm" asChild className="h-10 px-3">
-              <Link href={downloadUrl}>
+              <Link
+                href={APP_STORE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-cta="app_store"
+                data-location="nav-mobile"
+              >
                 <Download className="h-4 w-4" />
               </Link>
             </Button>
@@ -180,31 +175,17 @@ export function Header() {
             
             {/* CTA buttons - full width, large touch targets */}
             <div className="space-y-3 pt-2">
-              {/* Show waitlist when app is coming soon */}
-              {comingSoon && (
-                <Button 
-                  variant="outline" 
-                  className="w-full h-12 text-base" 
-                  asChild
-                >
-                  <Link 
-                    href="/#waitlist"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    Join Waitlist
-                  </Link>
-                </Button>
-              )}
-              <Button 
-                className="w-full h-12 text-base gap-2" 
-                asChild
-              >
+              <Button className="w-full h-12 text-base gap-2" asChild>
                 <Link 
-                  href={downloadUrl}
+                  href={APP_STORE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={() => setMobileMenuOpen(false)}
+                  data-cta="app_store"
+                  data-location="nav-mobile-menu"
                 >
                   <Download className="h-5 w-5" />
-                  {downloadCta}
+                  Download on the App Store
                 </Link>
               </Button>
             </div>

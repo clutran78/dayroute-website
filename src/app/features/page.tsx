@@ -12,7 +12,6 @@ import {
   DollarSign,
   Bell,
   Shield,
-  Smartphone,
   ChevronRight,
   Check,
   Sparkles,
@@ -20,6 +19,7 @@ import {
 } from "lucide-react";
 import { Card, CardContent } from "../../components/ui/card";
 import { Button } from "../../components/ui/button";
+import { AppStoreCTA } from "../../components/app-store-button";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -521,12 +521,11 @@ export default function FeaturesPage() {
               Download DayRoute and start planning efficient routes today.
             </p>
             <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-4 sm:px-0">
-              <Button size="lg" className="w-full sm:w-auto min-h-[48px] gap-2" asChild>
-                <Link href="/#download">
-                  <Smartphone className="h-5 w-5" />
-                  Coming Soon on App Store
-                </Link>
-              </Button>
+              <AppStoreCTA
+                size="lg"
+                className="w-full sm:w-auto min-h-[48px]"
+                location="features-cta"
+              />
               <Button size="lg" variant="outline" className="w-full sm:w-auto min-h-[48px]" asChild>
                 <Link href="/pricing">View pricing</Link>
               </Button>

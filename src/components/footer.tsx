@@ -1,16 +1,9 @@
 import Link from "next/link";
 import { Logo } from "./logo";
-import { Download } from "lucide-react";
-import { Button } from "./ui/button";
-import {
-  getDownloadUrl,
-  getDownloadCta,
-  APP_STORE_URL,
-  IS_APP_LIVE,
-} from "../lib/app-store-config";
+import { AppStoreCTA } from "./app-store-button";
 
 /**
- * Footer navigation links organized by category.
+ * Footer navigation links organised by category.
  */
 const footerLinks = {
   product: [
@@ -37,15 +30,9 @@ const footerLinks = {
  * Mobile: Stacked single column
  * 
  * Touch targets are minimum 44px height for accessibility.
- * 
- * Uses centralized app-store-config for download links.
- * When the app is live on App Store, links automatically update.
+ * Download CTA uses the reusable AppStoreCTA component.
  */
 export function Footer() {
-  // Get download URL and CTA from centralized config
-  const downloadUrl = getDownloadUrl();
-  const downloadCta = getDownloadCta();
-
   return (
     <footer className="border-t border-border bg-card/50">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 sm:py-12 lg:py-16">
@@ -65,19 +52,9 @@ export function Footer() {
               providers, and mobile professionals across Australia.
             </p>
             
-            {/* Download CTA - uses centralized config */}
+            {/* Download CTA */}
             <div className="mt-5 sm:mt-6">
-              <Button size="sm" className="gap-2" asChild>
-                <Link 
-                  href={downloadUrl}
-                  // Open in new tab when linking to external App Store
-                  target={IS_APP_LIVE ? "_blank" : undefined}
-                  rel={IS_APP_LIVE ? "noopener noreferrer" : undefined}
-                >
-                  <Download className="h-4 w-4" />
-                  {downloadCta}
-                </Link>
-              </Button>
+              <AppStoreCTA size="sm" location="footer" />
             </div>
           </div>
 

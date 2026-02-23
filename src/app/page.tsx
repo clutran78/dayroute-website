@@ -13,19 +13,12 @@ import {
   ChevronRight,
   Check,
   Sparkles,
-  Download,
   ChevronLeft,
 } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Card, CardContent } from "../components/ui/card";
-import { Input } from "../components/ui/input";
+import { AppStoreCTA } from "../components/app-store-button";
 import { useState, useEffect, useRef } from "react";
-import {
-  getDownloadUrl,
-  getDownloadCta,
-  isComingSoon,
-  IS_APP_LIVE,
-} from "../lib/app-store-config";
 
 // App screenshots for the showcase
 const appScreenshots = [
@@ -106,16 +99,7 @@ const benefits = [
 ];
 
 export default function HomePage() {
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
   const [showFloatingCta, setShowFloatingCta] = useState(false);
-
-  // Get download URL and CTA from centralized config
-  const downloadUrl = getDownloadUrl();
-  const downloadCta = getDownloadCta();
-  const comingSoon = isComingSoon();
 
   // Show floating CTA after scrolling past hero section
   useEffect(() => {
@@ -128,32 +112,6 @@ export default function HomePage() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const handleWaitlist = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setError("");
-    
-    try {
-      const response = await fetch('/api/waitlist', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
-      });
-      
-      const data = await response.json();
-      
-      if (response.ok) {
-        setSubmitted(true);
-      } else {
-        setError(data.error || 'Failed to join waitlist');
-      }
-    } catch {
-      setError('Network error. Please try again.');
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   return (
     <div className="flex flex-col">
@@ -219,48 +177,22 @@ export default function HomePage() {
             {/* CTAs - stack on mobile, row on tablet+ */}
             {/* download anchor for deep linking */}
             <div id="download" className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-4 sm:px-0">
+              <AppStoreCTA
+                size="lg"
+                className="w-full sm:w-auto min-h-[48px] text-base"
+                location="hero"
+              />
               <Button 
                 size="lg" 
-                className="w-full sm:w-auto min-h-[48px] text-base gap-2"
+                variant="outline" 
+                className="w-full sm:w-auto min-h-[48px] text-base"
                 asChild
               >
-                <Link 
-                  href={downloadUrl}
-                  target={IS_APP_LIVE ? "_blank" : undefined}
-                  rel={IS_APP_LIVE ? "noopener noreferrer" : undefined}
-                >
-                  <Download className="h-5 w-5" />
-                  {downloadCta}
+                <Link href="/features">
+                  Learn More
+                  <ChevronRight className="ml-1 h-4 w-4" />
                 </Link>
               </Button>
-              {/* Show waitlist button only when app is coming soon */}
-              {comingSoon && (
-                <Button 
-                  size="lg" 
-                  variant="outline" 
-                  className="w-full sm:w-auto min-h-[48px] text-base"
-                  asChild
-                >
-                  <Link href="#waitlist">
-                    Join the Waitlist
-                    <ChevronRight className="ml-1 h-4 w-4" />
-                  </Link>
-                </Button>
-              )}
-              {/* Show "Learn more" when app is live */}
-              {!comingSoon && (
-                <Button 
-                  size="lg" 
-                  variant="outline" 
-                  className="w-full sm:w-auto min-h-[48px] text-base"
-                  asChild
-                >
-                  <Link href="/features">
-                    Learn More
-                    <ChevronRight className="ml-1 h-4 w-4" />
-                  </Link>
-                </Button>
-              )}
             </div>
 
             {/* Proof line */}
@@ -607,10 +539,10 @@ export default function HomePage() {
               </p>
             </div>
             <div className="p-5 sm:p-6 rounded-2xl bg-card border border-border">
-              <h3 className="font-semibold text-base sm:text-lg mb-2">When will the iOS app be available?</h3>
+              <h3 className="font-semibold text-base sm:text-lg mb-2">Is DayRoute available now?</h3>
               <p className="text-sm sm:text-base text-muted-foreground">
-                We&apos;re submitting to the App Store very soon. Join the waitlist 
-                to get notified the moment it&apos;s live.
+                Yes! DayRoute is now available on the Apple App Store. Download it 
+                today and start your 7-day free trial.
               </p>
             </div>
             <div className="p-5 sm:p-6 rounded-2xl bg-card border border-border">
@@ -632,66 +564,38 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ===== WAITLIST ===== */}
-      <section id="waitlist" className="py-16 sm:py-24 lg:py-32 bg-card/50">
+      {/* ===== DOWNLOAD NOW ===== */}
+      <section id="download-now" className="py-16 sm:py-24 lg:py-32 bg-card/50">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold">
-              Get early access
+              Now available on the App Store
             </h2>
             <p className="mt-3 sm:mt-4 text-base sm:text-lg text-muted-foreground px-2">
-              Join the waitlist to get early access, launch pricing and behind-the-scenes updates. 
-              No spam – just useful stuff.
+              Download DayRoute and start your 7-day free trial. 
+              No credit card required — just download and go.
             </p>
 
-            {submitted ? (
-              <div className="mt-6 sm:mt-8 p-5 sm:p-6 rounded-2xl bg-primary/10 border border-primary/20">
-                <Check className="h-7 w-7 sm:h-8 sm:w-8 text-primary mx-auto mb-2" />
-                <p className="text-base sm:text-lg font-medium">
-                  You&apos;re on the list!
-                </p>
-                <p className="text-sm sm:text-base text-muted-foreground">
-                  We&apos;ll email you when DayRoute launches.
-                </p>
-              </div>
-            ) : (
-              <div className="mt-6 sm:mt-8 max-w-md mx-auto px-2 sm:px-0">
-                <form
-                  onSubmit={handleWaitlist}
-                  className="flex flex-col sm:flex-row gap-3"
-                >
-                  <Input
-                    type="email"
-                    name="email"
-                    autoComplete="email"
-                    placeholder="Enter your email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    disabled={isLoading}
-                    className="flex-1 h-12 text-base"
-                  />
-                  <Button 
-                    type="submit" 
-                    className="h-12 px-6 text-base"
-                    disabled={isLoading}
-                  >
-                    {isLoading ? 'Joining...' : 'Join Waitlist'}
-                  </Button>
-                </form>
-                {error && (
-                  <p className="mt-3 text-sm text-red-500">{error}</p>
-                )}
-              </div>
-            )}
+            <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-4 sm:px-0">
+              <AppStoreCTA
+                size="lg"
+                className="w-full sm:w-auto min-h-[48px] text-base"
+                location="download-section"
+              />
+              <Button 
+                size="lg" 
+                variant="outline"
+                className="w-full sm:w-auto min-h-[48px] text-base"
+                asChild
+              >
+                <Link href="/pricing">
+                  View Plans &amp; Pricing
+                </Link>
+              </Button>
+            </div>
 
-            <p className="mt-3 sm:mt-4 text-xs sm:text-sm text-muted-foreground">
-              No spam. Unsubscribe anytime.
-            </p>
-
-            {/* Trust note */}
-            <p className="mt-6 text-xs text-muted-foreground/70">
-              Your data is stored securely and never sold. You control your information at all times.
+            <p className="mt-6 text-xs sm:text-sm text-muted-foreground">
+              All plans include a 7-day free trial. Cancel anytime.
             </p>
           </div>
         </div>
@@ -713,20 +617,11 @@ export default function HomePage() {
                 smarter and finish faster with DayRoute.
               </p>
               <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
-                <Button 
-                  size="lg" 
-                  className="w-full sm:w-auto min-h-[48px] gap-2"
-                  asChild
-                >
-                  <Link 
-                    href={downloadUrl}
-                    target={IS_APP_LIVE ? "_blank" : undefined}
-                    rel={IS_APP_LIVE ? "noopener noreferrer" : undefined}
-                  >
-                    <Download className="h-5 w-5" />
-                    {downloadCta}
-                  </Link>
-                </Button>
+                <AppStoreCTA
+                  size="lg"
+                  className="w-full sm:w-auto min-h-[48px]"
+                  location="final-cta"
+                />
                 <Button 
                   size="lg" 
                   variant="outline"

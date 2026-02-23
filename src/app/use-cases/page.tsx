@@ -10,11 +10,11 @@ import {
   Bug,
   Truck,
   Check,
-  Smartphone,
   ArrowRight,
 } from "lucide-react";
 import { Button } from "../../components/ui/button";
 import { Card, CardContent } from "../../components/ui/card";
+import { AppStoreCTA } from "../../components/app-store-button";
 
 export const metadata: Metadata = {
   title: "Use Cases - Route Planning for Tradies, Cleaners, NDIS & More",
@@ -276,12 +276,7 @@ export default function UseCasesPage() {
               routes and finish faster.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button size="lg" asChild>
-                <Link href="/#download">
-                  <Smartphone className="mr-2 h-5 w-5" />
-                  Coming Soon on App Store
-                </Link>
-              </Button>
+              <AppStoreCTA size="lg" location="use-cases-cta" />
               <Button size="lg" variant="outline" asChild>
                 <Link href="/pricing">View pricing</Link>
               </Button>

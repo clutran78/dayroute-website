@@ -2,165 +2,189 @@
 
 import React from "react";
 import Link from "next/link";
-import { Download, Apple } from "lucide-react";
+import { Download, Apple, CalendarCheck } from "lucide-react";
 import { Button } from "./ui/button";
 import { cn } from "../lib/utils";
-import {
-  getDownloadUrl,
-  getDownloadCta,
-  isComingSoon,
-  APP_STORE_URL,
-  IS_APP_LIVE,
-} from "../lib/app-store-config";
+import { APP_STORE_URL, BOOK_FREE_SETUP_URL } from "../lib/links";
 
 // =============================================================================
-// APP STORE BUTTON COMPONENT
+// AppStoreCTA — primary download button used site-wide
 // =============================================================================
 
-interface AppStoreButtonProps {
-  /** Button size variant */
+interface AppStoreCTAProps {
+  /** Button size variant. */
   size?: "default" | "sm" | "lg";
-  /** Button style variant */
+  /** Button style variant. */
   variant?: "default" | "outline" | "secondary" | "ghost";
-  /** Additional CSS classes */
+  /** Additional CSS classes. */
   className?: string;
-  /** Show full Apple badge or just icon + text */
+  /** Render the Apple badge style instead of a standard button. */
   showBadge?: boolean;
-  /** Override the default CTA text */
+  /** Override default CTA label. */
   ctaText?: string;
-  /** Whether to open in new tab (default: true for external links) */
+  /** Open in new tab (default true). */
   newTab?: boolean;
+  /** Where this CTA appears — useful for analytics. */
+  location?: string;
 }
 
 /**
- * App Store Download Button Component
- * 
- * A reusable button for App Store downloads.
- * Automatically handles:
- * - "Coming Soon" vs "Download" text based on IS_APP_LIVE config
- * - Correct App Store URL
- * - Accessibility attributes
- * 
+ * Reusable App Store download button.
+ *
+ * Reads the canonical URL from src/lib/links.ts so every instance
+ * across the site points to the same live listing.
+ *
  * Usage:
- * <AppStoreButton />                           // Default button
- * <AppStoreButton size="lg" showBadge />       // Large with Apple badge
- * <AppStoreButton variant="outline" />         // Outline style
+ *   <AppStoreCTA />
+ *   <AppStoreCTA size="lg" location="hero" />
+ *   <AppStoreCTA showBadge />
+ *   <AppStoreCTA variant="outline" ctaText="Get DayRoute" />
  */
-export function AppStoreButton({
+export function AppStoreCTA({
   size = "default",
   variant = "default",
   className,
   showBadge = false,
   ctaText,
   newTab = true,
-}: AppStoreButtonProps) {
-  const url = getDownloadUrl();
-  const defaultCta = getDownloadCta();
-  const text = ctaText || defaultCta;
-  
-  // When app is not live, link to waitlist section (same page anchor)
-  const isExternalLink = IS_APP_LIVE && url.startsWith("http");
-  
-  // Badge style - looks like official App Store badge
+  location,
+}: AppStoreCTAProps) {
+  const label = ctaText ?? "Download on the App Store";
+
+  // Apple badge style (black pill with Apple logo + two-line text)
   if (showBadge) {
     return (
       <Link
-        href={url}
-        target={isExternalLink && newTab ? "_blank" : undefined}
-        rel={isExternalLink ? "noopener noreferrer" : undefined}
+        href={APP_STORE_URL}
+        target={newTab ? "_blank" : undefined}
+        rel="noopener noreferrer"
         className={cn(
           "inline-flex items-center gap-2 bg-black text-white rounded-xl px-4 py-2 hover:bg-black/90 transition-colors",
-          "min-h-[44px]", // Touch target
-          className
+          "min-h-[44px]",
+          className,
         )}
-        aria-label={IS_APP_LIVE ? "Download DayRoute on the App Store" : "Join the DayRoute waitlist"}
+        aria-label="Download DayRoute on the App Store"
+        data-cta="app_store"
+        data-location={location}
       >
         <Apple className="h-8 w-8" />
         <div className="flex flex-col items-start text-left">
-          <span className="text-[10px] leading-none opacity-80">
-            {isComingSoon() ? "Coming Soon on" : "Download on the"}
-          </span>
+          <span className="text-[10px] leading-none opacity-80">Download on the</span>
           <span className="text-lg font-semibold leading-tight">App Store</span>
         </div>
       </Link>
     );
   }
-  
+
   // Standard button style
   return (
-    <Button
-      size={size}
-      variant={variant}
-      asChild
-      className={cn("min-h-[44px]", className)}
-    >
+    <Button size={size} variant={variant} asChild className={cn("min-h-[44px]", className)}>
       <Link
-        href={url}
-        target={isExternalLink && newTab ? "_blank" : undefined}
-        rel={isExternalLink ? "noopener noreferrer" : undefined}
-        aria-label={IS_APP_LIVE ? "Download DayRoute on the App Store" : "Join the DayRoute waitlist"}
+        href={APP_STORE_URL}
+        target={newTab ? "_blank" : undefined}
+        rel="noopener noreferrer"
+        aria-label="Download DayRoute on the App Store"
+        data-cta="app_store"
+        data-location={location}
       >
         <Download className="mr-2 h-5 w-5" />
-        {text}
+        {label}
       </Link>
     </Button>
   );
 }
 
 // =============================================================================
-// SUBSCRIBE BUTTON - Links to in-app subscription
+// SetupCTA — secondary "Book Free 15-Min Setup" button
 // =============================================================================
 
-interface SubscribeButtonProps {
-  /** The plan to subscribe to */
-  plan?: "pro-monthly" | "pro-yearly" | "team-3" | "team-10";
-  /** Button size */
+interface SetupCTAProps {
+  /** Button size variant. */
   size?: "default" | "sm" | "lg";
-  /** Button variant */
-  variant?: "default" | "outline" | "secondary";
-  /** Additional classes */
+  /** Button style variant (default: outline). */
+  variant?: "default" | "outline" | "secondary" | "ghost";
+  /** Additional CSS classes. */
   className?: string;
-  /** Override CTA text */
+  /** Override default CTA label. */
   ctaText?: string;
+  /** Where this CTA appears — useful for analytics. */
+  location?: string;
 }
 
 /**
- * Subscribe Button Component
- * 
- * Links to specific subscription plans.
- * When the app is live, this opens the app to the subscription screen.
- * When the app is not live, links to the pricing page.
+ * Secondary CTA for booking a free onboarding setup call.
+ *
+ * Reads the setup URL from src/lib/links.ts.
+ * TODO: Update BOOK_FREE_SETUP_URL in links.ts once a booking
+ * page or Calendly link is live.
  */
-export function SubscribeButton({
-  plan,
+export function SetupCTA({
   size = "default",
-  variant = "default",
+  variant = "outline",
   className,
-  ctaText = "Start 7-day free trial",
-}: SubscribeButtonProps) {
-  // When app is live, we'd use deep links
-  // For now, link to App Store or pricing page
-  const url = IS_APP_LIVE 
-    ? (plan ? `${APP_STORE_URL}` : APP_STORE_URL)
-    : "/pricing";
-  
+  ctaText,
+  location,
+}: SetupCTAProps) {
+  const label = ctaText ?? "Book Free 15-Min Setup";
+
   return (
-    <Button
-      size={size}
-      variant={variant}
-      asChild
-      className={cn("min-h-[44px]", className)}
-    >
+    <Button size={size} variant={variant} asChild className={cn("min-h-[44px]", className)}>
       <Link
-        href={url}
-        target={IS_APP_LIVE ? "_blank" : undefined}
-        rel={IS_APP_LIVE ? "noopener noreferrer" : undefined}
+        href={BOOK_FREE_SETUP_URL}
+        aria-label="Book a free 15-minute DayRoute setup call"
+        data-cta="setup"
+        data-location={location}
       >
-        {ctaText}
+        <CalendarCheck className="mr-2 h-5 w-5" />
+        {label}
       </Link>
     </Button>
   );
 }
 
-export default AppStoreButton;
+// =============================================================================
+// SubscribeCTA — links to App Store for in-app subscription
+// =============================================================================
 
+interface SubscribeCTAProps {
+  /** Button size variant. */
+  size?: "default" | "sm" | "lg";
+  /** Button style variant. */
+  variant?: "default" | "outline" | "secondary";
+  /** Additional CSS classes. */
+  className?: string;
+  /** Override default CTA label. */
+  ctaText?: string;
+  /** Where this CTA appears — useful for analytics. */
+  location?: string;
+}
+
+/**
+ * Subscribe CTA that links to the App Store where the user can
+ * pick a plan and start their 7-day free trial inside the app.
+ */
+export function SubscribeCTA({
+  size = "default",
+  variant = "default",
+  className,
+  ctaText,
+  location,
+}: SubscribeCTAProps) {
+  const label = ctaText ?? "Start 7-day free trial";
+
+  return (
+    <Button size={size} variant={variant} asChild className={cn("min-h-[44px]", className)}>
+      <Link
+        href={APP_STORE_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-cta="subscribe"
+        data-location={location}
+      >
+        {label}
+      </Link>
+    </Button>
+  );
+}
+
+export default AppStoreCTA;

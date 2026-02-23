@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { Check, Smartphone, Users, Zap, Star, Crown, Download } from "lucide-react";
+import { Check, Users, Zap, Star, Crown } from "lucide-react";
 import { Button } from "../../components/ui/button";
 import {
   Card,
@@ -10,13 +10,8 @@ import {
   CardHeader,
   CardTitle,
 } from "../../components/ui/card";
-import {
-  getDownloadUrl,
-  getDownloadCta,
-  APP_STORE_URL,
-  IS_APP_LIVE,
-  REVENUECAT_PRODUCTS,
-} from "../../lib/app-store-config";
+import { SubscribeCTA, AppStoreCTA } from "../../components/app-store-button";
+import { REVENUECAT_PRODUCTS } from "../../lib/app-store-config";
 
 // =============================================================================
 // METADATA - Updated for correct pricing
@@ -249,21 +244,12 @@ export default function PricingPage() {
                 </CardContent>
 
                 <CardFooter className="pt-0 pb-6">
-                  <Button
+                  <SubscribeCTA
                     variant={plan.isPopular ? "default" : "outline"}
                     className="w-full min-h-[48px] text-sm sm:text-base"
                     size="lg"
-                    asChild
-                  >
-                    {/* Links to App Store when live, or download section when coming soon */}
-                    <Link
-                      href={getDownloadUrl()}
-                      target={IS_APP_LIVE ? "_blank" : undefined}
-                      rel={IS_APP_LIVE ? "noopener noreferrer" : undefined}
-                    >
-                      Start 7-day free trial
-                    </Link>
-                  </Button>
+                    location={`pricing-solo-${plan.id}`}
+                  />
                 </CardFooter>
               </Card>
             ))}
@@ -367,21 +353,12 @@ export default function PricingPage() {
                 </CardContent>
 
                 <CardFooter className="pt-0 pb-6">
-                  <Button
+                  <SubscribeCTA
                     className="w-full min-h-[48px] text-sm sm:text-base"
                     size="lg"
                     variant={plan.isBestValue ? "default" : "outline"}
-                    asChild
-                  >
-                    {/* Links to App Store when live, or download section when coming soon */}
-                    <Link
-                      href={getDownloadUrl()}
-                      target={IS_APP_LIVE ? "_blank" : undefined}
-                      rel={IS_APP_LIVE ? "noopener noreferrer" : undefined}
-                    >
-                      Start 7-day free trial
-                    </Link>
-                  </Button>
+                    location={`pricing-team-${plan.id}`}
+                  />
                 </CardFooter>
               </Card>
             ))}
@@ -448,9 +425,8 @@ export default function PricingPage() {
                   Is DayRoute available for Android?
                 </h3>
                 <p className="text-sm sm:text-base text-muted-foreground">
-                  DayRoute is launching first on iOS (iPhone & iPad). Android
-                  support is on our roadmap. Join the waitlist to be notified
-                  when Android is available.
+                  DayRoute is currently available on iOS (iPhone &amp; iPad). Android
+                  support is on our roadmap — stay tuned for updates.
                 </p>
               </div>
 
@@ -487,21 +463,11 @@ export default function PricingPage() {
               professionals who plan smarter and finish faster with DayRoute.
             </p>
             <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-4 sm:px-0">
-              <Button
+              <AppStoreCTA
                 size="lg"
-                className="w-full sm:w-auto min-h-[48px] gap-2"
-                asChild
-              >
-                {/* Links to App Store when live, uses centralized config */}
-                <Link 
-                  href={getDownloadUrl()}
-                  target={IS_APP_LIVE ? "_blank" : undefined}
-                  rel={IS_APP_LIVE ? "noopener noreferrer" : undefined}
-                >
-                  <Download className="h-5 w-5" />
-                  {getDownloadCta()}
-                </Link>
-              </Button>
+                className="w-full sm:w-auto min-h-[48px]"
+                location="pricing-bottom"
+              />
             </div>
           </div>
         </div>

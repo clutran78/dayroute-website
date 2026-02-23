@@ -1,7 +1,8 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { HelpCircle, Smartphone } from "lucide-react";
+import { HelpCircle } from "lucide-react";
 import { Button } from "../../components/ui/button";
+import { AppStoreCTA } from "../../components/app-store-button";
 import {
   Accordion,
   AccordionContent,
@@ -270,12 +271,7 @@ export default function FAQPage() {
                 <Button asChild>
                   <Link href="/support">Contact Support</Link>
                 </Button>
-                <Button variant="outline" asChild>
-                  <Link href="/#download">
-                    <Smartphone className="mr-2 h-5 w-5" />
-                    Download DayRoute
-                  </Link>
-                </Button>
+                <AppStoreCTA variant="outline" location="faq-cta" />
               </div>
             </div>
           </div>
