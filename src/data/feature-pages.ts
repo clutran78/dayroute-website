@@ -439,34 +439,34 @@ export const featurePages: FeaturePage[] = [
   },
 
   // =========================================================================
-  // 5. XERO / QUICKBOOKS ALTERNATIVE
+  // 5. MOBILE FIELD SERVICE APP VS DESKTOP ACCOUNTING SOFTWARE
   // =========================================================================
   {
-    slug: "xero-quickbooks-mobile-workflow-alternative-for-field-service",
-    title: "Xero & QuickBooks Mobile Alternative for Field Service Workflows",
+    slug: "mobile-field-service-app-vs-desktop-accounting-software",
+    title: "Mobile Field Service App vs Desktop Accounting Software",
     metaDescription:
-      "DayRoute is a simpler, mobile-first alternative to Xero and QuickBooks for field service workers who need invoicing, expenses, and job management on their phone.",
-    h1: "A simpler mobile alternative to Xero and QuickBooks for field workers",
-    shortName: "Xero / QuickBooks Alternative",
+      "DayRoute is a mobile-first field service app for tradies who need invoicing, expenses, route planning, and job management — without the complexity of desktop accounting tools.",
+    h1: "Why desktop accounting software doesn't work in the field",
+    shortName: "Mobile vs Desktop",
     breadcrumbParent: { label: "Features", href: "/features" },
     intro:
-      "Xero and QuickBooks are powerful accounting platforms — but they're built for people who sit at a desk. If you spend your day in a van visiting job sites, you need something that works from your phone, in the field, with dirty hands. DayRoute is a mobile-first workflow app that handles the parts of your day Xero and QuickBooks weren't designed for: route planning, job scheduling, receipt scanning, and on-site invoicing.",
+      "Traditional accounting software is powerful — but it's built for people who sit at a desk. If you spend your day in a van visiting job sites, you need something that works from your phone, in the field, with dirty hands. DayRoute is a mobile-first workflow app that handles the parts of your workday that accounting platforms weren't designed for: route planning, job scheduling, receipt scanning, and on-site invoicing.",
     problem: {
       heading: "Why desktop accounting tools don't fit field service work",
       description:
-        "Xero and QuickBooks are great for bookkeeping — but they assume you're at a computer. Field workers need tools that work at the job site, not the office.",
+        "Accounting software is designed for bookkeepers and office-based businesses. Field workers need tools that work at the job site, not behind a computer screen.",
       bullets: [
-        "Creating invoices on a phone in Xero/QuickBooks is clunky and slow",
+        "Creating invoices on a phone through accounting apps is clunky and slow",
         "No route planning or job scheduling — you need separate apps for that",
         "Receipt entry requires manual typing or desktop scanning",
         "No vehicle logbook or GPS trip tracking built in",
-        "Overkill for solo operators who just need to invoice, track expenses, and plan routes",
+        "Full accounting suites are overkill for solo operators who just need to invoice, track expenses, and plan routes",
       ],
     },
     solution: {
       heading: "What DayRoute does differently",
       description:
-        "DayRoute isn't a replacement for your accountant's tools. It's a mobile companion that handles the fieldwork side — then your accountant can use Xero or QuickBooks for the rest.",
+        "DayRoute isn't a replacement for your accountant's tools. It's a mobile companion that handles the fieldwork side — then your accountant can use whatever platform they prefer for the rest.",
       steps: [
         {
           title: "Plan your day and routes",
@@ -486,38 +486,38 @@ export const featurePages: FeaturePage[] = [
         {
           title: "Export for your accountant",
           description:
-            "At BAS time, export your income, expenses, and GST summaries. Your accountant can import the data into Xero, QuickBooks, or MYOB.",
+            "At BAS time, export your income, expenses, and GST summaries. Your accountant can import the data into whatever accounting platform they use.",
         },
       ],
     },
     industryExamples: [
-      { industry: "Trades / handyman", example: "Use DayRoute for daily job management and invoicing. Export totals to your accountant's Xero at BAS time." },
-      { industry: "Cleaning", example: "Track income and expenses in DayRoute daily. Hand your accountant a clean quarterly summary." },
+      { industry: "Trades / handyman", example: "Use DayRoute for daily job management and invoicing. Export totals to your accountant at BAS time." },
+      { industry: "Cleaning", example: "Track income and expenses in DayRoute daily. Hand your accountant a clean quarterly summary instead of a shoebox of receipts." },
       { industry: "Gardening", example: "Invoice clients on the spot and scan receipts. No more Sunday-night data entry into accounting software." },
-      { industry: "Pest control", example: "Manage jobs, routes, and expenses in DayRoute. Let your bookkeeper handle the ledger in Xero." },
-      { industry: "HVAC", example: "Record parts expenses and job income on site. Export for your accountant rather than keeping a shoebox of receipts." },
+      { industry: "Pest control", example: "Manage jobs, routes, and expenses in DayRoute. Let your bookkeeper handle the ledger in their accounting platform." },
+      { industry: "HVAC", example: "Record parts expenses and job income on site. Export for your accountant rather than keeping loose receipts in the glovebox." },
       { industry: "NDIS / home support", example: "Create NDIS-formatted invoices on your phone. Share summaries with your plan manager or bookkeeper." },
     ],
     faqs: [
       {
-        question: "Does DayRoute integrate directly with Xero or QuickBooks?",
+        question: "Does DayRoute replace my accounting software?",
         answer:
-          "DayRoute does not currently have a direct integration with Xero or QuickBooks. However, you can export income and expense summaries from DayRoute and share them with your accountant for entry into their preferred accounting platform.",
-      },
-      {
-        question: "Is DayRoute a replacement for Xero or QuickBooks?",
-        answer:
-          "No. DayRoute is a mobile field-service tool — not a full accounting platform. It handles the parts of your day that accounting software isn't designed for: route planning, job scheduling, on-site invoicing, and receipt scanning. Your accountant can continue using Xero, QuickBooks, or MYOB for bookkeeping.",
+          "No. DayRoute is a mobile field-service tool — not a full accounting platform. It handles the parts of your day that accounting software isn't designed for: route planning, job scheduling, on-site invoicing, and receipt scanning. Your accountant can continue using whatever accounting platform they prefer for bookkeeping and lodgement.",
       },
       {
         question: "Can my accountant use DayRoute's data?",
         answer:
-          "Yes. DayRoute generates income, expense, and GST summaries that your accountant can use for BAS lodgement and end-of-year tax. You can share these reports directly.",
+          "Yes. DayRoute generates income, expense, and GST summaries that your accountant can use for BAS lodgement and end-of-year tax. You can share these reports directly — they import into any accounting platform.",
       },
       {
-        question: "Is DayRoute cheaper than Xero or QuickBooks?",
+        question: "How is DayRoute different from accounting software?",
         answer:
-          "DayRoute Pro starts at $19 AUD/month, which is comparable to or less than most accounting software plans. But the comparison isn't apples-to-apples — DayRoute focuses on fieldwork (routes, jobs, invoicing, expenses) while Xero/QuickBooks focus on accounting.",
+          "Accounting software focuses on bookkeeping, tax, and compliance. DayRoute focuses on the fieldwork side: planning routes, managing jobs, invoicing on the spot, and scanning receipts. They complement each other — DayRoute handles the work, your accountant handles the books.",
+      },
+      {
+        question: "How much does DayRoute cost?",
+        answer:
+          "DayRoute Pro starts at $19 AUD/month with a 7-day free trial. It covers route planning, job scheduling, invoicing, receipt scanning, and vehicle logbook — all the tools a field worker needs in one app.",
       },
     ],
     relatedLinks: [
@@ -617,7 +617,7 @@ export const featurePages: FeaturePage[] = [
       { label: "Route planning", href: "/route-planning-for-service-businesses-australia" },
       { label: "Mobile invoicing", href: "/mobile-invoicing-after-job-completion-iphone" },
       { label: "Mileage logbook & receipts", href: "/mileage-logbook-receipts-for-service-businesses-australia" },
-      { label: "Xero/QuickBooks alternative", href: "/xero-quickbooks-mobile-workflow-alternative-for-field-service" },
+      { label: "Mobile vs desktop accounting", href: "/mobile-field-service-app-vs-desktop-accounting-software" },
     ],
   },
 ];
