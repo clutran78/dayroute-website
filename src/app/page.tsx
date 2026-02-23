@@ -18,6 +18,7 @@ import {
 import { Button } from "../components/ui/button";
 import { Card, CardContent } from "../components/ui/card";
 import { AppStoreCTA } from "../components/app-store-button";
+import { GuidedDiscovery } from "../components/guided-discovery";
 import { useState, useEffect, useRef } from "react";
 
 // App screenshots for the showcase
@@ -664,6 +665,9 @@ export default function HomePage() {
           </Link>
         </Button>
       </div>
+
+      {/* ===== GUIDED DISCOVERY — floating tutorial for first-time visitors ===== */}
+      <GuidedDiscovery />
     </div>
   );
 }
