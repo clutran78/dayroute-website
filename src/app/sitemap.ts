@@ -1,6 +1,5 @@
 import { MetadataRoute } from "next";
-import { getAllIndustrySlugs } from "../data/industries";
-import { getAllFeaturePageSlugs } from "../data/feature-pages";
+import { getAllSeoSlugs } from "../data/seo-pages";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://dayroute.com.au";
@@ -26,21 +25,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: route === "" ? 1 : ["/features", "/pricing", "/industries"].includes(route) ? 0.9 : 0.8,
   }));
 
-  // Long-tail industry pages (auto-generated from data)
-  const industryEntries: MetadataRoute.Sitemap = getAllIndustrySlugs().map((slug) => ({
+  // Long-tail SEO pages (auto-generated from unified data file)
+  const seoEntries: MetadataRoute.Sitemap = getAllSeoSlugs().map((slug) => ({
     url: `${baseUrl}/${slug}`,
     lastModified: new Date(),
     changeFrequency: "monthly",
     priority: 0.8,
   }));
 
-  // Long-tail feature / problem pages (auto-generated from data)
-  const featureEntries: MetadataRoute.Sitemap = getAllFeaturePageSlugs().map((slug) => ({
-    url: `${baseUrl}/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly",
-    priority: 0.8,
-  }));
-
-  return [...coreEntries, ...industryEntries, ...featureEntries];
+  return [...coreEntries, ...seoEntries];
 }

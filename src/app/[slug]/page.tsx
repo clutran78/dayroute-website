@@ -12,22 +12,19 @@ import {
 import { Card, CardContent } from "../../components/ui/card";
 import { Button } from "../../components/ui/button";
 import { AppStoreCTA, SetupCTA } from "../../components/app-store-button";
-import { getIndustryBySlug, getAllIndustrySlugs } from "../../data/industries";
 import {
-  getFeaturePageBySlug,
-  getAllFeaturePageSlugs,
-  type FeaturePage,
-} from "../../data/feature-pages";
-import type { IndustryPage } from "../../data/industries";
+  getAllSeoSlugs,
+  getSeoPageBySlug,
+  type CategorySeoPage,
+  type FeatureSeoPage,
+} from "../../data/seo-pages";
 
 // =============================================================================
 // Static generation — pre-render every SEO page at build time
 // =============================================================================
 
 export function generateStaticParams() {
-  const industrySlugs = getAllIndustrySlugs().map((slug) => ({ slug }));
-  const featureSlugs = getAllFeaturePageSlugs().map((slug) => ({ slug }));
-  return [...industrySlugs, ...featureSlugs];
+  return getAllSeoSlugs().map((slug) => ({ slug }));
 }
 
 // =============================================================================
@@ -40,20 +37,17 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-
-  const industry = getIndustryBySlug(slug);
-  const feature = getFeaturePageBySlug(slug);
-  const page = industry || feature;
+  const page = getSeoPageBySlug(slug);
   if (!page) return {};
 
   const canonical = `https://dayroute.com.au/${page.slug}`;
 
   return {
-    title: page.title,
+    title: page.seoTitle,
     description: page.metaDescription,
     alternates: { canonical },
     openGraph: {
-      title: page.title,
+      title: page.seoTitle,
       description: page.metaDescription,
       url: canonical,
       type: "website",
@@ -62,7 +56,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
     twitter: {
       card: "summary_large_image",
-      title: page.title,
+      title: page.seoTitle,
       description: page.metaDescription,
     },
   };
@@ -74,21 +68,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function SlugPage({ params }: PageProps) {
   const { slug } = await params;
+  const page = getSeoPageBySlug(slug);
+  if (!page) notFound();
 
-  const industry = getIndustryBySlug(slug);
-  if (industry) return <IndustryTemplate page={industry} />;
-
-  const feature = getFeaturePageBySlug(slug);
-  if (feature) return <FeatureTemplate page={feature} />;
-
-  notFound();
+  if (page.pageType === "category") return <CategoryTemplate page={page} />;
+  return <FeatureTemplate page={page} />;
 }
 
 // =============================================================================
-// INDUSTRY TEMPLATE (vertical: gardening, cleaning, etc.)
+// CATEGORY TEMPLATE (industry vertical pages)
 // =============================================================================
 
-function IndustryTemplate({ page }: { page: IndustryPage }) {
+function CategoryTemplate({ page }: { page: CategorySeoPage }) {
   const canonical = `https://dayroute.com.au/${page.slug}`;
 
   const breadcrumbSchema = {
@@ -96,7 +87,7 @@ function IndustryTemplate({ page }: { page: IndustryPage }) {
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: "https://dayroute.com.au" },
-      { "@type": "ListItem", position: 2, name: "Use Cases", item: "https://dayroute.com.au/use-cases" },
+      { "@type": "ListItem", position: 2, name: "Industries", item: "https://dayroute.com.au/industries" },
       { "@type": "ListItem", position: 3, name: page.shortName, item: canonical },
     ],
   };
@@ -117,15 +108,13 @@ function IndustryTemplate({ page }: { page: IndustryPage }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       <div className="flex flex-col">
-        {/* Breadcrumb */}
         <Breadcrumb items={[
           { label: "Home", href: "/" },
-          { label: "Use Cases", href: "/use-cases" },
+          { label: "Industries", href: "/industries" },
           { label: page.shortName },
         ]} />
 
-        {/* Hero */}
-        <HeroSection h1={page.h1} intro={page.intro} slug={page.slug} prefix="industry" />
+        <HeroSection h1={page.h1} intro={page.intro} slug={page.slug} prefix="category" />
 
         {/* Pain points */}
         <section className="py-12 sm:py-20 bg-card/50 border-y border-border">
@@ -147,12 +136,12 @@ function IndustryTemplate({ page }: { page: IndustryPage }) {
           </div>
         </section>
 
-        {/* Features */}
+        {/* Feature highlights */}
         <section className="py-12 sm:py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <h2 className="text-2xl sm:text-3xl font-bold mb-10 sm:mb-12">How DayRoute helps</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
-              {page.features.map((f) => (
+              {page.featureHighlights.map((f) => (
                 <Card key={f.title} className="group hover:border-primary/50 transition-colors">
                   <CardContent className="p-5 sm:p-6">
                     <div className="flex items-start gap-3">
@@ -169,20 +158,9 @@ function IndustryTemplate({ page }: { page: IndustryPage }) {
           </div>
         </section>
 
-        {/* Testimonial */}
         <TestimonialSection testimonial={page.testimonial} />
-
-        {/* FAQs */}
         <FaqSection faqs={page.faqs} />
-
-        {/* Bottom CTA */}
-        <BottomCta
-          heading={`Ready to streamline your ${page.shortName.toLowerCase()} business?`}
-          slug={page.slug}
-          prefix="industry"
-        />
-
-        {/* Related links */}
+        <BottomCta heading={`Ready to streamline your ${page.shortName.toLowerCase()} business?`} slug={page.slug} prefix="category" />
         <RelatedLinks links={page.relatedLinks} />
       </div>
     </>
@@ -190,10 +168,10 @@ function IndustryTemplate({ page }: { page: IndustryPage }) {
 }
 
 // =============================================================================
-// FEATURE TEMPLATE (problem/workflow: route planning, invoicing, etc.)
+// FEATURE TEMPLATE (problem / workflow pages)
 // =============================================================================
 
-function FeatureTemplate({ page }: { page: FeaturePage }) {
+function FeatureTemplate({ page }: { page: FeatureSeoPage }) {
   const canonical = `https://dayroute.com.au/${page.slug}`;
 
   const breadcrumbSchema = {
@@ -222,14 +200,12 @@ function FeatureTemplate({ page }: { page: FeaturePage }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       <div className="flex flex-col">
-        {/* Breadcrumb */}
         <Breadcrumb items={[
           { label: "Home", href: "/" },
           { label: page.breadcrumbParent.label, href: page.breadcrumbParent.href },
           { label: page.shortName },
         ]} />
 
-        {/* Hero */}
         <HeroSection h1={page.h1} intro={page.intro} slug={page.slug} prefix="feature" />
 
         {/* The problem */}
@@ -300,17 +276,8 @@ function FeatureTemplate({ page }: { page: FeaturePage }) {
           </div>
         </section>
 
-        {/* FAQs */}
         <FaqSection faqs={page.faqs} />
-
-        {/* Bottom CTA */}
-        <BottomCta
-          heading="Try DayRoute free for 7 days"
-          slug={page.slug}
-          prefix="feature"
-        />
-
-        {/* Related links */}
+        <BottomCta heading="Try DayRoute free for 7 days" slug={page.slug} prefix="feature" />
         <RelatedLinks links={page.relatedLinks} />
       </div>
     </>
@@ -358,7 +325,7 @@ function HeroSection({ h1, intro, slug, prefix }: { h1: string; intro: string; s
   );
 }
 
-function TestimonialSection({ testimonial }: { testimonial: IndustryPage["testimonial"] }) {
+function TestimonialSection({ testimonial }: { testimonial: CategorySeoPage["testimonial"] }) {
   return (
     <section className="py-12 sm:py-20 bg-card/50 border-y border-border">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
