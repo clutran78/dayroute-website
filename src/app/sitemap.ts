@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const coreRoutes = [
     "",
     "/features",
+    "/industries",
     "/pricing",
     "/use-cases",
     "/security",
@@ -22,7 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
     changeFrequency: route === "" ? "weekly" : "monthly",
-    priority: route === "" ? 1 : route === "/features" || route === "/pricing" ? 0.9 : 0.8,
+    priority: route === "" ? 1 : ["/features", "/pricing", "/industries"].includes(route) ? 0.9 : 0.8,
   }));
 
   // Long-tail industry pages (auto-generated from data)

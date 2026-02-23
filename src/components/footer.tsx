@@ -8,8 +8,8 @@ import { AppStoreCTA } from "./app-store-button";
 const footerLinks = {
   product: [
     { name: "Features", href: "/features" },
+    { name: "Industries", href: "/industries" },
     { name: "Pricing", href: "/pricing" },
-    { name: "Use Cases", href: "/use-cases" },
     { name: "Security", href: "/security" },
   ],
   support: [

@@ -14,8 +14,8 @@ import { APP_STORE_URL } from "../lib/links";
  */
 const navigation = [
   { name: "Features", href: "/features" },
+  { name: "Industries", href: "/industries" },
   { name: "Pricing", href: "/pricing" },
-  { name: "Use Cases", href: "/use-cases" },
   { name: "FAQ", href: "/faq" },
   { name: "Support", href: "/support" },
 ];
