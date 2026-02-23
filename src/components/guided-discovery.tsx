@@ -2,7 +2,30 @@
 
 import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
-import { X, RotateCcw, Sparkles, ChevronRight, ArrowRight } from "lucide-react";
+import {
+  X,
+  RotateCcw,
+  Sparkles,
+  ChevronRight,
+  ArrowRight,
+  Route,
+  FileText,
+  Camera,
+  Receipt,
+  Zap,
+  Compass,
+  Leaf,
+  Wrench,
+  Droplets,
+  Bug,
+  Car,
+  Wind,
+  Heart,
+  Waves,
+  Cog,
+  Grid3x3,
+  type LucideIcon,
+} from "lucide-react";
 import { Button } from "./ui/button";
 import { cn } from "../lib/utils";
 import { APP_STORE_URL, BOOK_FREE_SETUP_URL } from "../lib/links";
@@ -13,6 +36,36 @@ import {
   STORAGE_KEYS,
   type Recommendation,
 } from "../data/guided-discovery";
+
+// =============================================================================
+// ICON MAP — maps string names from config to Lucide components
+// =============================================================================
+
+const iconMap: Record<string, LucideIcon> = {
+  route: Route,
+  "file-text": FileText,
+  camera: Camera,
+  receipt: Receipt,
+  zap: Zap,
+  compass: Compass,
+  leaf: Leaf,
+  sparkles: Sparkles,
+  wrench: Wrench,
+  droplets: Droplets,
+  bug: Bug,
+  car: Car,
+  wind: Wind,
+  heart: Heart,
+  waves: Waves,
+  cog: Cog,
+  "grid-3x3": Grid3x3,
+};
+
+function OptionIcon({ name, className }: { name: string; className?: string }) {
+  const Icon = iconMap[name];
+  if (!Icon) return null;
+  return <Icon className={className} />;
+}
 
 // =============================================================================
 // TYPES
@@ -251,7 +304,9 @@ export function GuidedDiscovery() {
                       "focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background",
                     )}
                   >
-                    <span className="text-lg shrink-0">{option.icon}</span>
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+                      <OptionIcon name={option.icon} className="h-4 w-4 text-primary" />
+                    </div>
                     <span className="flex-1">{option.label}</span>
                     <ChevronRight className="h-4 w-4 text-muted-foreground shrink-0" />
                   </button>
@@ -284,7 +339,9 @@ export function GuidedDiscovery() {
                       "focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background",
                     )}
                   >
-                    <span className="text-lg shrink-0">{option.icon}</span>
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+                      <OptionIcon name={option.icon} className="h-4 w-4 text-primary" />
+                    </div>
                     <span className="flex-1">{option.label}</span>
                     <ChevronRight className="h-4 w-4 text-muted-foreground shrink-0" />
                   </button>

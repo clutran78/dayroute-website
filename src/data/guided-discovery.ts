@@ -15,16 +15,17 @@
 export interface IntentOption {
   id: string;
   label: string;
+  /** Lucide icon name — rendered by the component via iconMap. */
   icon: string;
 }
 
 export const intentOptions: IntentOption[] = [
-  { id: "routes", label: "Plan jobs and routes", icon: "🗺️" },
-  { id: "invoicing", label: "Send invoices faster", icon: "📄" },
-  { id: "photos", label: "Track before/after photos", icon: "📸" },
-  { id: "expenses", label: "Manage receipts & logbook", icon: "🧾" },
-  { id: "workflow", label: "Set up my business workflow", icon: "⚡" },
-  { id: "exploring", label: "I'm just exploring", icon: "👀" },
+  { id: "routes", label: "Plan jobs and routes", icon: "route" },
+  { id: "invoicing", label: "Send invoices faster", icon: "file-text" },
+  { id: "photos", label: "Track before/after photos", icon: "camera" },
+  { id: "expenses", label: "Manage receipts & logbook", icon: "receipt" },
+  { id: "workflow", label: "Set up my business workflow", icon: "zap" },
+  { id: "exploring", label: "I'm just exploring", icon: "compass" },
 ];
 
 // =============================================================================
@@ -34,21 +35,22 @@ export const intentOptions: IntentOption[] = [
 export interface IndustryOption {
   id: string;
   label: string;
+  /** Lucide icon name — rendered by the component via iconMap. */
   icon: string;
 }
 
 export const industryOptions: IndustryOption[] = [
-  { id: "gardening", label: "Gardening / Lawn Care", icon: "🌿" },
-  { id: "cleaning", label: "Cleaning", icon: "✨" },
-  { id: "trades", label: "Handyman / Trades", icon: "🔧" },
-  { id: "pressure-washing", label: "Pressure Washing", icon: "💧" },
-  { id: "pest-control", label: "Pest Control", icon: "🐛" },
-  { id: "detailing", label: "Mobile Detailing", icon: "🚗" },
-  { id: "hvac", label: "HVAC / Air Conditioning", icon: "❄️" },
-  { id: "ndis", label: "NDIS / Mobile Support", icon: "💜" },
-  { id: "pool", label: "Pool & Spa Services", icon: "🏊" },
-  { id: "appliance", label: "Appliance Repair", icon: "🔌" },
-  { id: "other", label: "Other", icon: "🏢" },
+  { id: "gardening", label: "Gardening / Lawn Care", icon: "leaf" },
+  { id: "cleaning", label: "Cleaning", icon: "sparkles" },
+  { id: "trades", label: "Handyman / Trades", icon: "wrench" },
+  { id: "pressure-washing", label: "Pressure Washing", icon: "droplets" },
+  { id: "pest-control", label: "Pest Control", icon: "bug" },
+  { id: "detailing", label: "Mobile Detailing", icon: "car" },
+  { id: "hvac", label: "HVAC / Air Conditioning", icon: "wind" },
+  { id: "ndis", label: "NDIS / Mobile Support", icon: "heart" },
+  { id: "pool", label: "Pool & Spa Services", icon: "waves" },
+  { id: "appliance", label: "Appliance Repair", icon: "cog" },
+  { id: "other", label: "Other", icon: "grid-3x3" },
 ];
 
 // =============================================================================
