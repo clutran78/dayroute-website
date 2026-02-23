@@ -101,18 +101,113 @@ export interface FeatureSeoPage extends BaseSeoPage {
 export type SeoPage = CategorySeoPage | FeatureSeoPage;
 
 // =============================================================================
-// VALIDATION — prevents accidental thin / empty pages
+// SLUG NAMING CONVENTIONS
+// =============================================================================
+//
+// Slugs are URL paths. They must follow these rules:
+//
+//   FORMAT:
+//   - Lowercase only (no uppercase letters)
+//   - Words separated by hyphens (no spaces, underscores, or dots)
+//   - No leading or trailing hyphens
+//   - No consecutive hyphens (e.g. "my--slug")
+//   - No special characters (only a-z, 0-9, and hyphens)
+//   - Minimum 5 characters
+//
+//   NAMING PATTERNS (Australian market):
+//
+//   Category pages (industry verticals):
+//     /{industry}-business-scheduling-invoicing-app-australia
+//     Examples:
+//       gardening-business-scheduling-invoicing-app-australia
+//       cleaning-business-scheduling-invoicing-app-australia
+//
+//   Feature pages (problem/workflow):
+//     /{feature}-for-service-businesses-australia
+//     Examples:
+//       route-planning-for-service-businesses-australia
+//       mileage-logbook-receipts-for-service-businesses-australia
+//
+//   Comparison pages (brand-neutral only — never name competitors):
+//     /mobile-field-service-app-vs-{generic-category}
+//     Example:
+//       mobile-field-service-app-vs-desktop-accounting-software
+//
+//   IMPORTANT:
+//   - NEVER include competitor brand names in slugs.
+//   - Use Australian English spelling (e.g. "optimisation" not "optimization").
+//   - Keep slugs descriptive but under 80 characters.
+//
+// =============================================================================
+
+// =============================================================================
+// SLUG VALIDATION
+// =============================================================================
+
+/** Regex: lowercase letters, digits, and hyphens only. No leading/trailing/double hyphens. */
+const SLUG_PATTERN = /^[a-z0-9]+(-[a-z0-9]+)*$/;
+
+/** Reserved paths that must not be used as SEO page slugs. */
+const RESERVED_SLUGS = new Set([
+  "features",
+  "pricing",
+  "industries",
+  "use-cases",
+  "faq",
+  "support",
+  "security",
+  "privacy",
+  "terms",
+  "contact",
+  "api",
+  "book-free-setup",
+]);
+
+/**
+ * Normalise a slug: trim, lowercase, collapse whitespace/underscores to hyphens,
+ * strip invalid characters, collapse consecutive hyphens, trim leading/trailing hyphens.
+ * Use this when generating slugs programmatically.
+ */
+export function normaliseSlug(raw: string): string {
+  return raw
+    .trim()
+    .toLowerCase()
+    .replace(/[\s_]+/g, "-")       // spaces and underscores → hyphens
+    .replace(/[^a-z0-9-]/g, "")    // strip everything except a-z, 0-9, hyphens
+    .replace(/-{2,}/g, "-")        // collapse consecutive hyphens
+    .replace(/^-+|-+$/g, "");      // trim leading/trailing hyphens
+}
+
+// =============================================================================
+// CONTENT VALIDATION — prevents thin / empty / broken pages at build time
 // =============================================================================
 
 /**
  * Validates a single SEO page entry. Throws a descriptive error if
- * minimum content thresholds are not met.
+ * content thresholds or slug rules are violated.
  */
 export function validateSeoPage(page: SeoPage): void {
   const errors: string[] = [];
   const ctx = `[${page.slug}]`;
 
-  if (!page.slug || page.slug.length < 5) errors.push(`${ctx} slug is too short`);
+  // --- Slug format checks ---
+  if (!page.slug || page.slug.length < 5) {
+    errors.push(`${ctx} slug is too short (min 5 chars)`);
+  }
+  if (page.slug && page.slug.length > 80) {
+    errors.push(`${ctx} slug is too long (${page.slug.length} chars, max 80)`);
+  }
+  if (page.slug && !SLUG_PATTERN.test(page.slug)) {
+    errors.push(`${ctx} slug has invalid characters — must be lowercase a-z, 0-9, hyphens only, no leading/trailing/double hyphens`);
+  }
+  if (page.slug && page.slug !== page.slug.toLowerCase()) {
+    errors.push(`${ctx} slug contains uppercase letters — use lowercase only`);
+  }
+  if (page.slug && RESERVED_SLUGS.has(page.slug)) {
+    errors.push(`${ctx} slug "${page.slug}" conflicts with a reserved route`);
+  }
+
+  // --- Content checks ---
   if (!page.seoTitle || page.seoTitle.length < 10) errors.push(`${ctx} seoTitle must be 10+ characters`);
   if (!page.metaDescription || page.metaDescription.length < 50) errors.push(`${ctx} metaDescription must be 50+ characters`);
   if (page.metaDescription && page.metaDescription.length > 160) errors.push(`${ctx} metaDescription exceeds 160 characters (${page.metaDescription.length})`);
@@ -140,13 +235,15 @@ export function validateSeoPage(page: SeoPage): void {
 
 /** Validates all pages. Called at module load time to catch issues early. */
 function validateAll(pages: SeoPage[]): void {
-  // Check for duplicate slugs
   const slugs = new Set<string>();
   for (const page of pages) {
+    // Duplicate slug check
     if (slugs.has(page.slug)) {
       throw new Error(`Duplicate SEO page slug: "${page.slug}"`);
     }
     slugs.add(page.slug);
+
+    // Full page validation
     validateSeoPage(page);
   }
 }
