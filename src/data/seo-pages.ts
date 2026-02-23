@@ -259,6 +259,111 @@ export const seoPages: SeoPage[] = [
 
   {
     pageType: "category",
+    slug: "pool-service-business-scheduling-invoicing-app-australia",
+    seoTitle: "Pool Service Business Scheduling & Invoicing App Australia",
+    metaDescription:
+      "DayRoute helps Australian pool service businesses plan daily routes, schedule regular clients, track chemical costs, and invoice on the spot.",
+    h1: "Scheduling and invoicing for Australian pool service businesses",
+    shortName: "Pool Services",
+    intro:
+      "Pool servicing is a route-heavy, recurring business — you visit the same pools every week or fortnight, testing water, balancing chemicals, and cleaning filters. DayRoute helps you plan the fastest route between pools, track chemical and equipment costs, manage recurring schedules, and invoice on the spot. Built for solo pool techs and small pool service teams across Australia.",
+    painPoints: [
+      { title: "Driving between pools wastes hours every week", description: "Pool visits are spread across suburbs. Without route planning, you criss-cross the same areas and burn fuel getting to jobs you could've grouped together." },
+      { title: "Tracking chemical costs per pool is tedious", description: "Chlorine, acid, salt, stabiliser — every pool needs different amounts. If you're not tracking costs per client, you're probably under-charging some and over-charging others." },
+      { title: "Remembering which pool is due when", description: "Weekly clients, fortnightly clients, seasonal openings and closures — keeping it all in your head or on paper leads to missed visits and unhappy customers." },
+    ],
+    featureHighlights: [
+      { title: "Multi-stop route optimisation", description: "Enter your pool visits and DayRoute plans the fastest order. Spend more time at the pool and less time in the van." },
+      { title: "Recurring job scheduling", description: "Set up weekly or fortnightly visits per client. DayRoute auto-generates jobs on your schedule so no pool gets missed." },
+      { title: "Chemical and equipment expense tracking", description: "Snap receipts for chemicals, parts, and equipment. The AI scanner extracts totals and GST — sorted for BAS time." },
+      { title: "On-the-spot invoicing", description: "Complete a visit, tap invoice, and send. Fixed monthly rates or per-visit billing — DayRoute handles both." },
+    ],
+    faqs: [
+      { question: "Can I set up recurring visits for regular pool clients?", answer: "Yes. DayRoute supports weekly, fortnightly, and monthly recurring bookings. Jobs are auto-generated so you never miss a client's pool service." },
+      { question: "Can I track chemical costs per pool?", answer: "Yes. Log expenses against each job using the AI receipt scanner or manual entry. Over time you'll see exactly what each pool costs to service." },
+      { question: "Does DayRoute work for pool service teams?", answer: "Yes. The Team plan supports up to 10 users with shared scheduling, route assignment, and location sharing — ideal for growing pool service businesses." },
+    ],
+    testimonial: { quote: "I service 60 pools across the northern beaches. DayRoute cut my drive time by nearly an hour a day and my invoices go out before I leave each property.", name: "Brett", role: "Pool Service Technician", location: "Sydney" },
+    relatedLinks: [
+      { label: "All features", href: "/features" },
+      { label: "Pricing", href: "/pricing" },
+      { label: "Gardening app", href: "/gardening-business-scheduling-invoicing-app-australia" },
+      { label: "Pest control app", href: "/pest-control-job-scheduling-route-app-australia" },
+    ],
+  },
+
+  {
+    pageType: "category",
+    slug: "irrigation-business-scheduling-invoicing-app-australia",
+    seoTitle: "Irrigation Business Scheduling & Invoicing App Australia",
+    metaDescription:
+      "DayRoute helps Australian irrigation businesses plan install and maintenance routes, track parts, and invoice clients from your phone.",
+    h1: "Scheduling and invoicing for irrigation businesses in Australia",
+    shortName: "Irrigation",
+    intro:
+      "Irrigation work means visiting properties to install, repair, or maintain sprinkler systems, drip lines, and controllers — often with multiple stops per day across rural and suburban areas. DayRoute helps you plan efficient routes between sites, track parts and materials, and invoice on completion. Built for Australian irrigation contractors and landscapers who handle water systems.",
+    painPoints: [
+      { title: "Jobs are spread across wide areas", description: "Irrigation work covers large service areas — sometimes rural properties 30+ minutes apart. Without route planning, you waste hours on the road." },
+      { title: "Tracking parts and materials per job", description: "Sprinkler heads, PVC fittings, valves, controllers — every job uses different parts. Keeping track of costs per client is essential for accurate invoicing." },
+      { title: "Seasonal demand creates scheduling chaos", description: "Spring and summer bring a flood of new install requests on top of existing maintenance rounds. Without a system, you double-book and miss jobs." },
+    ],
+    featureHighlights: [
+      { title: "Route optimisation across wide service areas", description: "Plan your day with the shortest drive between sites. DayRoute handles both suburban streets and rural property addresses." },
+      { title: "Parts and materials expense tracking", description: "Log fittings, controllers, and pipe costs per job. Snap receipts and let the AI extract totals and GST." },
+      { title: "Job notes for system details", description: "Record controller models, zone layouts, and maintenance notes per property. Notes carry over to repeat visits." },
+      { title: "Professional invoicing with line items", description: "Invoice for labour plus itemised parts. Send via SMS or email from your phone before you leave the property." },
+    ],
+    faqs: [
+      { question: "Can I store irrigation system details per property?", answer: "Yes. Use the job notes field to record controller models, zone configurations, and maintenance history. Notes are saved per client and carry over to every visit." },
+      { question: "Does DayRoute handle both installs and maintenance visits?", answer: "Yes. Schedule one-off installation jobs alongside recurring maintenance rounds. DayRoute optimises the route for whatever mix of jobs you have each day." },
+      { question: "Can I invoice for parts plus labour?", answer: "Yes. Create invoices with separate line items for labour and each part used. GST is calculated automatically." },
+    ],
+    testimonial: { quote: "I cover a huge area across regional Victoria. DayRoute helps me group jobs by location so I'm not driving back and forth across the same highways.", name: "Tom", role: "Irrigation Contractor", location: "Geelong" },
+    relatedLinks: [
+      { label: "All features", href: "/features" },
+      { label: "Pricing", href: "/pricing" },
+      { label: "Gardening app", href: "/gardening-business-scheduling-invoicing-app-australia" },
+      { label: "Pool service app", href: "/pool-service-business-scheduling-invoicing-app-australia" },
+    ],
+  },
+
+  {
+    pageType: "category",
+    slug: "hot-water-service-business-scheduling-invoicing-app-australia",
+    seoTitle: "Hot Water Service Business Scheduling & Invoicing App Australia",
+    metaDescription:
+      "DayRoute helps Australian hot water service businesses plan routes, schedule installs and repairs, track parts, and invoice on the spot.",
+    h1: "Scheduling and invoicing for hot water service businesses",
+    shortName: "Hot Water",
+    intro:
+      "Hot water system installations, repairs, and servicing take you across suburbs every day — often with urgent callouts mixed into your planned schedule. DayRoute helps you plan efficient routes, slot in emergency jobs without blowing up your day, track parts costs, and invoice clients before you leave the property. Built for Australian plumbers and hot water specialists.",
+    painPoints: [
+      { title: "Emergency callouts disrupt your planned day", description: "A burst hot water system can't wait until next week. You need to slot it in without missing your other appointments." },
+      { title: "Parts costs vary wildly between jobs", description: "A simple tempering valve vs. a full system replacement — tracking what you spend per job is essential for accurate quoting and invoicing." },
+      { title: "Clients want fast, reliable service", description: "Nobody wants to wait days for hot water. Efficient scheduling and reliable ETAs keep clients happy and earn you referrals." },
+    ],
+    featureHighlights: [
+      { title: "Flexible scheduling with re-optimisation", description: "Add an urgent callout mid-day and DayRoute recalculates the best order for your remaining jobs. No manual reshuffling." },
+      { title: "Parts and equipment cost tracking", description: "Log valves, thermostats, anodes, and system costs per job. Snap receipts for instant expense logging with AI." },
+      { title: "ETA notifications for clients", description: "Send a one-tap 'On My Way' message with your estimated arrival. Clients know exactly when to expect you." },
+      { title: "On-site invoicing with parts line items", description: "Create invoices with labour and itemised parts. Send via SMS or email while you're still at the property." },
+    ],
+    faqs: [
+      { question: "Can I add emergency callouts mid-day?", answer: "Yes. Add an urgent job at any time and DayRoute re-optimises your route for the rest of the day. You won't miss existing appointments." },
+      { question: "Can I track parts costs per job?", answer: "Yes. Log parts via the AI receipt scanner or manual entry. Each expense is linked to the job so you know your true cost per call." },
+      { question: "Does DayRoute support both plumbers and hot water specialists?", answer: "Yes. DayRoute works for any trade that visits multiple job sites per day. You can set up custom service types for different kinds of hot water work." },
+    ],
+    testimonial: { quote: "I handle both planned services and emergency callouts across Perth. DayRoute helps me fit everything in without running late to anyone.", name: "Steve", role: "Hot Water Specialist", location: "Perth" },
+    relatedLinks: [
+      { label: "All features", href: "/features" },
+      { label: "Pricing", href: "/pricing" },
+      { label: "Handyman app", href: "/handyman-job-management-route-invoicing-app-australia" },
+      { label: "Pressure washing app", href: "/pressure-washing-business-route-invoicing-app-australia" },
+    ],
+  },
+
+  {
+    pageType: "category",
     slug: "gardening-business-scheduling-invoicing-app-australia",
     seoTitle: "Gardening Business Scheduling & Invoicing App Australia",
     metaDescription:

@@ -20,6 +20,13 @@ import {
   ChevronRight,
   ArrowRight,
   Check,
+  Waves,
+  UtensilsCrossed,
+  Camera,
+  Music,
+  Smartphone,
+  Flame,
+  Sprout,
 } from "lucide-react";
 import { Card, CardContent } from "../../components/ui/card";
 import { Button } from "../../components/ui/button";
@@ -60,12 +67,22 @@ interface IndustryCategory {
 }
 
 const categories: IndustryCategory[] = [
+  // --- Matches app "Browse All Service Types" order ---
+  {
+    icon: Waves,
+    name: "Pool & Spa",
+    description:
+      "Schedule pool servicing rounds, log water testing results, track chemical costs, and invoice clients after each visit.",
+    exampleJobs: ["Water testing", "Chemical treatment", "Filter cleaning", "Pool equipment repair"],
+    keyFeatures: ["Recurring job scheduling", "Chemical expense tracking", "Route optimisation"],
+    nichePage: "/pool-service-business-scheduling-invoicing-app-australia",
+  },
   {
     icon: Leaf,
     name: "Garden & Landscape",
     description:
       "Plan weekly mowing rounds, manage seasonal clean-ups, and keep track of recurring clients across multiple suburbs.",
-    exampleJobs: ["Lawn mowing", "Hedge trimming", "Garden clean-up", "Landscaping projects"],
+    exampleJobs: ["Lawn mowing", "Hedge trimming", "Tree pruning", "Landscaping projects"],
     keyFeatures: ["Recurring job scheduling", "Route optimisation", "Expense tracking"],
     nichePage: "/gardening-business-scheduling-invoicing-app-australia",
   },
@@ -74,13 +91,22 @@ const categories: IndustryCategory[] = [
     name: "Cleaning",
     description:
       "Sequence your daily cleaning appointments by proximity, store client access codes, and invoice after every visit.",
-    exampleJobs: ["House cleaning", "Office cleaning", "End-of-lease cleans", "Window cleaning"],
+    exampleJobs: ["House cleaning", "Commercial cleaning", "End-of-lease cleans", "Window cleaning"],
     keyFeatures: ["Client notes & access codes", "'On My Way' ETA messages", "Instant invoicing"],
     nichePage: "/cleaning-business-scheduling-invoicing-app-australia",
   },
   {
+    icon: Droplets,
+    name: "Pressure Washing",
+    description:
+      "Plan efficient routes between driveway and deck jobs, track chemical costs, and invoice while the concrete is still drying.",
+    exampleJobs: ["Driveway cleaning", "Deck restoration", "Patio cleaning", "Roof cleaning"],
+    keyFeatures: ["Multi-stop routing", "Job photos for proof of work", "Expense tracking"],
+    nichePage: "/pressure-washing-business-route-invoicing-app-australia",
+  },
+  {
     icon: Wrench,
-    name: "Building & Trades / Handyman",
+    name: "Building & Trades",
     description:
       "Jump between job sites without backtracking, snap receipts for materials, and send professional invoices from your phone.",
     exampleJobs: ["Plumbing repairs", "Electrical work", "Carpentry", "General handyman"],
@@ -88,37 +114,85 @@ const categories: IndustryCategory[] = [
     nichePage: "/handyman-job-management-route-invoicing-app-australia",
   },
   {
-    icon: Droplets,
-    name: "Pressure Washing",
+    icon: Heart,
+    name: "NDIS Services",
     description:
-      "Plan efficient routes between driveway and deck jobs, track chemical costs, and invoice while the concrete is still drying.",
-    exampleJobs: ["Driveway cleaning", "Deck restoration", "Commercial frontage", "Roof cleaning"],
-    keyFeatures: ["Multi-stop routing", "Job photos for proof of work", "Expense tracking"],
-    nichePage: "/pressure-washing-business-route-invoicing-app-australia",
+      "Plan participant visit routes with reliable ETAs, log travel for reimbursement, and create NDIS-compatible invoices.",
+    exampleJobs: ["Disability support visits", "Community access", "Personal care", "Home modifications"],
+    keyFeatures: ["Travel logging for claims", "ETA notifications", "NDIS invoice templates"],
+    nichePage: "/ndis-support-worker-route-planner-invoicing-app-australia",
   },
   {
     icon: Bug,
     name: "Pest Control",
     description:
       "Balance regular inspections with emergency callouts, record treatments per property, and log chemical usage for compliance.",
-    exampleJobs: ["Termite inspections", "Cockroach treatments", "Rodent control", "Pre-purchase inspections"],
+    exampleJobs: ["Pest treatment", "Termite inspections", "Rodent control", "Pre-purchase inspections"],
     keyFeatures: ["Flexible scheduling", "Job notes for treatment records", "Vehicle logbook"],
     nichePage: "/pest-control-job-scheduling-route-app-australia",
   },
   {
     icon: Wind,
-    name: "HVAC / Air Conditioning",
+    name: "Air Conditioning",
     description:
       "Schedule service calls and installations, track parts and refrigerant costs, and invoice on completion — all from your phone.",
-    exampleJobs: ["AC installations", "Duct cleaning", "Routine servicing", "Emergency repairs"],
+    exampleJobs: ["AC servicing", "Repairs", "Installations", "Duct cleaning"],
     keyFeatures: ["Route planning", "Parts expense tracking", "On-site invoicing"],
   },
   {
+    icon: PawPrint,
+    name: "Pet Services",
+    description:
+      "Plan grooming rounds or dog walking routes, store pet details and owner preferences, and manage recurring bookings.",
+    exampleJobs: ["Dog walking", "Pet grooming", "Pet sitting", "Pet transport"],
+    keyFeatures: ["Recurring bookings", "Client & pet notes", "Route optimisation"],
+  },
+  {
+    icon: UtensilsCrossed,
+    name: "Catering Services",
+    description:
+      "Coordinate food deliveries and event catering across multiple venues, track ingredient costs, and invoice organisers.",
+    exampleJobs: ["Event catering", "Food preparation", "Corporate lunches", "Wedding catering"],
+    keyFeatures: ["Multi-venue routing", "Ingredient expense tracking", "Event invoicing"],
+  },
+  {
+    icon: Camera,
+    name: "Photography",
+    description:
+      "Plan shoots across multiple locations, manage client bookings, and send invoices with session details and extras.",
+    exampleJobs: ["Event photography", "Portraits", "Commercial shoots", "Real estate photography"],
+    keyFeatures: ["Location-based routing", "Client scheduling", "Session invoicing"],
+  },
+  {
+    icon: Music,
+    name: "DJ / Music Services",
+    description:
+      "Manage gig schedules across venues, track equipment and setup times, and invoice promoters or event organisers.",
+    exampleJobs: ["DJ services", "Live music", "Sound equipment hire", "Event entertainment"],
+    keyFeatures: ["Venue scheduling", "Equipment tracking", "Gig invoicing"],
+  },
+  {
+    icon: Monitor,
+    name: "Computer Repair",
+    description:
+      "Plan on-site tech support visits, record equipment details per client, and invoice for time and parts.",
+    exampleJobs: ["PC repair", "Laptop servicing", "Virus removal", "Data recovery"],
+    keyFeatures: ["Job notes", "Parts tracking", "Time-based invoicing"],
+  },
+  {
+    icon: Smartphone,
+    name: "Phone Repair",
+    description:
+      "Schedule mobile phone repair visits or manage a repair queue, track parts inventory, and invoice on completion.",
+    exampleJobs: ["Screen replacement", "Battery repair", "Water damage", "Software fixes"],
+    keyFeatures: ["Job scheduling", "Parts expense tracking", "On-site invoicing"],
+  },
+  {
     icon: Car,
-    name: "Automotive / Mobile Services",
+    name: "Automotive Services",
     description:
       "Detail cars, service fleets, or do mobile mechanical work — plan your route across the city and invoice at each stop.",
-    exampleJobs: ["Mobile detailing", "Windscreen repair", "Mobile mechanic", "Tyre fitting"],
+    exampleJobs: ["Mobile detailing", "Car detailing", "Tyre fitting", "Mobile mechanic"],
     keyFeatures: ["Route optimisation", "Client & vehicle notes", "Fixed-price invoicing"],
     nichePage: "/mobile-detailing-route-invoicing-app-australia",
   },
@@ -127,7 +201,7 @@ const categories: IndustryCategory[] = [
     name: "Appliance Services",
     description:
       "Visit multiple homes for appliance repairs or installations, record parts used, and invoice before you leave.",
-    exampleJobs: ["Washing machine repair", "Oven installation", "Dishwasher servicing", "Fridge repair"],
+    exampleJobs: ["Appliance repair", "Dishwasher servicing", "Washing machine repair", "Oven installation"],
     keyFeatures: ["Job scheduling", "Parts tracking", "Invoice with line items"],
   },
   {
@@ -135,32 +209,15 @@ const categories: IndustryCategory[] = [
     name: "Security Services",
     description:
       "Plan patrol routes or alarm installation schedules, log site visits, and track mileage for tax purposes.",
-    exampleJobs: ["Alarm installations", "CCTV setup", "Security patrols", "Access control"],
+    exampleJobs: ["Locksmith", "Alarm systems", "CCTV installation", "Access control"],
     keyFeatures: ["Route planning", "GPS logbook", "Job completion records"],
-  },
-  {
-    icon: Heart,
-    name: "Care & Support / NDIS",
-    description:
-      "Plan participant visit routes with reliable ETAs, log travel for reimbursement, and create NDIS-compatible invoices.",
-    exampleJobs: ["Participant support visits", "Community access", "Personal care", "Home modifications"],
-    keyFeatures: ["Travel logging for claims", "ETA notifications", "NDIS invoice templates"],
-    nichePage: "/ndis-support-worker-route-planner-invoicing-app-australia",
-  },
-  {
-    icon: PawPrint,
-    name: "Pet Services",
-    description:
-      "Plan grooming rounds or dog walking routes, store pet details and owner preferences, and manage recurring bookings.",
-    exampleJobs: ["Mobile dog grooming", "Dog walking", "Pet sitting", "Pet transport"],
-    keyFeatures: ["Recurring bookings", "Client & pet notes", "Route optimisation"],
   },
   {
     icon: Truck,
     name: "Removals & Delivery",
     description:
       "Optimise multi-stop delivery routes, track kilometres, and record proof of delivery with photos.",
-    exampleJobs: ["Local deliveries", "Furniture removals", "Courier runs", "Freight drops"],
+    exampleJobs: ["Furniture removals", "Courier services", "Local deliveries", "Freight drops"],
     keyFeatures: ["Multi-stop routing", "Mileage tracking", "Photo proof of delivery"],
   },
   {
@@ -168,23 +225,31 @@ const categories: IndustryCategory[] = [
     name: "Health & Fitness",
     description:
       "Schedule in-home training sessions or mobile therapy visits across town, send ETAs, and invoice after each session.",
-    exampleJobs: ["Personal training", "Mobile physiotherapy", "Yoga instruction", "Sports massage"],
+    exampleJobs: ["Personal training", "Massage therapy", "Mobile physiotherapy", "Yoga instruction"],
     keyFeatures: ["Client scheduling", "ETA messages", "Session invoicing"],
   },
   {
-    icon: Monitor,
-    name: "IT & Tech",
+    icon: Sprout,
+    name: "Irrigation Services",
     description:
-      "Plan on-site tech support visits, record equipment details per client, and invoice for time and parts.",
-    exampleJobs: ["Computer repair", "Network setup", "Printer servicing", "Smart home installation"],
-    keyFeatures: ["Job notes", "Time tracking", "Parts invoicing"],
+      "Plan installation and maintenance visits across properties, track parts and materials, and invoice on completion.",
+    exampleJobs: ["Sprinkler systems", "Drip irrigation", "Irrigation repairs", "System upgrades"],
+    keyFeatures: ["Route planning", "Parts expense tracking", "Job scheduling"],
+  },
+  {
+    icon: Flame,
+    name: "Hot Water Services",
+    description:
+      "Schedule hot water system installations, repairs, and servicing across suburbs. Track parts and invoice clients on site.",
+    exampleJobs: ["Hot water installation", "Repairs", "Tempering valve service", "System upgrades"],
+    keyFeatures: ["Route optimisation", "Parts tracking", "On-site invoicing"],
   },
   {
     icon: PartyPopper,
     name: "Events",
     description:
       "Coordinate setup and pack-down across multiple venues, track hire equipment, and invoice event organisers.",
-    exampleJobs: ["Marquee setup", "Sound & lighting", "Catering delivery", "Photography"],
+    exampleJobs: ["Marquee setup", "Sound & lighting", "Event coordination", "AV hire"],
     keyFeatures: ["Multi-venue routing", "Equipment tracking", "Event invoicing"],
   },
   {
