@@ -347,7 +347,7 @@ export default function IndustriesPage() {
                 DayRoute is a phone-first day planner built for people who spend their workday 
                 on the road — not at a desk. It combines route planning, job scheduling, invoicing, 
                 receipt scanning, and mileage tracking in a single iPhone app. The app ships with 
-                pre-built service categories for 15+ industries, plus a custom option for anything 
+                pre-built service categories for 21+ industries, plus a custom option for anything 
                 we haven&apos;t thought of yet.
               </p>
               <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
@@ -420,6 +420,89 @@ export default function IndustriesPage() {
                   </CardContent>
                 </Card>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ===== MORE SERVICES — catches everyone not in the pre-built list ===== */}
+        <section className="py-12 sm:py-20 border-t border-border">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-4">
+              More service businesses that use DayRoute
+            </h2>
+            <p className="text-base sm:text-lg text-muted-foreground mb-8 max-w-3xl">
+              DayRoute works for any mobile service business — not just the pre-built categories above.
+              These industries use DayRoute with custom service types every day.
+            </p>
+            <div className="flex flex-wrap gap-2 sm:gap-3">
+              {[
+                "Painting & Decorating",
+                "Roofing",
+                "Fencing",
+                "Carpet Cleaning",
+                "Window Cleaning",
+                "Gutter Cleaning",
+                "Solar Panel Cleaning",
+                "Solar Installation",
+                "Tree Services & Arborist",
+                "Concreting & Paving",
+                "Tiling",
+                "Plastering & Rendering",
+                "Skip Bin & Waste Removal",
+                "House Washing",
+                "Lawn Care & Turf",
+                "Stump Grinding",
+                "Glazier & Glass Repair",
+                "Antenna & TV Installation",
+                "Roller Door Repair",
+                "Upholstery Cleaning",
+                "Mattress Cleaning",
+                "Oven Cleaning",
+                "Mobile Car Wash",
+                "Boat Detailing",
+                "Caravan & RV Servicing",
+                "Scaffolding",
+                "Plumbing",
+                "Electrical",
+                "Gas Fitting",
+                "Floor Sanding & Polishing",
+                "Waterproofing",
+                "Demolition",
+                "Asbestos Removal",
+                "Fire Protection Services",
+                "Signage & Wrapping",
+                "Mobile Welding",
+                "Air Duct Cleaning",
+                "Grease Trap Cleaning",
+                "Septic Tank Services",
+                "Mobile Mechanic",
+                "Bicycle Repair",
+                "Tutoring & Education",
+                "Music Lessons",
+                "Aged Care Services",
+                "Home Nursing",
+                "Occupational Therapy",
+                "Speech Therapy",
+                "Dietitian (Home Visits)",
+                "Real Estate Photography",
+                "Drone Services",
+                "Surveying",
+                "Building Inspection",
+              ].map((service) => (
+                <span
+                  key={service}
+                  className="inline-flex items-center rounded-full bg-primary/10 px-3 sm:px-4 py-1.5 text-xs sm:text-sm font-medium text-primary"
+                >
+                  {service}
+                </span>
+              ))}
+            </div>
+            <p className="mt-6 text-sm text-muted-foreground">
+              Don&apos;t see your industry? No worries — DayRoute&apos;s custom service categories 
+              let you set up your own job types, pricing, and workflows for any mobile service business.
+            </p>
+            <div className="mt-4">
+              <AppStoreCTA size="sm" variant="outline" ctaText="Try DayRoute for your business" location="industries-more-services" />
             </div>
           </div>
         </section>
