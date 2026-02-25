@@ -1954,6 +1954,58 @@ export const blogPosts: BlogPost[] = [
     ],
     tags: ["house washing", "soft wash", "pricing", "before after", "route planning", "Australia"],
   },
+
+  // =========================================================================
+  // 40. IRRIGATION BUSINESS
+  // =========================================================================
+  {
+    slug: "irrigation-business-scheduling-route-planning-australia",
+    title: "Scheduling and Route Planning for Irrigation Businesses in Australia",
+    metaDescription: "How Australian irrigation contractors can schedule installs and maintenance, plan routes, and track parts costs efficiently.",
+    publishDate: "2026-03-12",
+    author: "DayRoute Team",
+    category: "Irrigation",
+    readingTime: "4 min read",
+    excerpt: "Irrigation work covers wide service areas — from suburban backyards to rural properties. Here's how to schedule efficiently and track costs per job.",
+    sections: [
+      { heading: "Covering wide service areas efficiently", content: "Irrigation contractors often travel long distances between jobs — a suburban sprinkler repair in the morning, a commercial drip system install 40 km away in the afternoon. Without route planning, you waste hours on the road. Group jobs by area and day. If a new enquiry comes from a distant suburb, schedule it on a day you're already heading that direction. Over time, your weekly schedule tightens and your fuel costs drop." },
+      { heading: "Tracking parts and materials per job", content: "Irrigation work uses a lot of parts — sprinkler heads, PVC fittings, valves, controllers, poly pipe. Every job uses a different combination. Logging parts costs against each job ensures your invoices accurately reflect materials plus labour. Snap the supplier receipt when you pick up the order. At BAS time, everything is categorised and GST-tracked without scrambling through paperwork." },
+      { heading: "Seasonal planning for irrigation", content: "Spring is the busiest season for irrigation — new installs, system start-ups after winter shutdown, and repairs from frost damage. Smart contractors pre-book maintenance visits with regular clients 6-8 weeks before spring. This locks in revenue before the phone starts ringing with new enquiries. Winter months can be used for planning, quoting new projects, and system upgrades." },
+      { heading: "Job notes for system documentation", content: "Every irrigation system is different — zone configurations, controller models, water pressure, pipe sizes. Recording these details against each client means you arrive at repeat visits already knowing the system. If a different technician handles a follow-up, the notes ensure continuity. Good documentation also helps when quoting system expansions or upgrades." },
+    ],
+    relatedPages: [
+      { label: "Irrigation niche page", href: "/irrigation-business-scheduling-invoicing-app-australia" },
+      { label: "Route planning", href: "/route-planning-for-service-businesses-australia" },
+      { label: "Mileage logbook", href: "/mileage-logbook-receipts-for-service-businesses-australia" },
+    ],
+    tags: ["irrigation", "sprinklers", "scheduling", "route planning", "parts tracking", "Australia"],
+  },
+
+  // =========================================================================
+  // 41. HOT WATER SERVICES
+  // =========================================================================
+  {
+    slug: "hot-water-service-scheduling-route-planning-australia",
+    title: "Scheduling and Route Planning for Hot Water Service Businesses",
+    metaDescription: "How Australian hot water specialists can schedule installs and repairs, handle emergency callouts, and invoice on site.",
+    publishDate: "2026-03-12",
+    author: "DayRoute Team",
+    category: "Hot Water",
+    readingTime: "4 min read",
+    excerpt: "Hot water breakdowns are urgent. Installations are planned. Managing both in the same schedule requires flexibility and smart routing.",
+    sections: [
+      { heading: "Handling emergency callouts", content: "A broken hot water system on a cold Melbourne morning is a genuine emergency. The homeowner wants you there today, not next week. Build your daily schedule with 20-30% buffer time so you can slot in urgent jobs without cancelling planned work. When an emergency comes in, add it to your schedule and let your route recalculate the best order for the remaining stops. Charge a premium for same-day service — clients expect it and pay willingly." },
+      { heading: "Installation scheduling", content: "Hot water installations take 2-4 hours depending on the system type (electric, gas, heat pump, solar). Block the full duration in your schedule and factor in travel time to and from the supplier for parts. If you're doing multiple installations in a week, batch your parts ordering to reduce supplier trips. Schedule installations for mornings when you're freshest — the afternoon can handle shorter repair jobs." },
+      { heading: "Parts and equipment tracking", content: "Hot water work involves expensive parts — thermostats, elements, anodes, tempering valves, sometimes full replacement units. Track parts costs per job so your invoices accurately reflect the work. If you carry common parts in the van, log when you use them so you know when to restock. Scanning supplier receipts instantly captures the costs without manual entry." },
+      { heading: "Building a referral network", content: "Hot water work often comes through plumber referrals, real estate agent contacts, and property manager networks. Every installation or repair is an opportunity to leave a business card and build the relationship. A homeowner whose hot water you fixed quickly at 7 am on a Saturday will recommend you to everyone they know. Fast, reliable service is the best marketing in this trade." },
+    ],
+    relatedPages: [
+      { label: "Hot water niche page", href: "/hot-water-service-business-scheduling-invoicing-app-australia" },
+      { label: "Route planning", href: "/route-planning-for-service-businesses-australia" },
+      { label: "Plumbing blog", href: "/blog/plumbing-business-scheduling-route-planning-australia" },
+    ],
+    tags: ["hot water", "plumbing", "emergency callouts", "scheduling", "installations", "Australia"],
+  },
 ];
 
 // =============================================================================

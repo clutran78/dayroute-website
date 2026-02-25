@@ -78,6 +78,7 @@ const categories: IndustryCategory[] = [
     exampleJobs: ["Water testing", "Chemical treatment", "Filter cleaning", "Pool equipment repair"],
     keyFeatures: ["Recurring job scheduling", "Chemical expense tracking", "Route optimisation"],
     nichePage: "/pool-service-business-scheduling-invoicing-app-australia",
+    blogPage: "/blog/how-much-does-it-cost-to-run-a-pool-service-round-in-australia",
   },
   {
     icon: Leaf,
@@ -87,6 +88,7 @@ const categories: IndustryCategory[] = [
     exampleJobs: ["Lawn mowing", "Hedge trimming", "Tree pruning", "Landscaping projects"],
     keyFeatures: ["Recurring job scheduling", "Route optimisation", "Expense tracking"],
     nichePage: "/gardening-business-scheduling-invoicing-app-australia",
+    blogPage: "/blog/how-to-quote-gardening-jobs-in-australia",
   },
   {
     icon: Sparkles,
@@ -96,6 +98,7 @@ const categories: IndustryCategory[] = [
     exampleJobs: ["House cleaning", "Commercial cleaning", "End-of-lease cleans", "Window cleaning"],
     keyFeatures: ["Client notes & access codes", "'On My Way' ETA messages", "Instant invoicing"],
     nichePage: "/cleaning-business-scheduling-invoicing-app-australia",
+    blogPage: "/blog/how-to-plan-a-daily-cleaning-route-that-saves-time-and-fuel",
   },
   {
     icon: Droplets,
@@ -105,6 +108,7 @@ const categories: IndustryCategory[] = [
     exampleJobs: ["Driveway cleaning", "Deck restoration", "Patio cleaning", "Roof cleaning"],
     keyFeatures: ["Multi-stop routing", "Job photos for proof of work", "Expense tracking"],
     nichePage: "/pressure-washing-business-route-invoicing-app-australia",
+    blogPage: "/blog/pressure-washing-pricing-guide-australia",
   },
   {
     icon: Wrench,
@@ -114,6 +118,7 @@ const categories: IndustryCategory[] = [
     exampleJobs: ["Plumbing repairs", "Electrical work", "Carpentry", "General handyman"],
     keyFeatures: ["Before & after photos", "AI receipt scanner", "Professional invoicing"],
     nichePage: "/handyman-job-management-route-invoicing-app-australia",
+    blogPage: "/blog/tax-deductions-tradies-forget-to-claim-australia",
   },
   {
     icon: Heart,
@@ -123,6 +128,7 @@ const categories: IndustryCategory[] = [
     exampleJobs: ["Disability support visits", "Community access", "Personal care", "Home modifications"],
     keyFeatures: ["Travel logging for claims", "ETA notifications", "NDIS invoice templates"],
     nichePage: "/ndis-support-worker-route-planner-invoicing-app-australia",
+    blogPage: "/blog/ndis-invoicing-guide-for-sole-traders",
   },
   {
     icon: Bug,
@@ -132,6 +138,7 @@ const categories: IndustryCategory[] = [
     exampleJobs: ["Pest treatment", "Termite inspections", "Rodent control", "Pre-purchase inspections"],
     keyFeatures: ["Flexible scheduling", "Job notes for treatment records", "Vehicle logbook"],
     nichePage: "/pest-control-job-scheduling-route-app-australia",
+    blogPage: "/blog/pest-control-scheduling-tips-for-australian-technicians",
   },
   {
     icon: Wind,
@@ -204,6 +211,7 @@ const categories: IndustryCategory[] = [
     exampleJobs: ["Mobile detailing", "Car detailing", "Tyre fitting", "Mobile mechanic"],
     keyFeatures: ["Route optimisation", "Client & vehicle notes", "Fixed-price invoicing"],
     nichePage: "/mobile-detailing-route-invoicing-app-australia",
+    blogPage: "/blog/mobile-car-detailing-business-plan-australia",
   },
   {
     icon: Cog,
@@ -248,6 +256,8 @@ const categories: IndustryCategory[] = [
       "Plan installation and maintenance visits across properties, track parts and materials, and invoice on completion.",
     exampleJobs: ["Sprinkler systems", "Drip irrigation", "Irrigation repairs", "System upgrades"],
     keyFeatures: ["Route planning", "Parts expense tracking", "Job scheduling"],
+    nichePage: "/irrigation-business-scheduling-invoicing-app-australia",
+    blogPage: "/blog/irrigation-business-scheduling-route-planning-australia",
   },
   {
     icon: Flame,
@@ -256,6 +266,8 @@ const categories: IndustryCategory[] = [
       "Schedule hot water system installations, repairs, and servicing across suburbs. Track parts and invoice clients on site.",
     exampleJobs: ["Hot water installation", "Repairs", "Tempering valve service", "System upgrades"],
     keyFeatures: ["Route optimisation", "Parts tracking", "On-site invoicing"],
+    nichePage: "/hot-water-service-business-scheduling-invoicing-app-australia",
+    blogPage: "/blog/hot-water-service-scheduling-route-planning-australia",
   },
   {
     icon: PartyPopper,
@@ -419,10 +431,10 @@ export default function IndustriesPage() {
                       ))}
                     </ul>
 
-                    {/* CTA row — every card gets "Learn more" */}
+                    {/* CTA row — every card links to blog article */}
                     <div className="flex items-center gap-2 mt-auto pt-2">
                       <Button variant="outline" size="sm" asChild className="flex-1">
-                        <Link href={cat.nichePage || cat.blogPage || "/industries"}>
+                        <Link href={cat.blogPage || cat.nichePage || "/industries"}>
                           Learn more
                           <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
                         </Link>
