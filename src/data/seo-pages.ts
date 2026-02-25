@@ -289,6 +289,7 @@ export const seoPages: SeoPage[] = [
       { label: "Pricing", href: "/pricing" },
       { label: "Gardening app", href: "/gardening-business-scheduling-invoicing-app-australia" },
       { label: "Pest control app", href: "/pest-control-job-scheduling-route-app-australia" },
+      { label: "Blog: Pool service costs", href: "/blog/how-much-does-it-cost-to-run-a-pool-service-round-in-australia" },
     ],
   },
 
@@ -394,6 +395,7 @@ export const seoPages: SeoPage[] = [
       { label: "Pricing", href: "/pricing" },
       { label: "Cleaning business app", href: "/cleaning-business-scheduling-invoicing-app-australia" },
       { label: "Handyman app", href: "/handyman-job-management-route-invoicing-app-australia" },
+      { label: "Blog: Route planning tips", href: "/blog/how-to-plan-efficient-multi-stop-routes-for-service-businesses" },
     ],
   },
 
@@ -429,6 +431,7 @@ export const seoPages: SeoPage[] = [
       { label: "Pricing", href: "/pricing" },
       { label: "Gardening business app", href: "/gardening-business-scheduling-invoicing-app-australia" },
       { label: "NDIS support worker app", href: "/ndis-support-worker-route-planner-invoicing-app-australia" },
+      { label: "Blog: Cleaning route planning", href: "/blog/how-to-plan-a-daily-cleaning-route-that-saves-time-and-fuel" },
     ],
   },
 
@@ -464,6 +467,7 @@ export const seoPages: SeoPage[] = [
       { label: "Pricing", href: "/pricing" },
       { label: "Pressure washing app", href: "/pressure-washing-business-route-invoicing-app-australia" },
       { label: "Pest control app", href: "/pest-control-job-scheduling-route-app-australia" },
+      { label: "Blog: ATO logbook guide", href: "/blog/ato-vehicle-logbook-requirements-for-tradies-2026" },
     ],
   },
 
@@ -605,6 +609,7 @@ export const seoPages: SeoPage[] = [
       { label: "Pricing", href: "/pricing" },
       { label: "Cleaning business app", href: "/cleaning-business-scheduling-invoicing-app-australia" },
       { label: "Gardening business app", href: "/gardening-business-scheduling-invoicing-app-australia" },
+      { label: "Blog: NDIS travel claims guide", href: "/blog/ndis-travel-claims-what-support-workers-can-claim" },
     ],
   },
 

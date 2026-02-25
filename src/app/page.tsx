@@ -574,6 +574,66 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ===== LATEST FROM THE BLOG ===== */}
+      <section className="py-16 sm:py-24 bg-card/50 border-t border-border">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold">
+              Tips for running a smarter business
+            </h2>
+            <p className="mt-3 sm:mt-4 text-base sm:text-lg text-muted-foreground">
+              Practical guides for tradies, cleaners, NDIS providers, and mobile service pros.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {[
+              {
+                title: "How to Plan Efficient Multi-Stop Routes",
+                excerpt: "Save 30-60 minutes of driving per day by optimising the order you visit job sites.",
+                href: "/blog/how-to-plan-efficient-multi-stop-routes-for-service-businesses",
+                category: "Route Planning",
+              },
+              {
+                title: "ATO Vehicle Logbook Requirements for Tradies",
+                excerpt: "What the ATO actually requires for vehicle logbook records — and the mistakes that trigger audits.",
+                href: "/blog/ato-vehicle-logbook-requirements-for-tradies-2026",
+                category: "Tax & BAS",
+              },
+              {
+                title: "NDIS Travel Claims: What You Can Claim",
+                excerpt: "A plain-English guide to NDIS travel claims for support workers and sole-trader providers.",
+                href: "/blog/ndis-travel-claims-what-support-workers-can-claim",
+                category: "NDIS",
+              },
+            ].map((post) => (
+              <Link key={post.href} href={post.href} className="group">
+                <Card className="h-full hover:border-primary/50 transition-colors">
+                  <CardContent className="p-5 sm:p-6">
+                    <span className="inline-flex items-center rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary mb-3">
+                      {post.category}
+                    </span>
+                    <h3 className="text-base sm:text-lg font-semibold mb-2 group-hover:text-primary transition-colors">
+                      {post.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      {post.excerpt}
+                    </p>
+                  </CardContent>
+                </Card>
+              </Link>
+            ))}
+          </div>
+          <div className="mt-8 text-center">
+            <Button variant="outline" className="min-h-[44px]" asChild>
+              <Link href="/blog">
+                Read all articles
+                <ChevronRight className="ml-1 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* ===== DOWNLOAD NOW ===== */}
       <section id="download-now" className="py-16 sm:py-24 lg:py-32 bg-card/50">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

@@ -93,9 +93,8 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    google: "your-google-verification-code", // TODO: Add your Google Search Console verification
-  },
+  // Google Search Console verification is done via DNS — no meta tag needed.
+  // If you ever need to add it: verification: { google: "your-actual-code" },
 };
 
 // =============================================================================
@@ -144,7 +143,12 @@ export default function RootLayout({
       availableLanguage: "English",
     },
     sameAs: [
-      "https://apps.apple.com/au/app/dayroute",
+      "https://apps.apple.com/au/app/dayroute/id6757166638",
+      // TODO: Add these once profiles are created:
+      // "https://www.facebook.com/dayroute",
+      // "https://www.instagram.com/dayroute",
+      // "https://www.linkedin.com/company/dayroute",
+      // "https://www.youtube.com/@dayroute",
     ],
   };
 
@@ -209,13 +213,9 @@ export default function RootLayout({
         priceValidUntil: "2026-12-31",
       },
     ],
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.8",
-      ratingCount: "100",
-      bestRating: "5",
-      worstRating: "1",
-    },
+    // NOTE: Do NOT add aggregateRating until real, verifiable reviews exist
+    // on the App Store or a review platform. Fake review counts can trigger
+    // a Google structured data penalty.
     author: {
       "@type": "Organization",
       name: "DayRoute",
