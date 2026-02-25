@@ -1564,6 +1564,396 @@ export const blogPosts: BlogPost[] = [
     ],
     tags: ["appliance repair", "parts tracking", "invoicing", "warranty", "BAS", "expense management", "Australia"],
   },
+
+  // =========================================================================
+  // 25. PLUMBING
+  // =========================================================================
+  {
+    slug: "plumbing-business-scheduling-route-planning-australia",
+    title: "Scheduling and Route Planning for Plumbing Businesses in Australia",
+    metaDescription: "How Australian plumbers can schedule jobs, plan efficient routes between call-outs, and invoice clients on the spot.",
+    publishDate: "2026-03-05",
+    author: "DayRoute Team",
+    category: "Plumbing",
+    readingTime: "5 min read",
+    excerpt: "Plumbing work means jumping between emergency call-outs and planned jobs across multiple suburbs. Here's how to keep your day organised and profitable.",
+    sections: [
+      { heading: "The plumber's scheduling challenge", content: "Unlike office-based businesses, a plumber's day is built around locations. A blocked drain in Bondi, a hot water install in Marrickville, a leaking tap in Randwick — all before lunch. Without a route plan, you spend as much time driving as working. Efficient scheduling means grouping jobs by area, leaving buffer time for emergencies, and knowing your drive times before you leave home." },
+      { heading: "Grouping jobs by suburb saves hours", content: "The most effective plumbers assign geographic zones to each day. Monday might be eastern suburbs, Tuesday inner west. When a client calls for a non-urgent job, slot them into the day you're already in their area. Emergency call-outs break the pattern, but having a planned route means you have a structure to return to after the emergency is handled." },
+      { heading: "Invoicing at the job site", content: "Plumbing invoices often include parts, labour, and call-out fees. Creating these at the end of the week from memory leads to missed charges and disputes. Invoicing on the spot — while you're still at the property — ensures accuracy. List the parts used, hours worked, and any emergency surcharges. Send it via SMS or email before you pack up the van. Clients pay faster when the invoice arrives immediately." },
+      { heading: "Tracking parts and expenses", content: "A trip to Reece or Tradelink for every job means a wallet full of receipts. If you don't log them immediately, they end up crumpled in the glovebox and forgotten at BAS time. Scanning receipts with your phone extracts the merchant, total, and GST automatically. Over a year, proper expense tracking can recover thousands in deductions you'd otherwise miss." },
+    ],
+    relatedPages: [
+      { label: "Route planning", href: "/route-planning-for-service-businesses-australia" },
+      { label: "Mobile invoicing", href: "/mobile-invoicing-after-job-completion-iphone" },
+      { label: "Mileage logbook", href: "/mileage-logbook-receipts-for-service-businesses-australia" },
+    ],
+    tags: ["plumbing", "scheduling", "route planning", "invoicing", "Australia"],
+  },
+
+  // =========================================================================
+  // 26. ELECTRICAL
+  // =========================================================================
+  {
+    slug: "electrician-job-scheduling-route-planning-australia",
+    title: "Job Scheduling and Route Planning for Electricians in Australia",
+    metaDescription: "How Australian electricians can schedule jobs efficiently, plan daily routes, and send invoices from their phone.",
+    publishDate: "2026-03-05",
+    author: "DayRoute Team",
+    category: "Electrical",
+    readingTime: "5 min read",
+    excerpt: "Electricians visit 4-8 job sites per day across wide service areas. Planning the right order saves fuel, reduces stress, and gets you home on time.",
+    sections: [
+      { heading: "Why electricians need route planning", content: "Electrical work ranges from quick powerpoint installs (30 minutes) to full rewires (all day). Most electricians handle a mix of short and long jobs daily. The short jobs are where route planning matters most — if you have five 30-minute jobs scattered across town, the drive time between them can double your day. Grouping by area and sequencing by distance turns a 10-hour day into a 7-hour one." },
+      { heading: "Managing quotes and follow-ups", content: "Electricians often visit a site to quote before returning to do the work. Keeping track of which quotes have been accepted, which are pending, and which jobs are scheduled is critical. A job management system lets you log the quote, set a follow-up reminder, and convert it to a scheduled job when the client approves. No more forgetting about that switchboard upgrade you quoted three weeks ago." },
+      { heading: "Compliance and job records", content: "Electrical work requires compliance certificates, test results, and sometimes photos of the completed work. Recording these against each job creates a professional audit trail. If a client calls six months later asking about their safety switch, you can pull up the job record instantly — including what was done, when, and any test results." },
+      { heading: "Parts tracking and BAS", content: "Cable, switches, circuit breakers, RCDs — electrical parts add up fast. Logging purchases against each job ensures your invoices accurately reflect material costs. At BAS time, having every receipt scanned and categorised means your accountant gets clean data instead of a shoebox. The vehicle logbook captures every trip between sites for accurate tax deductions." },
+    ],
+    relatedPages: [
+      { label: "Route planning", href: "/route-planning-for-service-businesses-australia" },
+      { label: "Mobile invoicing", href: "/mobile-invoicing-after-job-completion-iphone" },
+      { label: "ATO logbook guide", href: "/blog/ato-vehicle-logbook-requirements-for-tradies-2026" },
+    ],
+    tags: ["electrician", "electrical", "scheduling", "route planning", "compliance", "Australia"],
+  },
+
+  // =========================================================================
+  // 27. PAINTING
+  // =========================================================================
+  {
+    slug: "painting-business-job-management-invoicing-australia",
+    title: "Job Management and Invoicing for Painting Businesses in Australia",
+    metaDescription: "How Australian painters can manage jobs, plan routes between properties, and invoice clients professionally.",
+    publishDate: "2026-03-06",
+    author: "DayRoute Team",
+    category: "Painting",
+    readingTime: "5 min read",
+    excerpt: "Painting jobs range from a single room to entire commercial buildings. Managing multiple jobs across suburbs while tracking paint costs and invoicing clients doesn't have to be chaotic.",
+    sections: [
+      { heading: "Scheduling painting jobs effectively", content: "Painting work is weather-dependent for exterior jobs and access-dependent for interior work. A well-organised painter juggles preparation, painting, and drying time across multiple properties. Schedule exterior work for clear-weather days and have indoor backup jobs ready for rain days. Group jobs by suburb so you're not driving across the city between coats." },
+      { heading: "Before-and-after photos sell the next job", content: "Painting transformations are visually dramatic — a faded, peeling exterior turned fresh and clean is powerful marketing material. Photograph every job before you start and after you finish. These photos serve double duty: proof of work quality if a client disputes the finish, and social media content that generates enquiries from neighbours and their networks." },
+      { heading: "Tracking paint and materials costs", content: "Paint, primer, tape, drop sheets, rollers — the consumables add up. A single exterior job might use $500-1,000 in materials. Logging these costs per job ensures your invoices cover materials plus labour. Snap the Dulux or Haymes receipt when you leave the paint shop. The AI scanner reads the products, amounts, and GST automatically." },
+      { heading: "Professional invoicing builds trust", content: "A painting quote that leads to a professional, itemised invoice builds client confidence. Break the invoice into labour, materials, and any extras (moving furniture, repairs before painting). Send it the day you finish — not a week later. Clients associate prompt, professional invoicing with quality workmanship." },
+    ],
+    relatedPages: [
+      { label: "Before & after photos", href: "/before-after-photos-for-service-jobs" },
+      { label: "Mobile invoicing", href: "/mobile-invoicing-after-job-completion-iphone" },
+      { label: "All industries", href: "/industries" },
+    ],
+    tags: ["painting", "decorating", "job management", "invoicing", "before after", "Australia"],
+  },
+
+  // =========================================================================
+  // 28. ROOFING
+  // =========================================================================
+  {
+    slug: "roofing-business-scheduling-invoicing-tips-australia",
+    title: "Roofing Business Scheduling and Invoicing Tips for Australia",
+    metaDescription: "Scheduling and invoicing tips for Australian roofing businesses. Manage inspections, repairs, and replacements efficiently.",
+    publishDate: "2026-03-06",
+    author: "DayRoute Team",
+    category: "Roofing",
+    readingTime: "5 min read",
+    excerpt: "Roofing work is weather-dependent, physically demanding, and often urgent. Here's how to keep your roofing schedule organised and your invoicing professional.",
+    sections: [
+      { heading: "Weather-dependent scheduling", content: "Roofing is one of the most weather-sensitive trades. Rain, high winds, and extreme heat all stop work. Smart roofers check the 7-day forecast every Sunday night and plan the week accordingly. Schedule inspections and quotes for marginal-weather days and save clear days for actual installation and repair work. Having a flexible scheduling system that lets you shuffle jobs quickly when the forecast changes is essential." },
+      { heading: "Balancing inspections with repairs", content: "Most roofing businesses handle a mix of free inspections (to generate quotes), paid repairs, and larger replacement projects. The inspections feed your pipeline but don't generate immediate revenue. Group inspections by area and batch them — do 4-5 roof inspections in one suburb in a morning, then spend the afternoon on a paid repair nearby." },
+      { heading: "Documenting roof condition with photos", content: "Before-and-after photos are critical in roofing — for insurance claims, building reports, and dispute resolution. Photograph the roof condition before you start any work. Document specific damage areas, flashing condition, and gutter state. After completion, photograph the same areas. These records protect you if a client claims the work wasn't done properly or if a new leak appears in an unrelated area." },
+      { heading: "Invoicing for materials and labour", content: "Roofing invoices typically include significant material costs — tiles, metal sheets, flashing, sealants, screws. Itemise materials separately from labour so the client can see the breakdown. For insurance jobs, the insurer often needs an itemised invoice to process the claim. Sending a clear, professional invoice with photos attached speeds up payment from both homeowners and insurance companies." },
+    ],
+    relatedPages: [
+      { label: "Before & after photos", href: "/before-after-photos-for-service-jobs" },
+      { label: "Route planning", href: "/route-planning-for-service-businesses-australia" },
+      { label: "Mobile invoicing", href: "/mobile-invoicing-after-job-completion-iphone" },
+    ],
+    tags: ["roofing", "scheduling", "weather", "invoicing", "inspections", "Australia"],
+  },
+
+  // =========================================================================
+  // 29. CARPET CLEANING
+  // =========================================================================
+  {
+    slug: "carpet-cleaning-business-route-planning-australia",
+    title: "Route Planning for Carpet Cleaning Businesses in Australia",
+    metaDescription: "How Australian carpet cleaners can plan efficient daily routes, manage bookings, and invoice clients on the spot.",
+    publishDate: "2026-03-07",
+    author: "DayRoute Team",
+    category: "Carpet Cleaning",
+    readingTime: "4 min read",
+    excerpt: "Carpet cleaning is a high-volume, route-dependent business. The more jobs you fit in per day without wasting time driving, the more profitable you are.",
+    sections: [
+      { heading: "Planning carpet cleaning routes", content: "A typical carpet cleaner handles 4-6 jobs per day — each taking 1-2 hours depending on the property size. With setup time and driving between jobs, route efficiency makes or breaks your profitability. Group jobs by suburb, sequence them by proximity, and factor in your equipment setup time when scheduling. A 15-minute drive between jobs is fine; 45 minutes is eating your profits." },
+      { heading: "End-of-lease cleans are your bread and butter", content: "End-of-lease carpet cleaning has consistent demand and clients who need it done by a specific date. These jobs are often booked 1-2 weeks in advance, giving you time to plan. Slot them into your geographic zones and confirm the booking the day before. Real estate agents who find a reliable carpet cleaner send repeat work month after month — build relationships with local agents in your service area." },
+      { heading: "Before-and-after photos for bond disputes", content: "Tenants and landlords dispute carpet condition regularly. A timestamped before photo (showing stains before treatment) and an after photo (showing the cleaned result) protects you and your client. If a bond dispute arises, the photos prove the cleaning was done professionally. Attach them to the invoice for a complete record." },
+      { heading: "Invoicing and payment", content: "Carpet cleaning pricing is usually fixed per room or per property. Set up standard pricing for common job sizes (3-bedroom house, 2-bedroom unit) and pre-fill your invoices accordingly. Send the invoice the moment you finish — before the carpet is even dry. Clients who receive a professional invoice on the same day pay significantly faster than those who get one a week later." },
+    ],
+    relatedPages: [
+      { label: "Cleaning business app", href: "/cleaning-business-scheduling-invoicing-app-australia" },
+      { label: "Route planning", href: "/route-planning-for-service-businesses-australia" },
+      { label: "Before & after photos", href: "/before-after-photos-for-service-jobs" },
+    ],
+    tags: ["carpet cleaning", "route planning", "end of lease", "invoicing", "Australia"],
+  },
+
+  // =========================================================================
+  // 30. WINDOW CLEANING
+  // =========================================================================
+  {
+    slug: "window-cleaning-business-scheduling-pricing-australia",
+    title: "Window Cleaning Business Scheduling and Pricing in Australia",
+    metaDescription: "Scheduling, pricing, and route planning tips for Australian window cleaning businesses. Build recurring rounds efficiently.",
+    publishDate: "2026-03-07",
+    author: "DayRoute Team",
+    category: "Window Cleaning",
+    readingTime: "4 min read",
+    excerpt: "Window cleaning is a recurring, route-based business with predictable demand. Here's how to build efficient rounds, price correctly, and keep clients coming back.",
+    sections: [
+      { heading: "Building recurring window cleaning rounds", content: "Most window cleaning clients want their windows done every 4-8 weeks. The business model is built on recurring rounds — the same clients, same suburbs, same schedule. Assign each day to a geographic zone and fill it with recurring clients in that area. Over time, your rounds become tight and efficient. When a client in an area you don't service on any current day asks for a quote, offer them your closest day instead." },
+      { heading: "Pricing window cleaning jobs", content: "Australian window cleaners typically price per window, per pane, or per property. Common rates range from $5-10 per window (exterior only) to $8-15 per window (interior and exterior). For commercial buildings, price per hour ($60-90/hour) or per square metre. Always do a quick count or site visit before quoting — estimating from memory leads to undercharging on large properties and overcharging on small ones." },
+      { heading: "Weather and access planning", content: "Rain doesn't stop window cleaning (contrary to popular belief — pure water cleaning works in light rain), but high winds and extreme heat do. Access is the bigger planning challenge: multi-storey buildings need ladders or water-fed poles, some windows require indoor access, and security buildings need pre-arranged entry. Record access requirements in your client notes so you arrive prepared every time." },
+      { heading: "Client communication drives retention", content: "Window cleaning clients often aren't home during the clean. Send an 'On My Way' notification with your ETA. When you're done, send a brief message confirming the clean is complete. This small touch reassures clients their windows were done — especially if they can't check until they get home. Consistent communication is the number one reason clients stay with one window cleaner over another." },
+    ],
+    relatedPages: [
+      { label: "Cleaning business app", href: "/cleaning-business-scheduling-invoicing-app-australia" },
+      { label: "Route planning", href: "/route-planning-for-service-businesses-australia" },
+      { label: "Mobile invoicing", href: "/mobile-invoicing-after-job-completion-iphone" },
+    ],
+    tags: ["window cleaning", "scheduling", "pricing", "recurring rounds", "Australia"],
+  },
+
+  // =========================================================================
+  // 31. LAWN CARE & TURF
+  // =========================================================================
+  {
+    slug: "lawn-care-business-startup-guide-australia",
+    title: "Lawn Care Business Startup Guide for Australia",
+    metaDescription: "How to start and grow a lawn care business in Australia. Equipment, pricing, building routes, and managing regular clients.",
+    publishDate: "2026-03-08",
+    author: "DayRoute Team",
+    category: "Lawn Care",
+    readingTime: "5 min read",
+    excerpt: "Lawn care has low startup costs and year-round demand in most of Australia. Here's a practical guide to getting started and building a profitable mowing round.",
+    sections: [
+      { heading: "Getting started with minimal investment", content: "A lawn care business is one of the cheapest trades to start. A reliable mower ($800-2,000), a line trimmer ($200-400), a blower ($200-400), and a trailer or ute to carry them. Total startup: $2,000-5,000. You can start servicing clients within a week of buying equipment. Focus on residential mowing within a tight geographic area to minimise driving time from day one." },
+      { heading: "Pricing your mowing rounds", content: "Australian lawn mowing rates vary by property size and suburb. Small courtyards: $30-50. Standard suburban lawns: $50-80. Large properties: $80-150+. Price based on the time it takes you, not what the client expects to pay. Track your actual time per property for the first month to calibrate your pricing. Include travel time in your calculations — a $50 lawn that takes 30 minutes of driving to reach isn't worth it." },
+      { heading: "Building a tight geographic round", content: "The most profitable lawn care businesses service 8-12 lawns per day in a tight area. Start by leaflet-dropping in 3-4 nearby streets. As clients sign up, your round fills organically. When enquiries come from distant suburbs, refer them to another mower rather than stretching your route. A tight round means more lawns per day, less fuel, and home by 3 pm." },
+      { heading: "Managing seasonal demand", content: "Australian lawn growth varies dramatically by season. Summer means weekly mowing in most areas. Winter slows to fortnightly or monthly. Smart lawn care operators adjust their pricing to monthly flat rates (averaged across seasons) rather than per-visit rates. This smooths your income across the year and makes cash flow predictable. Clients prefer it too — they know exactly what they're paying each month." },
+    ],
+    relatedPages: [
+      { label: "Gardening business app", href: "/gardening-business-scheduling-invoicing-app-australia" },
+      { label: "Route planning", href: "/route-planning-for-service-businesses-australia" },
+      { label: "How to quote gardening jobs", href: "/blog/how-to-quote-gardening-jobs-in-australia" },
+    ],
+    tags: ["lawn care", "mowing", "startup", "pricing", "route planning", "Australia"],
+  },
+
+  // =========================================================================
+  // 32. AGED CARE / HOME CARE
+  // =========================================================================
+  {
+    slug: "aged-care-home-care-scheduling-route-planning-australia",
+    title: "Scheduling and Route Planning for Aged Care Workers in Australia",
+    metaDescription: "How aged care and home care workers can plan efficient visit routes, manage client schedules, and track travel in Australia.",
+    publishDate: "2026-03-08",
+    author: "DayRoute Team",
+    category: "Aged Care",
+    readingTime: "5 min read",
+    excerpt: "Aged care workers visit multiple clients daily — often elderly people who rely on punctual arrivals. Efficient scheduling and reliable ETAs are not just convenient, they're essential.",
+    sections: [
+      { heading: "Why punctuality matters more in aged care", content: "Unlike most service businesses, aged care clients often can't adjust their day around a late arrival. An elderly person waiting for help with medication, bathing, or meal preparation can't just 'come back later.' Being late causes anxiety and can have real health consequences. Planning your route accurately and sending ETA notifications isn't a nice-to-have — it's a duty of care." },
+      { heading: "Planning care visit routes", content: "Aged care visits typically follow a recurring weekly pattern — the same clients on the same days. Group clients by area and build a consistent weekly schedule. Leave buffer time between visits for travel and unexpected delays (a client needs extra help, traffic is heavier than usual). A route planner that shows accurate drive times between visits helps you build realistic schedules instead of optimistic ones." },
+      { heading: "Travel tracking for reimbursement", content: "Many aged care funding packages (Home Care Packages, NDIS, DVA) allow travel time and distance to be claimed. Accurate GPS logging of each trip — start location, end location, distance, and time — ensures you can claim what you're entitled to. Manual estimation is inaccurate and risks under-claiming or compliance issues during audits." },
+      { heading: "Client notes and continuity of care", content: "Aged care clients often have specific needs, preferences, and medical considerations that must be recorded and accessible to every carer who visits. Storing notes against each client profile — mobility requirements, medication reminders, dietary needs, emergency contacts — ensures continuity of care even when different carers visit. Review the notes before each visit so you arrive informed and prepared." },
+    ],
+    relatedPages: [
+      { label: "NDIS support worker app", href: "/ndis-support-worker-route-planner-invoicing-app-australia" },
+      { label: "Route planning", href: "/route-planning-for-service-businesses-australia" },
+      { label: "NDIS travel claims", href: "/blog/ndis-travel-claims-what-support-workers-can-claim" },
+    ],
+    tags: ["aged care", "home care", "scheduling", "route planning", "travel tracking", "Australia"],
+  },
+
+  // =========================================================================
+  // 33. FENCING
+  // =========================================================================
+  {
+    slug: "fencing-business-job-management-tips-australia",
+    title: "Fencing Business Job Management Tips for Australia",
+    metaDescription: "Job management tips for Australian fencing businesses. Scheduling, quoting, materials tracking, and invoicing for fencers.",
+    publishDate: "2026-03-09",
+    author: "DayRoute Team",
+    category: "Fencing",
+    readingTime: "4 min read",
+    excerpt: "Fencing work involves quoting, ordering materials, scheduling installs, and managing multiple properties. Here's how to keep it all organised.",
+    sections: [
+      { heading: "Managing the quote-to-install pipeline", content: "Fencing businesses live on quotes. You might quote 10 jobs to win 4. Tracking which quotes are pending, which have been accepted, and which are scheduled for installation is essential. Log every quote with the client details, measurements, material specs, and price. Set follow-up reminders so accepted quotes don't fall through the cracks." },
+      { heading: "Materials planning and tracking", content: "Fencing materials — posts, rails, palings, concrete, screws — need to be ordered before the install day. Record material requirements per job so you can batch orders from your supplier. Track costs per job to ensure your invoices accurately cover materials plus labour. Snap the supplier receipt when you pick up the order — don't wait until BAS time to find it." },
+      { heading: "Scheduling multi-day installs", content: "Large fencing jobs span multiple days. Block out the full duration in your schedule so you don't accidentally book a small job in the middle of a big install. For single-day jobs (repairs, gate installs, short fence runs), group them by area and sequence for minimal driving. The mix of multi-day and single-day work requires a scheduling system that handles both cleanly." },
+      { heading: "Before-and-after photos for fencing", content: "An old, damaged fence replaced with a new one is a great before-and-after photo. Document the old fence condition before demolition and the finished product after installation. These photos work for marketing (social media), dispute resolution (if a neighbour claims the new fence doesn't match what was agreed), and portfolio building." },
+    ],
+    relatedPages: [
+      { label: "Handyman app", href: "/handyman-job-management-route-invoicing-app-australia" },
+      { label: "Before & after photos", href: "/before-after-photos-for-service-jobs" },
+      { label: "Mobile invoicing", href: "/mobile-invoicing-after-job-completion-iphone" },
+    ],
+    tags: ["fencing", "job management", "quoting", "materials", "invoicing", "Australia"],
+  },
+
+  // =========================================================================
+  // 34. TREE SERVICES & ARBORIST
+  // =========================================================================
+  {
+    slug: "tree-services-arborist-scheduling-route-planning-australia",
+    title: "Scheduling and Route Planning for Tree Services in Australia",
+    metaDescription: "How Australian arborists and tree service businesses can schedule jobs, plan routes, and manage quotes efficiently.",
+    publishDate: "2026-03-09",
+    author: "DayRoute Team",
+    category: "Tree Services",
+    readingTime: "4 min read",
+    excerpt: "Tree work ranges from quick prunes to full removals. Managing the mix of small and large jobs across suburbs requires smart scheduling and route planning.",
+    sections: [
+      { heading: "Balancing small and large jobs", content: "Tree service businesses handle everything from a 30-minute hedge trim to a 2-day tree removal. The key to scheduling is mixing small jobs around the large ones. If you have a full-day removal on Monday, schedule small pruning jobs nearby for Tuesday morning. This fills the gaps and keeps revenue consistent. Never leave a full day empty because you're waiting for one big job." },
+      { heading: "Council permits and compliance", content: "Many tree removals in Australian suburbs require council approval. Track which jobs need permits, which permits have been applied for, and which have been granted. Recording this against the job prevents accidentally starting work before approval arrives. Some councils also require photos of the tree before and after removal as part of the compliance process." },
+      { heading: "Quoting tree jobs accurately", content: "Tree work is notoriously hard to quote sight-unseen. Height, trunk diameter, access, proximity to power lines, and stump grinding requirements all affect the price. Visit every job in person before quoting. Record your assessment notes (tree species, estimated height, access difficulty) against the client profile so you can reference them when the client calls to accept." },
+      { heading: "Waste disposal planning", content: "Tree waste is bulky. You need to plan where the mulch and timber are going before you start cutting. Some jobs generate enough mulch to fill a truck three times over. Factor disposal time and tip fees into your quote. If a client wants the mulch left on site, note that in the job details to avoid loading it onto the truck unnecessarily." },
+    ],
+    relatedPages: [
+      { label: "Gardening business app", href: "/gardening-business-scheduling-invoicing-app-australia" },
+      { label: "Route planning", href: "/route-planning-for-service-businesses-australia" },
+      { label: "Before & after photos", href: "/before-after-photos-for-service-jobs" },
+    ],
+    tags: ["tree services", "arborist", "scheduling", "tree removal", "pruning", "Australia"],
+  },
+
+  // =========================================================================
+  // 35. GUTTER CLEANING
+  // =========================================================================
+  {
+    slug: "gutter-cleaning-business-pricing-route-planning-australia",
+    title: "Gutter Cleaning Business Pricing and Route Planning in Australia",
+    metaDescription: "Pricing and route planning tips for Australian gutter cleaning businesses. Build efficient rounds and price jobs correctly.",
+    publishDate: "2026-03-10",
+    author: "DayRoute Team",
+    category: "Gutter Cleaning",
+    readingTime: "4 min read",
+    excerpt: "Gutter cleaning has strong seasonal demand and builds naturally into recurring rounds. Here's how to price, schedule, and plan routes for maximum efficiency.",
+    sections: [
+      { heading: "Pricing gutter cleaning jobs", content: "Australian gutter cleaning is typically priced per linear metre of gutter or as a flat rate per property. Standard single-storey homes: $150-250. Two-storey: $250-400. Properties with heavy leaf load, valley gutters, or difficult access command premium rates. Always quote after seeing the property — or at minimum, checking satellite imagery. Underquoting a heavily blocked gutter system means working for free after your costs." },
+      { heading: "Seasonal demand patterns", content: "Gutter cleaning demand spikes in autumn (leaf fall) and spring (pre-storm preparation). Smart operators contact all existing clients 4-6 weeks before each season with a reminder. Pre-booking these visits fills your schedule with recurring work before the phone even starts ringing. Between seasons, combine gutter cleaning with pressure washing or roof cleaning to keep revenue consistent." },
+      { heading: "Building geographic rounds", content: "Gutter cleaning jobs are short — typically 30-60 minutes per property. That means drive time is a bigger proportion of your day than for longer jobs. Group clients tightly by suburb and aim for 6-8 jobs per day in the same area. The difference between 10 minutes and 30 minutes of driving between each of 7 jobs is over 2 hours per day." },
+      { heading: "Before-and-after photos as marketing", content: "A gutter overflowing with leaves and debris vs. a clean, flowing gutter — it's a compelling visual. Take these photos routinely and post them on social media with your service area tagged. Homeowners who see their neighbour's gutters being cleaned often call for their own. Before-and-after photos are the cheapest and most effective marketing tool in the gutter cleaning business." },
+    ],
+    relatedPages: [
+      { label: "Pressure washing app", href: "/pressure-washing-business-route-invoicing-app-australia" },
+      { label: "Route planning", href: "/route-planning-for-service-businesses-australia" },
+      { label: "Before & after photos", href: "/before-after-photos-for-service-jobs" },
+    ],
+    tags: ["gutter cleaning", "pricing", "route planning", "seasonal", "before after", "Australia"],
+  },
+
+  // =========================================================================
+  // 36. SOLAR PANEL CLEANING
+  // =========================================================================
+  {
+    slug: "solar-panel-cleaning-business-guide-australia",
+    title: "Solar Panel Cleaning Business Guide for Australia",
+    metaDescription: "How to run a solar panel cleaning business in Australia. Pricing, route planning, equipment, and building a client base.",
+    publishDate: "2026-03-10",
+    author: "DayRoute Team",
+    category: "Solar",
+    readingTime: "4 min read",
+    excerpt: "With millions of solar panels on Australian roofs, solar panel cleaning is a growing niche. Here's how to build an efficient, profitable cleaning operation.",
+    sections: [
+      { heading: "Why the market is growing", content: "Australia has one of the highest rates of rooftop solar in the world. Dirty panels lose 15-25% of their efficiency. Most homeowners don't clean their panels regularly because they can't easily access the roof. This creates a large, recurring market for specialist cleaners. The business model is similar to window cleaning — recurring visits, geographic rounds, and predictable income." },
+      { heading: "Equipment and pricing", content: "Solar panel cleaning requires purified water (a deionisation or reverse osmosis system), a water-fed pole, soft brushes, and a vehicle to carry everything. Startup cost: $3,000-8,000 for a basic setup. Pricing typically ranges from $5-10 per panel, with minimum call-out fees of $100-150. A standard 20-panel system costs the homeowner $100-200 per clean. Most clients want annual or biannual cleaning." },
+      { heading: "Building routes around solar density", content: "Solar panel adoption varies by suburb. Newer housing estates often have 80-90% solar penetration. Target these areas for leaflet drops and door-knocking. Once you have a cluster of clients in an area, your route becomes very efficient — you might clean 8-12 systems per day with minimal driving. Use satellite imagery (Google Maps) to identify roofs with panels before you knock." },
+      { heading: "Combining with gutter cleaning and pressure washing", content: "Many solar panel cleaning businesses offer gutter cleaning, roof cleaning, or pressure washing as add-on services. When you're already on the ladder or have the water-fed pole out, it's a natural upsell. A 'roof care package' (panels + gutters + roof wash) at a bundled price increases your average job value significantly and gives the client a reason to book all three services at once." },
+    ],
+    relatedPages: [
+      { label: "Pressure washing app", href: "/pressure-washing-business-route-invoicing-app-australia" },
+      { label: "Route planning", href: "/route-planning-for-service-businesses-australia" },
+      { label: "All industries", href: "/industries" },
+    ],
+    tags: ["solar panel cleaning", "solar", "business guide", "route planning", "Australia"],
+  },
+
+  // =========================================================================
+  // 37. ALLIED HEALTH HOME VISITS
+  // =========================================================================
+  {
+    slug: "allied-health-home-visit-scheduling-route-planning-australia",
+    title: "Scheduling and Route Planning for Allied Health Home Visits",
+    metaDescription: "How OTs, speech therapists, physios, and dietitians can plan efficient home visit routes and manage client schedules.",
+    publishDate: "2026-03-11",
+    author: "DayRoute Team",
+    category: "Allied Health",
+    readingTime: "5 min read",
+    excerpt: "Allied health professionals who do home visits face the same routing and scheduling challenges as tradies — but with the added need for clinical-grade punctuality and record keeping.",
+    sections: [
+      { heading: "Why home visit scheduling is different", content: "Unlike a tradie who can run 15 minutes late without serious consequences, an allied health professional arriving late disrupts a client's therapy schedule, medication timing, or carer arrangements. Clients often have complex needs and rigid routines. Your schedule must account for realistic travel times, session durations that can't be shortened, and buffer time for clinical notes between visits." },
+      { heading: "Planning efficient visit routes", content: "Occupational therapists, speech pathologists, physiotherapists, and dietitians often cover wide geographic areas — especially in regional Australia. Grouping clients by area and day is essential. Monday might be the northern suburbs, Wednesday the eastern side. Use accurate drive time estimates (not straight-line distances) because traffic in metro areas can double your expected travel time during school hours." },
+      { heading: "Client records and session notes", content: "Allied health professionals need to maintain clinical records for every session. Recording brief session notes, goals discussed, and progress observations against each client visit creates a clinical audit trail. Having these notes accessible on your phone before each visit means you can review the last session's notes in the car before walking in — ensuring continuity of care." },
+      { heading: "Travel claims and invoicing", content: "Many allied health services are funded through NDIS, Medicare, DVA, or private health insurance. Each funding source has different invoicing requirements. Recording travel time and distance per visit ensures you can claim travel where applicable. Sending invoices promptly after each session — with the correct item numbers and client references — reduces payment delays and rejected claims." },
+    ],
+    relatedPages: [
+      { label: "NDIS support worker app", href: "/ndis-support-worker-route-planner-invoicing-app-australia" },
+      { label: "Route planning", href: "/route-planning-for-service-businesses-australia" },
+      { label: "NDIS travel claims", href: "/blog/ndis-travel-claims-what-support-workers-can-claim" },
+    ],
+    tags: ["allied health", "occupational therapy", "speech therapy", "physiotherapy", "home visits", "Australia"],
+  },
+
+  // =========================================================================
+  // 38. SPECIALIST TRADES (CONCRETING, TILING, WATERPROOFING)
+  // =========================================================================
+  {
+    slug: "specialist-trades-job-scheduling-tips-australia",
+    title: "Job Scheduling Tips for Specialist Trades in Australia",
+    metaDescription: "Scheduling and job management tips for concreters, tilers, plasterers, floor sanders, and other specialist trades in Australia.",
+    publishDate: "2026-03-11",
+    author: "DayRoute Team",
+    category: "Specialist Trades",
+    readingTime: "4 min read",
+    excerpt: "Specialist trades like concreting, tiling, plastering, and floor sanding have unique scheduling challenges. Here's how to manage jobs efficiently across multiple sites.",
+    sections: [
+      { heading: "Multi-day jobs need dedicated scheduling", content: "Specialist trades often involve jobs that span 2-5 days — a tiling job might be 3 days, a concrete pour requires preparation the day before. Block the full duration in your schedule upfront. If a job finishes a day early, you have a bonus gap to fill with a small job in the area. If it runs over, you haven't double-booked the next client." },
+      { heading: "Managing supply deliveries and drying times", content: "Concrete needs to cure. Plaster needs to dry. Tiles need time for adhesive to set. Plan your schedule around these forced breaks. Pour concrete at one site in the morning, visit another job for preparation work while it cures, then return the next day for finishing. This parallel scheduling keeps you productive during waiting periods instead of sitting idle." },
+      { heading: "Quoting and materials estimation", content: "Specialist trades have high material costs — concrete, tiles, plaster, sanding discs, sealants. Accurate quoting requires precise measurements and material calculations. Record your measurements and material estimates against each quote so you can order accurately when the job is accepted. Track actual vs. estimated usage over time to improve your quoting accuracy." },
+      { heading: "Vehicle and equipment logistics", content: "Specialist trades often carry heavy equipment — mixers, grinders, wet saws, compressors. Planning your route matters not just for time but for load management. If you're doing a tiling job and a grouting job on the same day, plan the sequence so you don't need to unload and reload equipment unnecessarily. A well-planned day means less handling, less fatigue, and less risk of leaving tools behind." },
+    ],
+    relatedPages: [
+      { label: "Handyman app", href: "/handyman-job-management-route-invoicing-app-australia" },
+      { label: "Route planning", href: "/route-planning-for-service-businesses-australia" },
+      { label: "Mileage logbook", href: "/mileage-logbook-receipts-for-service-businesses-australia" },
+    ],
+    tags: ["concreting", "tiling", "plastering", "floor sanding", "waterproofing", "specialist trades", "Australia"],
+  },
+
+  // =========================================================================
+  // 39. HOUSE WASHING
+  // =========================================================================
+  {
+    slug: "house-washing-business-pricing-route-planning-australia",
+    title: "House Washing Business Pricing and Route Planning in Australia",
+    metaDescription: "Pricing and route planning tips for Australian house washing businesses. Soft wash vs pressure wash, quoting, and building rounds.",
+    publishDate: "2026-03-12",
+    author: "DayRoute Team",
+    category: "House Washing",
+    readingTime: "4 min read",
+    excerpt: "House washing (soft washing) is a growing niche in Australia's property maintenance market. Here's how to price jobs, plan routes, and build a profitable operation.",
+    sections: [
+      { heading: "Soft wash vs pressure wash", content: "House washing typically uses soft-wash techniques — low pressure with chemical solutions — rather than high-pressure blasting that can damage paint, mortar, and cladding. Understanding the difference is important for both your method and your marketing. Position yourself as a soft-wash specialist who protects the home while cleaning it. This justifies premium pricing compared to a general pressure washer." },
+      { heading: "Pricing house wash jobs", content: "Australian house washing is typically priced per square metre of exterior wall or as a flat rate per property size. Small single-storey homes: $250-400. Large two-storey: $400-800. Add-ons like driveway, paths, and roof can increase the total to $800-1,500 per property. Always inspect or request photos before quoting — the type of cladding, amount of mould, and access difficulty all affect the price." },
+      { heading: "Before-and-after photos are essential", content: "House washing produces some of the most dramatic before-and-after transformations in the service industry. A green, mould-covered rendered wall turned bright white is incredibly compelling. Photograph every job from the same angle, wide enough to show the full wall. Post on social media with the suburb tagged. These posts consistently generate enquiries from neighbours and drive word-of-mouth referrals." },
+      { heading: "Building geographic routes", content: "Like pressure washing, house washing jobs are spread across suburbs. Group jobs by area and plan routes to minimise drive time. When you finish a job in a street, leave a flyer or card at the neighbouring houses — a freshly cleaned house next to dirty ones is the best advertisement. Some house washers report that 25-30% of their new work comes from neighbours who saw the transformation in person." },
+    ],
+    relatedPages: [
+      { label: "Pressure washing app", href: "/pressure-washing-business-route-invoicing-app-australia" },
+      { label: "Before & after photos", href: "/before-after-photos-for-service-jobs" },
+      { label: "Route planning", href: "/route-planning-for-service-businesses-australia" },
+    ],
+    tags: ["house washing", "soft wash", "pricing", "before after", "route planning", "Australia"],
+  },
 ];
 
 // =============================================================================
