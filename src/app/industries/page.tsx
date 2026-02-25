@@ -64,6 +64,8 @@ interface IndustryCategory {
   keyFeatures: string[];
   /** Link to the dedicated niche page, if one exists. */
   nichePage?: string;
+  /** Link to a blog article — used when no niche page exists. */
+  blogPage?: string;
 }
 
 const categories: IndustryCategory[] = [
@@ -138,6 +140,7 @@ const categories: IndustryCategory[] = [
       "Schedule service calls and installations, track parts and refrigerant costs, and invoice on completion — all from your phone.",
     exampleJobs: ["AC servicing", "Repairs", "Installations", "Duct cleaning"],
     keyFeatures: ["Route planning", "Parts expense tracking", "On-site invoicing"],
+    blogPage: "/blog/hvac-service-scheduling-tips-for-australian-technicians",
   },
   {
     icon: PawPrint,
@@ -146,6 +149,7 @@ const categories: IndustryCategory[] = [
       "Plan grooming rounds or dog walking routes, store pet details and owner preferences, and manage recurring bookings.",
     exampleJobs: ["Dog walking", "Pet grooming", "Pet sitting", "Pet transport"],
     keyFeatures: ["Recurring bookings", "Client & pet notes", "Route optimisation"],
+    blogPage: "/blog/mobile-pet-grooming-route-planning-tips",
   },
   {
     icon: UtensilsCrossed,
@@ -154,6 +158,7 @@ const categories: IndustryCategory[] = [
       "Coordinate food deliveries and event catering across multiple venues, track ingredient costs, and invoice organisers.",
     exampleJobs: ["Event catering", "Food preparation", "Corporate lunches", "Wedding catering"],
     keyFeatures: ["Multi-venue routing", "Ingredient expense tracking", "Event invoicing"],
+    blogPage: "/route-planning-for-service-businesses-australia",
   },
   {
     icon: Camera,
@@ -162,6 +167,7 @@ const categories: IndustryCategory[] = [
       "Plan shoots across multiple locations, manage client bookings, and send invoices with session details and extras.",
     exampleJobs: ["Event photography", "Portraits", "Commercial shoots", "Real estate photography"],
     keyFeatures: ["Location-based routing", "Client scheduling", "Session invoicing"],
+    blogPage: "/route-planning-for-service-businesses-australia",
   },
   {
     icon: Music,
@@ -170,6 +176,7 @@ const categories: IndustryCategory[] = [
       "Manage gig schedules across venues, track equipment and setup times, and invoice promoters or event organisers.",
     exampleJobs: ["DJ services", "Live music", "Sound equipment hire", "Event entertainment"],
     keyFeatures: ["Venue scheduling", "Equipment tracking", "Gig invoicing"],
+    blogPage: "/route-planning-for-service-businesses-australia",
   },
   {
     icon: Monitor,
@@ -178,6 +185,7 @@ const categories: IndustryCategory[] = [
       "Plan on-site tech support visits, record equipment details per client, and invoice for time and parts.",
     exampleJobs: ["PC repair", "Laptop servicing", "Virus removal", "Data recovery"],
     keyFeatures: ["Job notes", "Parts tracking", "Time-based invoicing"],
+    blogPage: "/blog/appliance-repair-scheduling-tips-for-australian-technicians",
   },
   {
     icon: Smartphone,
@@ -186,6 +194,7 @@ const categories: IndustryCategory[] = [
       "Schedule mobile phone repair visits or manage a repair queue, track parts inventory, and invoice on completion.",
     exampleJobs: ["Screen replacement", "Battery repair", "Water damage", "Software fixes"],
     keyFeatures: ["Job scheduling", "Parts expense tracking", "On-site invoicing"],
+    blogPage: "/blog/appliance-repair-scheduling-tips-for-australian-technicians",
   },
   {
     icon: Car,
@@ -203,6 +212,7 @@ const categories: IndustryCategory[] = [
       "Visit multiple homes for appliance repairs or installations, record parts used, and invoice before you leave.",
     exampleJobs: ["Appliance repair", "Dishwasher servicing", "Washing machine repair", "Oven installation"],
     keyFeatures: ["Job scheduling", "Parts tracking", "Invoice with line items"],
+    blogPage: "/blog/appliance-repair-scheduling-tips-for-australian-technicians",
   },
   {
     icon: Shield,
@@ -211,6 +221,7 @@ const categories: IndustryCategory[] = [
       "Plan patrol routes or alarm installation schedules, log site visits, and track mileage for tax purposes.",
     exampleJobs: ["Locksmith", "Alarm systems", "CCTV installation", "Access control"],
     keyFeatures: ["Route planning", "GPS logbook", "Job completion records"],
+    blogPage: "/route-planning-for-service-businesses-australia",
   },
   {
     icon: Truck,
@@ -219,6 +230,7 @@ const categories: IndustryCategory[] = [
       "Optimise multi-stop delivery routes, track kilometres, and record proof of delivery with photos.",
     exampleJobs: ["Furniture removals", "Courier services", "Local deliveries", "Freight drops"],
     keyFeatures: ["Multi-stop routing", "Mileage tracking", "Photo proof of delivery"],
+    blogPage: "/route-planning-for-service-businesses-australia",
   },
   {
     icon: Dumbbell,
@@ -227,6 +239,7 @@ const categories: IndustryCategory[] = [
       "Schedule in-home training sessions or mobile therapy visits across town, send ETAs, and invoice after each session.",
     exampleJobs: ["Personal training", "Massage therapy", "Mobile physiotherapy", "Yoga instruction"],
     keyFeatures: ["Client scheduling", "ETA messages", "Session invoicing"],
+    blogPage: "/blog/allied-health-home-visit-scheduling-route-planning-australia",
   },
   {
     icon: Sprout,
@@ -251,6 +264,7 @@ const categories: IndustryCategory[] = [
       "Coordinate setup and pack-down across multiple venues, track hire equipment, and invoice event organisers.",
     exampleJobs: ["Marquee setup", "Sound & lighting", "Event coordination", "AV hire"],
     keyFeatures: ["Multi-venue routing", "Equipment tracking", "Event invoicing"],
+    blogPage: "/route-planning-for-service-businesses-australia",
   },
   {
     icon: Settings,
@@ -259,6 +273,7 @@ const categories: IndustryCategory[] = [
       "DayRoute lets you create your own service categories with custom names. If your industry isn't listed above, you can still use every feature.",
     exampleJobs: ["Any mobile service", "Custom job types", "Your own categories"],
     keyFeatures: ["Custom service types", "Full feature access", "Flexible pricing"],
+    blogPage: "/field-service-workflow-app-for-iphone-australia",
   },
 ];
 
@@ -404,18 +419,14 @@ export default function IndustriesPage() {
                       ))}
                     </ul>
 
-                    {/* CTA row */}
+                    {/* CTA row — every card gets "Learn more" */}
                     <div className="flex items-center gap-2 mt-auto pt-2">
-                      {cat.nichePage ? (
-                        <Button variant="outline" size="sm" asChild className="flex-1">
-                          <Link href={cat.nichePage}>
-                            Learn more
-                            <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
-                          </Link>
-                        </Button>
-                      ) : (
-                        <AppStoreCTA size="sm" variant="outline" className="flex-1" location={`industries-card-${cat.name}`} ctaText="Get DayRoute" />
-                      )}
+                      <Button variant="outline" size="sm" asChild className="flex-1">
+                        <Link href={cat.nichePage || cat.blogPage || "/industries"}>
+                          Learn more
+                          <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
+                        </Link>
+                      </Button>
                     </div>
                   </CardContent>
                 </Card>
