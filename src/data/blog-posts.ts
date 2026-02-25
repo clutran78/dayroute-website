@@ -2006,6 +2006,214 @@ export const blogPosts: BlogPost[] = [
     ],
     tags: ["hot water", "plumbing", "emergency callouts", "scheduling", "installations", "Australia"],
   },
+
+  // =========================================================================
+  // 42. SPECIALIST CLEANING (upholstery, mattress, oven, air duct, grease trap)
+  // =========================================================================
+  {
+    slug: "specialist-cleaning-business-scheduling-australia",
+    title: "Scheduling and Route Planning for Specialist Cleaning Businesses",
+    metaDescription: "How upholstery, mattress, oven, air duct, and grease trap cleaners can plan routes, manage bookings, and invoice in Australia.",
+    publishDate: "2026-03-13",
+    author: "DayRoute Team",
+    category: "Specialist Cleaning",
+    readingTime: "5 min read",
+    excerpt: "Specialist cleaning services — upholstery, mattresses, ovens, air ducts, and grease traps — each have unique scheduling needs but share the same route planning challenges.",
+    sections: [
+      { heading: "What makes specialist cleaning different", content: "Unlike general house cleaning, specialist cleaning services are typically booked as one-off or periodic jobs rather than weekly regulars. An oven clean might be booked every 6-12 months, a mattress clean before allergy season, an air duct clean when moving into a new home. This means your schedule changes more frequently and you need to fill each day with a mix of job types from different clients." },
+      { heading: "Building a multi-service cleaning operation", content: "Many specialist cleaners offer multiple services — upholstery plus mattress cleaning, or oven plus rangehood cleaning. Bundling services increases your average job value and reduces the number of individual bookings you need to fill a day. When a client books an oven clean, offer a rangehood and cooktop deep-clean as an add-on. When doing upholstery, suggest mattress cleaning for the bedrooms.", bullets: ["Upholstery cleaning: $150-300 per lounge suite", "Mattress cleaning: $80-150 per mattress", "Oven cleaning: $120-250 depending on size and condition", "Air duct cleaning: $300-600 per system", "Grease trap cleaning: $200-500 for commercial kitchens"] },
+      { heading: "Route planning for mixed job types", content: "Specialist cleaning jobs vary in duration — an oven clean takes 1-2 hours, a full air duct system takes 3-4 hours, a grease trap clean takes 1-2 hours. Plan your day with the longest job first (when you're freshest) and shorter jobs after. Group by suburb so you're not crossing the city between jobs. If you have a gap between bookings, use it for admin, quotes, or marketing rather than a long drive to a distant job." },
+      { heading: "Before-and-after photos drive repeat business", content: "Specialist cleaning produces dramatic visual results — a grease-caked oven turned sparkling clean, a stained sofa restored to its original colour. Photograph every job. These photos serve three purposes: proof of work quality, social media marketing content, and client records. Tag each photo to the job and client so you can find it later. Clients who see the transformation in their inbox share it with friends." },
+    ],
+    relatedPages: [
+      { label: "Cleaning business app", href: "/cleaning-business-scheduling-invoicing-app-australia" },
+      { label: "Before & after photos", href: "/before-after-photos-for-service-jobs" },
+      { label: "Route planning", href: "/route-planning-for-service-businesses-australia" },
+    ],
+    tags: ["upholstery cleaning", "mattress cleaning", "oven cleaning", "air duct cleaning", "grease trap", "specialist cleaning", "Australia"],
+  },
+
+  // =========================================================================
+  // 43. MOBILE VEHICLE SERVICES (car wash, boat detailing, caravan)
+  // =========================================================================
+  {
+    slug: "mobile-vehicle-services-scheduling-route-planning-australia",
+    title: "Scheduling for Mobile Car Wash, Boat Detailing & Caravan Services",
+    metaDescription: "Route planning and scheduling for mobile car wash, boat detailing, and caravan servicing businesses in Australia.",
+    publishDate: "2026-03-13",
+    author: "DayRoute Team",
+    category: "Mobile Vehicle Services",
+    readingTime: "4 min read",
+    excerpt: "Mobile vehicle services — car washing, boat detailing, and caravan cleaning — are route-dependent businesses. Here's how to plan your day for maximum efficiency.",
+    sections: [
+      { heading: "Planning routes for vehicle services", content: "Whether you're washing cars in driveways, detailing boats at marinas, or cleaning caravans in storage yards, your day is defined by locations. A mobile car wash operator might hit 8-10 vehicles per day across suburbs. A boat detailer might visit 2-3 marinas. A caravan cleaner might visit a storage facility with 5 vans to clean. Group by location type and area to minimise drive time between jobs." },
+      { heading: "Managing different vehicle types", content: "Each vehicle type has different service times and pricing. A basic car wash takes 30-45 minutes. A full boat detail takes 3-4 hours. A caravan exterior wash takes 1-2 hours. Store vehicle details (make, model, size) against each client profile so you can plan realistic schedules. Don't book 10 full details in a day when you can realistically do 5.", bullets: ["Mobile car wash: 8-12 vehicles/day (basic), 4-6 (full detail)", "Boat detailing: 2-3 boats/day depending on size", "Caravan cleaning: 3-5 vans/day for exterior wash", "Fleet work: half-day or full-day blocks at one location"] },
+      { heading: "Recurring bookings and fleet contracts", content: "The most profitable mobile vehicle services have a base of recurring clients. Offer monthly wash packages for cars, quarterly details for boats, and pre-trip cleans for caravans. Fleet contracts with businesses, dealerships, or caravan parks provide steady weekly income. A mix of 60% recurring and 40% one-off gives you predictable cash flow with room for premium jobs." },
+      { heading: "Weather and seasonal planning", content: "Vehicle services are weather-sensitive — nobody wants a car washed in heavy rain. Check the forecast each evening and plan accordingly. Summer is peak for boat detailing and caravan cleaning. Winter slows car wash demand but increases interior detailing requests. Adjust your marketing and scheduling to match seasonal patterns." },
+    ],
+    relatedPages: [
+      { label: "Mobile detailing app", href: "/mobile-detailing-route-invoicing-app-australia" },
+      { label: "Route planning", href: "/route-planning-for-service-businesses-australia" },
+      { label: "Mobile invoicing", href: "/mobile-invoicing-after-job-completion-iphone" },
+    ],
+    tags: ["mobile car wash", "boat detailing", "caravan servicing", "vehicle services", "route planning", "Australia"],
+  },
+
+  // =========================================================================
+  // 44. INSTALLATION SERVICES (solar, antenna, roller door, glazier)
+  // =========================================================================
+  {
+    slug: "installation-services-scheduling-job-management-australia",
+    title: "Scheduling for Installation Services: Solar, Antenna, Glazier & More",
+    metaDescription: "Job scheduling tips for Australian solar installers, antenna technicians, glaziers, roller door repairers, and other installation services.",
+    publishDate: "2026-03-14",
+    author: "DayRoute Team",
+    category: "Installation Services",
+    readingTime: "5 min read",
+    excerpt: "Installation services share common scheduling challenges: site visits for quoting, ordering parts, scheduling the install day, and follow-up. Here's how to manage the workflow.",
+    sections: [
+      { heading: "The quote-to-install pipeline", content: "Installation businesses (solar panels, antennas, roller doors, glass, security systems) follow a similar workflow: enquiry → site visit → quote → acceptance → parts ordering → installation → invoicing. Managing this pipeline across multiple clients at different stages is the core challenge. Track which quotes are pending, which have been accepted, which are waiting on parts, and which are scheduled for install." },
+      { heading: "Site visits and quoting", content: "Most installation work requires a site visit before quoting. Group site visits by area — do 4-5 assessments in one suburb in a morning, then spend the afternoon preparing quotes. Record measurements, photos, and notes at each site so you can write accurate quotes without returning. Set follow-up reminders so accepted quotes don't get forgotten.", bullets: ["Solar installation: assess roof angle, shading, switchboard capacity", "Antenna: check signal strength, mounting options, cable runs", "Glazier: measure openings, glass type, frame condition", "Roller doors: measure opening, check power supply, spring type", "Security systems: assess entry points, sensor placement, wiring paths"] },
+      { heading: "Parts ordering and installation scheduling", content: "Once a quote is accepted, parts need to be ordered before the install can be scheduled. Track which orders have been placed, expected delivery dates, and when the install can be booked. Don't schedule the installation until parts are confirmed — a cancelled install wastes a full day and frustrates the client. Block the full install duration in your calendar so you don't double-book." },
+      { heading: "Invoicing for installations", content: "Installation invoices typically include significant material costs plus labour. Itemise materials separately so the client can see the breakdown. For warranty purposes, record serial numbers and product details against the job. Send the invoice the day you complete the installation — not a week later. Prompt invoicing with a clear breakdown builds client confidence in your professionalism." },
+    ],
+    relatedPages: [
+      { label: "Route planning", href: "/route-planning-for-service-businesses-australia" },
+      { label: "Mobile invoicing", href: "/mobile-invoicing-after-job-completion-iphone" },
+      { label: "Mileage logbook", href: "/mileage-logbook-receipts-for-service-businesses-australia" },
+    ],
+    tags: ["solar installation", "antenna", "glazier", "roller door", "installation services", "scheduling", "Australia"],
+  },
+
+  // =========================================================================
+  // 45. INDUSTRIAL & SITE SERVICES (demolition, asbestos, scaffolding, welding, fire protection)
+  // =========================================================================
+  {
+    slug: "industrial-site-services-job-scheduling-australia",
+    title: "Job Scheduling for Industrial & Site Services in Australia",
+    metaDescription: "Scheduling and job management for demolition, asbestos removal, scaffolding, mobile welding, and fire protection services in Australia.",
+    publishDate: "2026-03-14",
+    author: "DayRoute Team",
+    category: "Industrial Services",
+    readingTime: "5 min read",
+    excerpt: "Industrial and site services — demolition, asbestos removal, scaffolding, welding, and fire protection — involve complex logistics, strict compliance, and multi-day projects.",
+    sections: [
+      { heading: "Multi-day project scheduling", content: "Industrial jobs rarely finish in a day. A demolition project might span a week, scaffolding setup could be 2-3 days, asbestos removal requires careful staging over multiple days. Block the full project duration in your schedule upfront. If a project finishes early, you have bonus capacity. If it runs over, you haven't double-booked the next client. Plan smaller jobs (inspections, quotes, minor repairs) around the edges of big projects." },
+      { heading: "Compliance and documentation", content: "Industrial services are heavily regulated. Asbestos removal requires licensed assessors, air monitoring, and disposal certificates. Demolition needs council permits and environmental assessments. Scaffolding must comply with Australian Standards. Fire protection services require compliance certificates.", bullets: ["Record permit numbers, licence details, and inspection results per job", "Photograph site conditions before, during, and after work", "Store compliance documents against the job record for audit trails", "Set reminders for certification renewals and follow-up inspections"] },
+      { heading: "Crew and equipment logistics", content: "Industrial work often involves crews of 2-6 people and heavy equipment. Plan which crew members are assigned to which site each day. Track equipment allocation — if the excavator is at the demolition site, it can't also be at the earthworks job. Managing multiple crews across multiple sites requires a scheduling system that shows who is where and what equipment is committed." },
+      { heading: "Invoicing for large projects", content: "Industrial projects often invoice in stages — deposit, progress payments, and final completion. Track which stages have been invoiced and which payments have been received. For cost-plus contracts, accurately recording materials, equipment hire, and labour hours is essential. A digital record of every expense, receipt, and timesheet makes end-of-project reconciliation straightforward." },
+    ],
+    relatedPages: [
+      { label: "Route planning", href: "/route-planning-for-service-businesses-australia" },
+      { label: "Mileage logbook", href: "/mileage-logbook-receipts-for-service-businesses-australia" },
+      { label: "Before & after photos", href: "/before-after-photos-for-service-jobs" },
+    ],
+    tags: ["demolition", "asbestos removal", "scaffolding", "mobile welding", "fire protection", "industrial services", "Australia"],
+  },
+
+  // =========================================================================
+  // 46. WASTE & ENVIRONMENTAL SERVICES (skip bin, septic tank, grease trap)
+  // =========================================================================
+  {
+    slug: "waste-environmental-services-scheduling-australia",
+    title: "Scheduling for Waste & Environmental Services in Australia",
+    metaDescription: "Route planning and scheduling for skip bin, septic tank, and waste removal services in Australia.",
+    publishDate: "2026-03-15",
+    author: "DayRoute Team",
+    category: "Waste Services",
+    readingTime: "4 min read",
+    excerpt: "Waste and environmental services — skip bins, septic tanks, and specialist waste removal — run on tight schedules and geographic efficiency.",
+    sections: [
+      { heading: "Route planning for waste collection", content: "Waste services are fundamentally route businesses. A skip bin operator delivers and collects bins across a wide area every day. A septic tank pumper visits 3-5 properties per day across regional areas. The order you visit sites directly impacts your fuel costs and how many jobs you can fit in. Plan routes by area and time — deliveries in the morning, collections in the afternoon. Regional operators benefit the most from route optimisation because distances between jobs are larger." },
+      { heading: "Scheduling recurring services", content: "Septic tank pumping is typically every 3-5 years per property, but commercial grease traps need cleaning monthly or quarterly. Track when each client is due and send reminders before the service date. Pre-booking recurring services fills your schedule with predictable work and prevents emergency callouts from clients who forgot their tank was overdue." },
+      { heading: "Compliance and environmental records", content: "Waste disposal is regulated. Septic waste must go to licensed treatment facilities. Skip bins have weight limits and prohibited materials. Grease trap waste requires proper disposal documentation. Record disposal locations, volumes, and dates per job. A digital compliance trail protects you during environmental audits and helps you demonstrate responsible waste handling to clients and regulators." },
+      { heading: "Vehicle tracking for fleet management", content: "Waste service vehicles are expensive to run — large trucks with high fuel consumption. Tracking vehicle mileage, fuel costs, and maintenance schedules per vehicle ensures you know your true operating costs. GPS trip logging shows exactly which routes your drivers are taking and whether they're following the optimised plan or taking detours." },
+    ],
+    relatedPages: [
+      { label: "Route planning", href: "/route-planning-for-service-businesses-australia" },
+      { label: "Mileage logbook", href: "/mileage-logbook-receipts-for-service-businesses-australia" },
+      { label: "All industries", href: "/industries" },
+    ],
+    tags: ["skip bin", "septic tank", "waste removal", "grease trap", "route planning", "environmental services", "Australia"],
+  },
+
+  // =========================================================================
+  // 47. MOBILE EDUCATION & CREATIVE SERVICES (tutoring, music, photography, drone, signage)
+  // =========================================================================
+  {
+    slug: "mobile-education-creative-services-scheduling-australia",
+    title: "Scheduling for Mobile Educators, Photographers & Creative Services",
+    metaDescription: "Route planning for tutors, music teachers, photographers, drone operators, and signage businesses visiting clients across Australia.",
+    publishDate: "2026-03-15",
+    author: "DayRoute Team",
+    category: "Education & Creative",
+    readingTime: "5 min read",
+    excerpt: "Mobile tutors, music teachers, photographers, drone operators, and signage professionals all visit clients at their locations. Here's how to manage a schedule across multiple suburbs.",
+    sections: [
+      { heading: "Scheduling for mobile educators", content: "Mobile tutors and music teachers visit students at their homes — typically after school hours (3-7 pm) and weekends. This compressed schedule means every minute of travel time cuts into your earning window. Group students by suburb and assign each suburb to a specific day. A tutor with 5 students in the same suburb can see all of them in one afternoon with minimal driving between sessions." },
+      { heading: "Planning photo shoots and creative projects", content: "Photographers, drone operators, and signage professionals often work across multiple locations in a day — a morning real estate shoot, an afternoon corporate headshot session, an evening event. Each location has different setup requirements and time constraints. Plan your day with the most complex setup first and simpler jobs later. Factor in equipment loading and travel time between locations.", bullets: ["Real estate photography: 30-60 minutes per property", "Drone surveys: 1-2 hours per site including setup", "Signage installation: 1-4 hours depending on size", "Event photography: block 3-6 hours including travel"] },
+      { heading: "Building recurring bookings", content: "The most successful mobile educators and creative professionals have a base of recurring clients. Tutors see the same students weekly. Music teachers have regular lesson schedules. Real estate photographers build relationships with agents who list properties every week. Signage companies maintain contracts with businesses that update their displays seasonally. Recurring work provides predictable income and tight, efficient routes." },
+      { heading: "Invoicing for varied services", content: "Creative and education services often have complex pricing — hourly rates for tutoring, per-property rates for photography, project-based pricing for signage. Set up default pricing per service type so invoicing is fast. For recurring students or clients, the invoice is the same amount each visit. For project work, itemise materials, travel, and creative time separately. Send invoices the same day — prompt billing looks professional and speeds up payment." },
+    ],
+    relatedPages: [
+      { label: "Route planning", href: "/route-planning-for-service-businesses-australia" },
+      { label: "Mobile invoicing", href: "/mobile-invoicing-after-job-completion-iphone" },
+      { label: "All industries", href: "/industries" },
+    ],
+    tags: ["tutoring", "music lessons", "photography", "drone services", "signage", "education", "creative services", "Australia"],
+  },
+
+  // =========================================================================
+  // 48. PROPERTY INSPECTION & SURVEYING (building inspection, surveying, gas fitting)
+  // =========================================================================
+  {
+    slug: "property-inspection-surveying-scheduling-australia",
+    title: "Scheduling for Building Inspectors, Surveyors & Gas Fitters",
+    metaDescription: "Route planning and scheduling for building inspectors, surveyors, and gas fitters visiting multiple properties across Australia.",
+    publishDate: "2026-03-16",
+    author: "DayRoute Team",
+    category: "Inspections & Surveying",
+    readingTime: "4 min read",
+    excerpt: "Building inspectors, surveyors, and gas fitters visit multiple properties daily — often under tight deadlines. Efficient scheduling and accurate reporting are essential.",
+    sections: [
+      { heading: "High-volume inspection scheduling", content: "Building inspectors might do 3-5 inspections per day during busy periods (pre-auction season, settlement deadlines). Each inspection takes 1-3 hours depending on property size. Surveyors visit 2-4 sites per day. Gas fitters might handle 4-6 compliance checks. With tight time windows (inspections often need to happen before settlement), scheduling accuracy is critical — being late can delay a property sale." },
+      { heading: "Route planning for property visits", content: "Properties are scattered across suburbs. A building inspector might inspect a unit in the CBD, a house in the eastern suburbs, and a townhouse in the west — all in one day. Planning the route between inspections minimises drive time and ensures you arrive on time for each appointment. Factor in parking time (especially in the CBD) and the possibility of inspections running over when issues are found." },
+      { heading: "Reporting and documentation", content: "Inspections and surveys produce detailed reports. Building inspectors document defects with photos and descriptions. Surveyors record measurements and boundary details. Gas fitters complete compliance certificates. Attaching photos, notes, and findings to each job record creates a complete audit trail. If a client calls months later with a question, you can pull up the full inspection record instantly." },
+      { heading: "Invoicing and payment terms", content: "Inspection services are typically invoiced per inspection with payment due on completion or within 7 days. Gas fitting compliance certificates are often invoiced with the repair or installation work. Set standard pricing per inspection type so invoices are generated quickly. For building inspections, the invoice often needs to be sent immediately after the inspection — buyers and agents expect fast turnaround on both the report and the bill." },
+    ],
+    relatedPages: [
+      { label: "Route planning", href: "/route-planning-for-service-businesses-australia" },
+      { label: "Mobile invoicing", href: "/mobile-invoicing-after-job-completion-iphone" },
+      { label: "Mileage logbook", href: "/mileage-logbook-receipts-for-service-businesses-australia" },
+    ],
+    tags: ["building inspection", "surveying", "gas fitting", "compliance", "property inspections", "Australia"],
+  },
+
+  // =========================================================================
+  // 49. BICYCLE REPAIR & SMALL EQUIPMENT SERVICES
+  // =========================================================================
+  {
+    slug: "mobile-bicycle-repair-small-equipment-services-australia",
+    title: "Mobile Bicycle Repair & Small Equipment Service Scheduling",
+    metaDescription: "Scheduling and route planning for mobile bicycle repair, small engine servicing, and equipment maintenance businesses in Australia.",
+    publishDate: "2026-03-16",
+    author: "DayRoute Team",
+    category: "Small Equipment Services",
+    readingTime: "4 min read",
+    excerpt: "Mobile bicycle repair, mower servicing, and small equipment maintenance are growing niches. Here's how to build efficient routes and manage bookings.",
+    sections: [
+      { heading: "The mobile repair advantage", content: "Mobile bicycle and equipment repair eliminates the need for a workshop. You go to the customer — their home, office, or worksite. This convenience is what clients pay a premium for. A mobile bike mechanic might service 6-8 bikes per day. A mobile mower mechanic might handle 4-5 services. The key to profitability is keeping your route tight so you spend more time repairing and less time driving." },
+      { heading: "Parts and inventory management", content: "Mobile repair services need to carry common parts in the vehicle. Track which parts you use per job so you know when to restock. For bicycles: inner tubes, brake pads, cables, chain links, and lubricants. For small engines: spark plugs, air filters, fuel filters, and blades. Log parts costs against each job so your invoices accurately reflect materials plus labour." },
+      { heading: "Building a local client base", content: "Mobile repair services thrive on local density. A bicycle mechanic who services 50 bikes in a 5 km radius has a much tighter route than one covering 30 km. Target your marketing locally — letterbox drops, community Facebook groups, local cycling clubs, and partnerships with bike shops that don't do mobile service. Word of mouth spreads fast in cycling communities." },
+      { heading: "Seasonal patterns", content: "Bicycle repairs spike in spring when people dust off their bikes for warmer weather. Mower servicing peaks in spring when lawns start growing. Plan your marketing 4-6 weeks before each season starts. Offer pre-season tune-up packages at a slight discount to fill your schedule before the rush. This ensures you're busy from day one of the season instead of waiting for the phone to ring." },
+    ],
+    relatedPages: [
+      { label: "Route planning", href: "/route-planning-for-service-businesses-australia" },
+      { label: "Mobile invoicing", href: "/mobile-invoicing-after-job-completion-iphone" },
+      { label: "All industries", href: "/industries" },
+    ],
+    tags: ["bicycle repair", "mobile repair", "small equipment", "mower servicing", "route planning", "Australia"],
+  },
 ];
 
 // =============================================================================
