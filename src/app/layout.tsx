@@ -144,11 +144,10 @@ export default function RootLayout({
     },
     sameAs: [
       "https://apps.apple.com/au/app/dayroute/id6757166638",
-      // TODO: Add these once profiles are created:
-      // "https://www.facebook.com/dayroute",
-      // "https://www.instagram.com/dayroute",
-      // "https://www.linkedin.com/company/dayroute",
-      // "https://www.youtube.com/@dayroute",
+      "https://www.facebook.com/profile.php?id=1036987819491182",
+      "https://www.instagram.com/dayroute2026/",
+      "https://www.linkedin.com/company/112463933/",
+      // TODO: Add YouTube once channel is verified
     ],
   };
 
