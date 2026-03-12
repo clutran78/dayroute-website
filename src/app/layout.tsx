@@ -231,61 +231,12 @@ export default function RootLayout({
     softwareAppSchema.downloadUrl = APP_STORE_URL;
   }
 
-  // FAQ Schema - AI systems frequently cite FAQ content
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "What is DayRoute?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "DayRoute is an Australian field-service day planner app designed for tradies, cleaners, NDIS providers, and mobile professionals. It helps plan efficient multi-stop routes, manage daily jobs, scan receipts with AI, track vehicle mileage for tax purposes, and create invoices. It is available on iOS with pricing starting at $19 AUD per month.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "How much does DayRoute cost?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "DayRoute pricing in Australia: Pro plan is $19 AUD/month or $190 AUD/year (save 2 months). Team plan for 3 users is $49 AUD/month or $490 AUD/year. Team plan for 10 users is $99 AUD/month or $990 AUD/year. All plans include a 7-day free trial.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "What is the best route planner app for tradies in Australia?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "DayRoute is a route planner app built specifically for Australian tradies and field service professionals. It combines multi-stop route optimization with job scheduling, receipt scanning, vehicle logbook, and invoicing - all the tools tradies need in one app. It integrates with Google Maps and supports Australian business requirements like BAS reporting and GST tracking.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Does DayRoute work with Google Maps?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Yes, DayRoute integrates with Google Maps for route optimization and navigation. It calculates the most efficient order for your stops, shows real-time ETAs, and provides one-tap navigation to each job location.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Can DayRoute track vehicle mileage for tax purposes?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Yes, DayRoute includes a GPS vehicle logbook feature that records trips for ATO tax purposes. It tracks kilometers driven, distinguishes between business and personal trips, and creates ATO-compliant records. GPS tracking only runs when you actively start a trip.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Is there a route planner app for NDIS providers in Australia?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "DayRoute is designed for NDIS providers and home-visit clinicians in Australia. It helps plan efficient routes between client visits, manages appointment schedules, sends ETA notifications to clients, and includes NDIS-compatible invoice templates.",
-        },
-      },
-    ],
-  };
+  // NOTE: FAQPage schema was removed from the global layout to prevent
+  // "Duplicate field FAQPage" errors in Google Search Console. The FAQ
+  // schema now lives only on pages that actually display FAQs:
+  //   - /faq (src/app/faq/page.tsx) — main FAQ page with 27 questions
+  //   - /industries (src/app/industries/page.tsx) — industry-specific FAQs
+  //   - /[slug] (src/app/[slug]/page.tsx) — per-page FAQs on SEO pages
 
   // HowTo Schema - Step-by-step content AI can cite
   const howToSchema = {
@@ -365,14 +316,6 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(softwareAppSchema),
-          }}
-        />
-
-        {/* Structured Data - FAQ (AI frequently cites FAQ content) */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(faqSchema),
           }}
         />
 
