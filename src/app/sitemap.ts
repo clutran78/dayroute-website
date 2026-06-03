@@ -19,6 +19,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/support",
     "/privacy",
     "/terms",
+    "/contact",
+    "/book-free-setup",
   ];
 
   const coreEntries: MetadataRoute.Sitemap = coreRoutes.map((route) => ({
