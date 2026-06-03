@@ -174,9 +174,9 @@ export default function RootLayout({
       "SMS and iMessage ETA notifications",
     ],
     screenshot: [
-      "https://dayroute.com.au/screenshots/today.png",
-      "https://dayroute.com.au/screenshots/route-map.png",
-      "https://dayroute.com.au/screenshots/invoice.png",
+      "https://dayroute.com.au/marketing/run-the-day-not-the-admin.png",
+      "https://dayroute.com.au/marketing/plan-the-fastest-route.png",
+      "https://dayroute.com.au/marketing/invoice-before-you-leave.png",
     ],
     offers: [
       {

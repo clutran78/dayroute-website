@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/features",
     "/industries",
+    "/compare",
     "/pricing",
     "/use-cases",
     "/blog",
@@ -24,7 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
     changeFrequency: route === "" ? "weekly" : route === "/blog" ? "weekly" : "monthly",
-    priority: route === "" ? 1 : ["/features", "/pricing", "/industries", "/blog"].includes(route) ? 0.9 : 0.8,
+    priority: route === "" ? 1 : ["/features", "/pricing", "/industries", "/compare", "/blog"].includes(route) ? 0.9 : 0.8,
   }));
 
   // Long-tail SEO pages

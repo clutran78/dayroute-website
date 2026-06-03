@@ -31,6 +31,8 @@ import {
 import { Card, CardContent } from "../../components/ui/card";
 import { Button } from "../../components/ui/button";
 import { AppStoreCTA, SetupCTA } from "../../components/app-store-button";
+import { MarketingImage } from "../../components/marketing-image";
+import { marketingImages } from "../../data/marketing-images";
 
 // =============================================================================
 // METADATA
@@ -366,20 +368,36 @@ export default function IndustriesPage() {
         <section className="relative overflow-hidden py-16 sm:py-24">
           <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
           <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl">
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight">
-                DayRoute for service businesses in Australia
-              </h1>
-              <p className="mt-4 sm:mt-6 text-base sm:text-lg text-muted-foreground">
-                DayRoute is a phone-first day planner built for people who spend their workday 
-                on the road — not at a desk. It combines route planning, job scheduling, invoicing, 
-                receipt scanning, and mileage tracking in a single iPhone app. The app ships with 
-                pre-built service categories for 21+ industries, plus a custom option for anything 
-                we haven&apos;t thought of yet.
-              </p>
-              <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
-                <AppStoreCTA size="lg" className="w-full sm:w-auto min-h-[48px]" location="industries-hero" />
-                <SetupCTA size="lg" className="w-full sm:w-auto min-h-[48px]" location="industries-hero" />
+            <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-14">
+              <div className="max-w-3xl flex-1">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight">
+                  DayRoute for service businesses in Australia
+                </h1>
+                <p className="mt-4 sm:mt-6 text-base sm:text-lg text-muted-foreground">
+                  DayRoute is a phone-first day planner built for people who spend their workday
+                  on the road — not at a desk. It combines route planning, job scheduling, invoicing,
+                  receipt scanning, and mileage tracking in a single iPhone app. The app ships with
+                  pre-built service categories for 21+ industries, plus a custom option for anything
+                  we haven&apos;t thought of yet.
+                </p>
+                <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
+                  <AppStoreCTA size="lg" className="w-full sm:w-auto min-h-[48px]" location="industries-hero" />
+                  <SetupCTA size="lg" className="w-full sm:w-auto min-h-[48px]" location="industries-hero" />
+                </div>
+                <p className="mt-4 text-sm text-muted-foreground">
+                  Comparing tools?{" "}
+                  <Link href="/compare" className="text-primary hover:underline font-medium">
+                    See how DayRoute compares
+                  </Link>{" "}
+                  to paper, spreadsheets, and other apps.
+                </p>
+              </div>
+              <div className="flex-1 w-full flex justify-center lg:justify-end">
+                <MarketingImage
+                  src={marketingImages.australianPros}
+                  alt="DayRoute built for Australian field professionals — gardeners, cleaners, tradies and more"
+                  className="max-w-[260px] sm:max-w-[300px]"
+                />
               </div>
             </div>
           </div>

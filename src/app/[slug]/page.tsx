@@ -251,6 +251,14 @@ function FeatureTemplate({ page }: { page: FeatureSeoPage }) {
           </div>
         </section>
 
+        {page.proofStrip && page.proofStrip.length > 0 && (
+          <ProofStrip points={page.proofStrip} />
+        )}
+
+        {page.proofStrip && page.proofStrip.length > 0 && (
+          <MidPageCta slug={page.slug} prefix="feature" />
+        )}
+
         {/* Industry examples */}
         <section className="py-12 sm:py-20 bg-card/50 border-y border-border">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -276,8 +284,15 @@ function FeatureTemplate({ page }: { page: FeatureSeoPage }) {
           </div>
         </section>
 
+        {page.testimonial && <TestimonialSection testimonial={page.testimonial} />}
+
         <FaqSection faqs={page.faqs} />
-        <BottomCta heading="Try DayRoute free for 7 days" slug={page.slug} prefix="feature" />
+        <BottomCta
+          heading={page.bottomCtaHeading ?? "Try DayRoute free for 7 days"}
+          subtext={page.bottomCtaSubtext}
+          slug={page.slug}
+          prefix="feature"
+        />
         <RelatedLinks links={page.relatedLinks} />
       </div>
     </>
@@ -325,6 +340,43 @@ function HeroSection({ h1, intro, slug, prefix }: { h1: string; intro: string; s
   );
 }
 
+function ProofStrip({ points }: { points: { stat: string; label: string }[] }) {
+  return (
+    <section className="py-10 sm:py-14 border-y border-border bg-primary/5">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 text-center">
+          {points.map((point) => (
+            <div key={point.label}>
+              <p className="text-2xl sm:text-3xl font-bold text-primary">{point.stat}</p>
+              <p className="mt-1 text-sm sm:text-base text-muted-foreground">{point.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function MidPageCta({ slug, prefix }: { slug: string; prefix: string }) {
+  return (
+    <section className="py-8 sm:py-10">
+      <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+        <Card className="border-primary/30 bg-card/80">
+          <CardContent className="p-6 sm:p-8 text-center">
+            <p className="text-base sm:text-lg font-medium mb-4">
+              See how it works on your iPhone — 7-day free trial, no credit card required.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+              <AppStoreCTA size="lg" className="w-full sm:w-auto min-h-[48px]" location={`${prefix}-mid-${slug}`} />
+              <SetupCTA size="lg" className="w-full sm:w-auto min-h-[48px]" location={`${prefix}-mid-${slug}`} />
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </section>
+  );
+}
+
 function TestimonialSection({ testimonial }: { testimonial: CategorySeoPage["testimonial"] }) {
   return (
     <section className="py-12 sm:py-20 bg-card/50 border-y border-border">
@@ -364,14 +416,24 @@ function FaqSection({ faqs }: { faqs: { question: string; answer: string }[] }) 
   );
 }
 
-function BottomCta({ heading, slug, prefix }: { heading: string; slug: string; prefix: string }) {
+function BottomCta({
+  heading,
+  subtext,
+  slug,
+  prefix,
+}: {
+  heading: string;
+  subtext?: string;
+  slug: string;
+  prefix: string;
+}) {
   return (
     <section className="py-16 sm:py-24 bg-card/50">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold">{heading}</h2>
           <p className="mt-3 sm:mt-4 text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-            Download DayRoute and start your 7-day free trial. No credit card required.
+            {subtext ?? "Download DayRoute and start your 7-day free trial. No credit card required."}
           </p>
           <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-4 sm:px-0">
             <AppStoreCTA size="lg" className="w-full sm:w-auto min-h-[48px]" location={`${prefix}-bottom-${slug}`} />

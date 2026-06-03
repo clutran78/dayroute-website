@@ -88,6 +88,20 @@ export interface CategorySeoPage extends BaseSeoPage {
   testimonial: { quote: string; name: string; role: string; location: string };
 }
 
+/** Social proof — optional on feature/BOFU pages. */
+export interface SeoTestimonial {
+  quote: string;
+  name: string;
+  role: string;
+  location: string;
+}
+
+/** Fact chip for BOFU proof strip (stat must be defensible). */
+export interface SeoProofPoint {
+  stat: string;
+  label: string;
+}
+
 /** Feature page — targets a problem or workflow (route planning, invoicing, etc.) */
 export interface FeatureSeoPage extends BaseSeoPage {
   pageType: "feature";
@@ -95,6 +109,10 @@ export interface FeatureSeoPage extends BaseSeoPage {
   problem: { heading: string; description: string; bullets: string[] };
   solution: { heading: string; description: string; steps: { title: string; description: string }[] };
   industryExamples: { industry: string; example: string }[];
+  proofStrip?: SeoProofPoint[];
+  testimonial?: SeoTestimonial;
+  bottomCtaHeading?: string;
+  bottomCtaSubtext?: string;
 }
 
 /** Discriminated union — a page is either a category page or a feature page. */
@@ -128,13 +146,16 @@ export type SeoPage = CategorySeoPage | FeatureSeoPage;
 //       route-planning-for-service-businesses-australia
 //       mileage-logbook-receipts-for-service-businesses-australia
 //
-//   Comparison pages (brand-neutral only — never name competitors):
+//   Comparison pages (brand-neutral):
 //     /mobile-field-service-app-vs-{generic-category}
-//     Example:
-//       mobile-field-service-app-vs-desktop-accounting-software
+//
+//   BOFU pages (DayRoute-branded):
+//     /dayroute-vs-{alternative}
+//     /dayroute-vs-{competitor}-solo-operators  (only when explicitly approved)
+//     /best-{topic}-{industry}-australia
 //
 //   IMPORTANT:
-//   - NEVER include competitor brand names in slugs.
+//   - Avoid competitor names in slugs unless explicitly approved (e.g. ServiceM8 BOFU).
 //   - Use Australian English spelling (e.g. "optimisation" not "optimization").
 //   - Keep slugs descriptive but under 80 characters.
 //
@@ -161,6 +182,7 @@ const RESERVED_SLUGS = new Set([
   "contact",
   "api",
   "book-free-setup",
+  "compare",
 ]);
 
 /**
@@ -392,10 +414,10 @@ export const seoPages: SeoPage[] = [
     testimonial: { quote: "I manage 40 regular gardens across three suburbs. DayRoute cut my driving by 45 minutes a day — that's an extra client I can fit in each week.", name: "James", role: "Gardener & Landscaper", location: "Brisbane" },
     relatedLinks: [
       { label: "All features", href: "/features" },
-      { label: "Pricing", href: "/pricing" },
+      { label: "Best route planner for gardeners", href: "/best-route-planner-gardeners-australia" },
+      { label: "DayRoute vs spreadsheet", href: "/dayroute-vs-spreadsheet" },
       { label: "Cleaning business app", href: "/cleaning-business-scheduling-invoicing-app-australia" },
-      { label: "Handyman app", href: "/handyman-job-management-route-invoicing-app-australia" },
-      { label: "Blog: Route planning tips", href: "/blog/how-to-plan-efficient-multi-stop-routes-for-service-businesses" },
+      { label: "Compare options", href: "/compare" },
     ],
   },
 
@@ -428,10 +450,10 @@ export const seoPages: SeoPage[] = [
     testimonial: { quote: "My clients love knowing exactly when I'll arrive. The route planning saves me 30 minutes every day — and I get paid the same afternoon.", name: "Sarah", role: "Cleaning Business Owner", location: "Sydney" },
     relatedLinks: [
       { label: "All features", href: "/features" },
-      { label: "Pricing", href: "/pricing" },
+      { label: "Best scheduling app for cleaners", href: "/best-job-scheduling-app-cleaners-australia" },
+      { label: "DayRoute vs paper diary", href: "/dayroute-vs-paper-diary" },
       { label: "Gardening business app", href: "/gardening-business-scheduling-invoicing-app-australia" },
-      { label: "NDIS support worker app", href: "/ndis-support-worker-route-planner-invoicing-app-australia" },
-      { label: "Blog: Cleaning route planning", href: "/blog/how-to-plan-a-daily-cleaning-route-that-saves-time-and-fuel" },
+      { label: "Compare options", href: "/compare" },
     ],
   },
 
@@ -500,9 +522,10 @@ export const seoPages: SeoPage[] = [
     testimonial: { quote: "I do 6-8 driveways a day across the Gold Coast. DayRoute shaved 40 minutes off my drive time and my invoices go out before I pack up the trailer.", name: "Mick", role: "Pressure Washing Business Owner", location: "Gold Coast" },
     relatedLinks: [
       { label: "All features", href: "/features" },
-      { label: "Pricing", href: "/pricing" },
+      { label: "Best app for pressure washing", href: "/best-app-pressure-washing-businesses-australia" },
+      { label: "DayRoute vs spreadsheet", href: "/dayroute-vs-spreadsheet" },
       { label: "Handyman app", href: "/handyman-job-management-route-invoicing-app-australia" },
-      { label: "Mobile detailing app", href: "/mobile-detailing-route-invoicing-app-australia" },
+      { label: "Compare options", href: "/compare" },
     ],
   },
 
@@ -945,6 +968,486 @@ export const seoPages: SeoPage[] = [
       { label: "Mobile invoicing", href: "/mobile-invoicing-after-job-completion-iphone" },
       { label: "Mileage logbook & receipts", href: "/mileage-logbook-receipts-for-service-businesses-australia" },
       { label: "Mobile vs desktop accounting", href: "/mobile-field-service-app-vs-desktop-accounting-software" },
+    ],
+  },
+
+  // ===========================================================================
+  // BOFU — DayRoute vs alternatives
+  // ===========================================================================
+
+  {
+    pageType: "feature",
+    slug: "dayroute-vs-paper-diary",
+    seoTitle: "DayRoute vs Paper Diary for Service Businesses",
+    metaDescription:
+      "Compare DayRoute to a paper diary for tradies and mobile operators. Routes, ETAs, on-site invoicing, and ATO-ready records — without Sunday-night admin.",
+    h1: "Paper diary vs DayRoute: what actually costs you time",
+    shortName: "vs Paper Diary",
+    breadcrumbParent: { label: "Compare", href: "/compare" },
+    intro:
+      "A paper diary feels simple until you're juggling five suburbs, chasing payments, and rebuilding your week every Sunday night. DayRoute keeps your schedule, routes, invoices, and expenses in one iPhone app — so your day stays organised while you're on the road, not after the kids are in bed.",
+    problem: {
+      heading: "The hidden cost of staying on paper",
+      description:
+        "Paper works until your round grows. Then lost pages, missed visits, and weekend catch-up start eating into profit and family time.",
+      bullets: [
+        "No automatic route order — you drive back and forth across suburbs without realising it",
+        "Invoices wait until the weekend, so clients forget the job and payments slip",
+        "Receipts and fuel notes live in the glovebox — easy to lose before BAS time",
+        "No way to send a reliable ETA when you're running late",
+        "Recurring clients are easy to miss when the diary page gets smudged or torn",
+      ],
+    },
+    solution: {
+      heading: "What changes when your diary is on your phone",
+      description:
+        "DayRoute replaces the parts of a paper diary that break first at scale: scheduling, routing, invoicing, and record-keeping.",
+      steps: [
+        { title: "Plan the day in stop order", description: "Add jobs and let DayRoute suggest the fastest route. One tap opens navigation — no retyping addresses." },
+        { title: "Invoice before you leave the driveway", description: "Mark a job complete and send a professional invoice via SMS or email while you're still on site." },
+        { title: "Store client notes digitally", description: "Access codes, pet details, and preferences sit on the job card — not scribbled in margins." },
+        { title: "Track trips and receipts as you go", description: "GPS logbook entries and AI receipt scanning build an ATO-friendly trail without a shoebox of paper." },
+      ],
+    },
+    industryExamples: [
+      { industry: "Gardening", example: "Run weekly mowing rounds with recurring bookings and optimised stop order instead of flipping diary pages." },
+      { industry: "Cleaning", example: "Send 'On My Way' ETAs and invoice each house before driving to the next suburb." },
+      { industry: "Handyman", example: "Jump between one-off jobs with a clear route and photos attached to each job record." },
+      { industry: "Pest control", example: "Keep treatment notes and next-visit dates on the job — not lost in a notebook." },
+      { industry: "NDIS / home support", example: "Log travel between participants and invoice immediately after each visit." },
+      { industry: "Pressure washing", example: "Fit more driveways per day with grouped suburbs and on-site invoicing." },
+    ],
+    proofStrip: [
+      { stat: "30–60 min", label: "Typical daily driving saved with route planning" },
+      { stat: "7 days", label: "Free Pro trial — no credit card required" },
+      { stat: "$19/mo", label: "Pro plan for solo operators (AUD)" },
+    ],
+    testimonial: {
+      quote: "I used to spend Sunday night typing up invoices. Now they're sent before I leave each job.",
+      name: "Mark",
+      role: "Handyman",
+      location: "Melbourne",
+    },
+    faqs: [
+      { question: "Can I still use a notebook for quick notes?", answer: "Yes. Many operators jot on paper during a job, then capture the important details in DayRoute on the job card. The app becomes your source of truth for scheduling, routes, and money." },
+      { question: "How long does it take to switch from a paper diary?", answer: "Most solo operators add their regular clients and first week's jobs in under 15 minutes. You can import calendar appointments from your iPhone too." },
+      { question: "Is DayRoute hard to use with dirty or wet hands?", answer: "DayRoute is built for field use — large tap targets, quick job completion, and voice-friendly workflows. You don't need a desk to run your day." },
+      { question: "Is it worth switching if I only have 10 regular clients?", answer: "Yes — even a small round benefits from route order, on-site invoicing, and digital records. As you grow, you won't need to rebuild your system later." },
+    ],
+    bottomCtaHeading: "Stop re-typing Sunday night invoices",
+    bottomCtaSubtext: "Download DayRoute, add this week's jobs, and send your first on-site invoice today. 7-day free trial, no credit card.",
+    relatedLinks: [
+      { label: "Compare all options", href: "/compare" },
+      { label: "DayRoute vs spreadsheet", href: "/dayroute-vs-spreadsheet" },
+      { label: "Route planning", href: "/route-planning-for-service-businesses-australia" },
+      { label: "Pricing", href: "/pricing" },
+      { label: "Blog: Multi-stop routes", href: "/blog/how-to-plan-efficient-multi-stop-routes-for-service-businesses" },
+    ],
+  },
+
+  {
+    pageType: "feature",
+    slug: "dayroute-vs-spreadsheet",
+    seoTitle: "DayRoute vs Spreadsheet for Job Scheduling & Routes",
+    metaDescription:
+      "Still scheduling jobs in Excel or Google Sheets? See how DayRoute replaces spreadsheets with routes, ETAs, invoicing, and expenses on your iPhone.",
+    h1: "Spreadsheets vs DayRoute for field service scheduling",
+    shortName: "vs Spreadsheet",
+    breadcrumbParent: { label: "Compare", href: "/compare" },
+    intro:
+      "Spreadsheets are flexible — but they weren't built for a day on the road. Copying addresses into Maps, chasing version conflicts, and bolting on separate apps for invoices and receipts adds 30–60 minutes of admin most days. DayRoute puts schedule, route, invoice, and expenses in one iPhone workflow.",
+    problem: {
+      heading: "Why spreadsheets break down in the van",
+      description:
+        "A spreadsheet tracks data; it doesn't run your workday. Field operators end up duct-taping Maps, email, and camera roll on top.",
+      bullets: [
+        "You manually copy each address into Google Maps or Apple Maps",
+        "No live ETAs for clients when traffic blows out your schedule",
+        "Invoices live in another tab, tool, or Word template",
+        "Receipt photos pile up in your camera roll with no GST breakdown",
+        "One wrong sort order on the sheet means driving past a job you could have hit earlier",
+      ],
+    },
+    solution: {
+      heading: "One app instead of five tabs",
+      description:
+        "DayRoute connects the parts spreadsheets can't — location, timing, and money — in a single mobile workflow.",
+      steps: [
+        { title: "Schedule with a real map view", description: "See jobs, drive times, and stop order together — not as rows you'll reinterpret later." },
+        { title: "Navigate with one tap", description: "Open your preferred maps app from each job without copy-paste errors." },
+        { title: "Invoice from the completed job", description: "Line items and GST fill in automatically. Send before you start the engine." },
+        { title: "Export BAS-ready summaries", description: "Income, expenses, and GST totals export for your accountant — no re-keying spreadsheet totals." },
+      ],
+    },
+    industryExamples: [
+      { industry: "Cleaning", example: "Replace the daily sheet with optimised cleans, client access notes, and same-day invoices." },
+      { industry: "Gardening", example: "Manage recurring fortnightly mows without maintaining a fragile master spreadsheet." },
+      { industry: "Mobile detailing", example: "Cluster bookings by suburb and track product costs per job." },
+      { industry: "HVAC", example: "Log parts and trips per service call instead of a shared workbook." },
+      { industry: "Pest control", example: "Attach treatment records and photos to jobs — not separate folders." },
+      { industry: "Pool service", example: "Track chemical costs and visit notes per property in one place." },
+    ],
+    proofStrip: [
+      { stat: "1 app", label: "Schedule, route, invoice, and expenses" },
+      { stat: "<10 min", label: "Typical setup for solo operators" },
+      { stat: "7 days", label: "Free trial on Pro features" },
+    ],
+    testimonial: {
+      quote: "My clients love knowing exactly when I'll arrive. The route planning saves me 30 minutes every day.",
+      name: "Sarah",
+      role: "Cleaning Business Owner",
+      location: "Sydney",
+    },
+    faqs: [
+      { question: "Can I export data if I want a spreadsheet for my accountant?", answer: "Yes. DayRoute produces income, expense, and GST summaries you can share. Your accountant can still use Excel or their platform — you just stop maintaining the day-to-day sheet yourself." },
+      { question: "I already have client lists in Google Sheets — do I start again?", answer: "You'll re-enter active clients once (usually a few minutes per client). Many operators do it over a quiet evening rather than mid-season." },
+      { question: "Does DayRoute work if my partner also schedules jobs?", answer: "The Team plan supports shared scheduling for small crews. Solo operators use Pro; growing teams can add users when needed." },
+      { question: "Is a spreadsheet cheaper than DayRoute?", answer: "The sheet itself is free — your time isn't. If you spend even 30 minutes a day on admin, the cost of that time usually exceeds DayRoute Pro at $19 AUD/month." },
+    ],
+    bottomCtaHeading: "Replace your patchwork of tabs",
+    bottomCtaSubtext: "Try DayRoute free for 7 days. Plan tomorrow's jobs, optimise the route, and invoice on the spot.",
+    relatedLinks: [
+      { label: "Compare all options", href: "/compare" },
+      { label: "DayRoute vs paper diary", href: "/dayroute-vs-paper-diary" },
+      { label: "Field service workflow app", href: "/field-service-workflow-app-for-iphone-australia" },
+      { label: "Pricing", href: "/pricing" },
+      { label: "Blog: Cleaning routes", href: "/blog/how-to-plan-a-daily-cleaning-route-that-saves-time-and-fuel" },
+    ],
+  },
+
+  {
+    pageType: "feature",
+    slug: "dayroute-vs-servicem8-solo-operators",
+    seoTitle: "DayRoute vs ServiceM8 for Solo Operators Australia",
+    metaDescription:
+      "Fair comparison: ServiceM8 vs DayRoute for solo tradies and mobile operators. When each fits, pricing context, and route-first iPhone workflow.",
+    h1: "DayRoute vs ServiceM8: which fits a solo operator?",
+    shortName: "vs ServiceM8",
+    breadcrumbParent: { label: "Compare", href: "/compare" },
+    intro:
+      "ServiceM8 is a capable field service platform used by thousands of Australian businesses — especially teams that need job cards, quoting, and office-based workflows. DayRoute is built for a different moment: a solo operator on an iPhone who needs route planning, scheduling, invoicing, and expenses without enterprise setup. This page explains when each makes sense — honestly.",
+    problem: {
+      heading: "When a full FSM platform is more than you need",
+      description:
+        "Solo operators often adopt team-scale software and then use a fraction of it — while still lacking a route-first daily view on the phone.",
+      bullets: [
+        "Per-seat pricing adds up before you've hired your first employee",
+        "Setup and configuration can take longer than a solo week allows",
+        "Route planning and 'what's my day look like on the map' may not be the centrepiece",
+        "You may still need your phone, maps, and receipts workflows alongside the platform",
+        "If you're one person in a van, complexity slows you down instead of helping",
+      ],
+    },
+    solution: {
+      heading: "Where DayRoute fits solo operators",
+      description:
+        "DayRoute is a mobile-first day planner — not a replacement for every ServiceM8 workflow. It's the iPhone-native option when routes and same-day admin are the bottleneck.",
+      steps: [
+        { title: "Route-first daily planning", description: "Optimise stop order, see drive times, and navigate job to job — designed around how solo operators actually spend the day." },
+        { title: "Fast on-site invoicing", description: "Complete a job and send an invoice in seconds from your phone — no office session required." },
+        { title: "Simple solo pricing", description: "DayRoute Pro starts at $19 AUD/month with a 7-day free trial — built for one person, not a seat calculator." },
+        { title: "Logbook and receipts included", description: "GPS trip tracking and AI receipt scanning support BAS-ready records without bolting on extra tools." },
+      ],
+    },
+    industryExamples: [
+      { industry: "Solo handyman", example: "Use DayRoute to run the day; export summaries for your bookkeeper at BAS time." },
+      { industry: "Cleaner (solo)", example: "Daily route, ETAs, and instant invoices without configuring a team dispatch board." },
+      { industry: "Gardener (solo)", example: "Recurring rounds and suburb clustering without a desktop-first setup." },
+      { industry: "Pressure washing", example: "High-volume routing and on-site invoices from one iPhone app." },
+      { industry: "Small team (2–3)", example: "Consider ServiceM8 or DayRoute Team depending on dispatch needs — see pricing for both." },
+      { industry: "Growing company (5+)", example: "ServiceM8's team workflows and integrations may be the better long-term fit." },
+    ],
+    proofStrip: [
+      { stat: "$19/mo", label: "DayRoute Pro for solos (AUD)" },
+      { stat: "iPhone", label: "Native app — built for the road" },
+      { stat: "7 days", label: "Free trial — try before you commit" },
+    ],
+    faqs: [
+      { question: "When is ServiceM8 the better choice?", answer: "If you run a growing team, need deep job-card workflows, heavy quoting, or integrations with accounting and suppliers at scale, ServiceM8 is built for that world. Check their current plans on servicem8.com for team pricing and features." },
+      { question: "When is DayRoute the better choice?", answer: "If you're solo (or a very small crew), live on your iPhone, and want route planning, scheduling, invoicing, and expenses in one simple app — DayRoute is designed for that daily workflow." },
+      { question: "Can I use both?", answer: "Some operators use DayRoute for daily routes and on-site admin, then hand structured summaries to a bookkeeper using another platform. They complement different parts of the business." },
+      { question: "Is switching worth it if I'm already on ServiceM8?", answer: "Only if your pain is daily routing and mobile simplicity, not team dispatch. Try DayRoute's 7-day trial on a busy week and compare how much driving and evening admin you save." },
+    ],
+    bottomCtaHeading: "Solo on the road? Try the route-first option",
+    bottomCtaSubtext: "Download DayRoute and run one real week — 7-day free trial, no credit card. Compare how your day feels.",
+    relatedLinks: [
+      { label: "Compare all options", href: "/compare" },
+      { label: "DayRoute vs spreadsheet", href: "/dayroute-vs-spreadsheet" },
+      { label: "Field service workflow", href: "/field-service-workflow-app-for-iphone-australia" },
+      { label: "Pricing", href: "/pricing" },
+      { label: "Mobile vs desktop accounting", href: "/mobile-field-service-app-vs-desktop-accounting-software" },
+    ],
+  },
+
+  // ===========================================================================
+  // BOFU — "Best app" pages (criteria-first)
+  // ===========================================================================
+
+  {
+    pageType: "feature",
+    slug: "best-route-planner-gardeners-australia",
+    seoTitle: "Best Route Planner for Gardeners Australia (2026 Guide)",
+    metaDescription:
+      "What to look for in a route planner for Australian gardeners: recurring rounds, suburb clustering, and less driving. How DayRoute fits each criterion.",
+    h1: "Best route planner for gardeners in Australia",
+    shortName: "Best Gardener Routes",
+    breadcrumbParent: { label: "Compare", href: "/compare" },
+    intro:
+      "The best route planner for a gardening business isn't the one with the most features — it's the one that respects how you actually work: recurring fortnightly mows, tight suburbs, and limited hours of daylight. Use this checklist to evaluate any app, then see how DayRoute maps to each point.",
+    problem: {
+      heading: "What to look for (evaluation checklist)",
+      description:
+        "Before you download anything, score each app against these criteria — they're what separate profitable rounds from wasted fuel.",
+      bullets: [
+        "Recurring jobs (weekly / fortnightly / monthly) without manual re-entry each week",
+        "Multi-stop optimisation that respects your time windows, not just distance",
+        "Suburb clustering so new clients slot into the right day, not the first gap",
+        "One-tap navigation to each property without copying addresses",
+        "On-site invoicing so you're not quoting admin hours every Sunday night",
+      ],
+    },
+    solution: {
+      heading: "How DayRoute meets each criterion",
+      description:
+        "DayRoute is built for Australian mobile service businesses — gardeners included — with route planning as the core of the day view.",
+      steps: [
+        { title: "Recurring bookings built in", description: "Set fortnightly mows and seasonal clean-ups once; jobs regenerate on your schedule." },
+        { title: "Optimised stop order", description: "Drop in today's properties and get a sensible drive sequence — less backtracking between suburbs." },
+        { title: "Geographic discipline", description: "When a new enquiry comes in, slot them on the day you already cover their area." },
+        { title: "Navigate and invoice on site", description: "Open Maps from the job card; send the invoice before you start the mower at the next house." },
+      ],
+    },
+    industryExamples: [
+      { industry: "Lawn mowing rounds", example: "Run 30–40 regulars across three suburbs with a tighter route each season." },
+      { industry: "Hedge & garden maintenance", example: "Attach before/after photos and notes per property for repeat visits." },
+      { industry: "Landscaping (small crew)", example: "Team plan shares the day's schedule when you add a second operator." },
+      { industry: "One-off clean-ups", example: "Drop callouts into the optimised day without rebuilding the whole week." },
+      { industry: "Commercial gardens", example: "Fixed-price jobs invoice immediately after completion." },
+      { industry: "Solo operator", example: "Pro plan from $19 AUD/month with 7-day free trial." },
+    ],
+    proofStrip: [
+      { stat: "45 min", label: "Driving time saved daily (example gardener, Brisbane)" },
+      { stat: "Recurring", label: "Weekly, fortnightly, monthly bookings" },
+      { stat: "7 days", label: "Free trial" },
+    ],
+    testimonial: {
+      quote: "I manage 40 regular gardens across three suburbs. DayRoute cut my driving by 45 minutes a day — that's an extra client I can fit in each week.",
+      name: "James",
+      role: "Gardener & Landscaper",
+      location: "Brisbane",
+    },
+    faqs: [
+      { question: "Is Google Maps enough for gardening routes?", answer: "Maps navigates one address at a time — it doesn't optimise your full day or store recurring clients. Most gardeners outgrow Maps once they pass 15–20 regular properties." },
+      { question: "Does DayRoute handle one-off jobs as well as recurring?", answer: "Yes. Mix recurring maintenance and one-off clean-ups on the same day; the route recalculates when you add or move jobs." },
+      { question: "Can I track mulch and fuel expenses?", answer: "Yes. Snap receipts with the AI scanner — merchant, GST, and totals are captured for BAS reporting." },
+      { question: "How does DayRoute compare to a full gardening CRM?", answer: "DayRoute focuses on your daily run: routes, jobs, invoices, and expenses. If you need heavy CRM pipelines, pair DayRoute with your accountant's tools or evaluate a larger platform." },
+    ],
+    bottomCtaHeading: "Fit one more garden per week",
+    bottomCtaSubtext: "Plan tomorrow's round in minutes. 7-day free trial on iPhone — no credit card.",
+    relatedLinks: [
+      { label: "DayRoute for gardeners", href: "/gardening-business-scheduling-invoicing-app-australia" },
+      { label: "Compare options", href: "/compare" },
+      { label: "Route planning feature", href: "/route-planning-for-service-businesses-australia" },
+      { label: "Blog: Gardening quotes", href: "/blog/how-to-quote-gardening-jobs-in-australia" },
+      { label: "Pricing", href: "/pricing" },
+    ],
+  },
+
+  {
+    pageType: "feature",
+    slug: "best-job-scheduling-app-cleaners-australia",
+    seoTitle: "Best Job Scheduling App for Cleaners Australia",
+    metaDescription:
+      "Choose a scheduling app for Australian cleaners: ETAs, access codes, recurring cleans, and routes. Criteria checklist plus how DayRoute fits.",
+    h1: "Best job scheduling app for cleaners in Australia",
+    shortName: "Best Cleaner Scheduling",
+    breadcrumbParent: { label: "Compare", href: "/compare" },
+    intro:
+      "Cleaners don't need the flashiest software — they need reliable arrival times, client notes at the door, and invoices sent before the next house. Here's an honest checklist for Australian cleaning businesses, and where DayRoute fits if you're comparing apps.",
+    problem: {
+      heading: "What matters most for cleaning schedules",
+      description:
+        "Cleaning is high-frequency and location-heavy. The wrong app costs you 'where are you?' texts and evening invoice chasing.",
+      bullets: [
+        "Accurate ETAs and easy 'On My Way' messages when traffic shifts your day",
+        "Secure storage of access codes, alarms, pets, and product preferences per client",
+        "Recurring weekly or fortnightly cleans without double-booking",
+        "Route order that minimises driving between suburbs",
+        "Instant invoicing (hourly or fixed) when you finish each property",
+      ],
+    },
+    solution: {
+      heading: "How DayRoute scores on each point",
+      description:
+        "DayRoute treats scheduling and routing as one workflow — because for cleaners, they're the same problem.",
+      steps: [
+        { title: "One-tap ETAs", description: "Send an SMS or iMessage with your estimated arrival based on live traffic — fewer anxious clients." },
+        { title: "Client notes on the job card", description: "Lock codes and instructions are visible before you walk in — not buried in texts." },
+        { title: "Recurring clean schedules", description: "Weekly and fortnightly jobs regenerate automatically on your calendar." },
+        { title: "Optimised daily route", description: "Sequence houses by proximity so you clean more and drive less." },
+      ],
+    },
+    industryExamples: [
+      { industry: "Residential house cleaning", example: "Run 4–6 homes per day with ETAs and same-day payment requests." },
+      { industry: "End-of-lease cleans", example: "Drop one-off jobs into the optimised route between regulars." },
+      { industry: "Commercial offices", example: "Fixed-price invoicing immediately after each site." },
+      { industry: "Holiday rentals", example: "Tight turnarounds with reliable arrival windows for property managers." },
+      { industry: "Small cleaning team", example: "Team plan for shared schedules when you hire your first helper." },
+      { industry: "Solo cleaner", example: "Pro from $19 AUD/month — 7-day free trial." },
+    ],
+    proofStrip: [
+      { stat: "30 min", label: "Daily driving saved (example cleaner, Sydney)" },
+      { stat: "On My Way", label: "One-tap ETA messages" },
+      { stat: "Same day", label: "Invoice before you leave the street" },
+    ],
+    testimonial: {
+      quote: "My clients love knowing exactly when I'll arrive. The route planning saves me 30 minutes every day — and I get paid the same afternoon.",
+      name: "Sarah",
+      role: "Cleaning Business Owner",
+      location: "Sydney",
+    },
+    faqs: [
+      { question: "Can DayRoute do hourly and flat-rate cleans?", answer: "Yes. Set pricing per client. When you complete the job, the amount calculates automatically on the invoice." },
+      { question: "What if a client cancels mid-day?", answer: "Remove or reschedule the job and re-optimise the route — the rest of your day adjusts." },
+      { question: "Do I need a separate app for routes?", answer: "No. Scheduling, route order, navigation, and invoicing live in DayRoute — you don't need a second routing tool." },
+      { question: "Is this overkill for a part-time cleaner?", answer: "If you clean more than a couple of homes per day, organised routes and instant invoices usually pay for the app within the first week." },
+    ],
+    bottomCtaHeading: "Fewer 'where are you?' texts",
+    bottomCtaSubtext: "Try DayRoute free for 7 days. Set up recurring cleans and send your first ETA tomorrow.",
+    relatedLinks: [
+      { label: "DayRoute for cleaners", href: "/cleaning-business-scheduling-invoicing-app-australia" },
+      { label: "Compare options", href: "/compare" },
+      { label: "DayRoute vs spreadsheet", href: "/dayroute-vs-spreadsheet" },
+      { label: "Blog: Cleaning routes", href: "/blog/how-to-plan-a-daily-cleaning-route-that-saves-time-and-fuel" },
+      { label: "Pricing", href: "/pricing" },
+    ],
+  },
+
+  {
+    pageType: "feature",
+    slug: "best-app-pressure-washing-businesses-australia",
+    seoTitle: "Best App for Pressure Washing Businesses Australia",
+    metaDescription:
+      "Best app criteria for Australian pressure washing: routing, on-site invoices, chemical costs. Compare features honestly and see how DayRoute fits.",
+    h1: "Best app for pressure washing businesses in Australia",
+    shortName: "Best Pressure Washing App",
+    breadcrumbParent: { label: "Compare", href: "/compare" },
+    intro:
+      "Pressure washing is volume-driven — more jobs per day means more profit. The best app helps you cluster suburbs, track chemical and fuel costs, and invoice while the driveway is still wet. Use this guide to evaluate options in Australia, then see how DayRoute lines up.",
+    problem: {
+      heading: "What pressure washers should demand from an app",
+      description:
+        "Generic calendars don't understand driveways, seasonal rushes, or chemical receipts scattered across the ute.",
+      bullets: [
+        "Route planning that groups driveways, decks, and commercial jobs by area",
+        "Quick quotes or invoices on site — especially for real-estate and strata work",
+        "Expense tracking for detergents, tips, fuel, and equipment wear",
+        "Job photos for before/after marketing and dispute protection",
+        "Calendar that survives spring rush without double-booking",
+      ],
+    },
+    solution: {
+      heading: "How DayRoute supports pressure washing workflows",
+      description:
+        "DayRoute is a mobile field-service app — not a pressure-washing-only CRM — but it covers the daily workflow most solo operators actually need.",
+      steps: [
+        { title: "Multi-stop routes", description: "Plan five driveways and two decks in logical order — less dead time between suburbs." },
+        { title: "Invoice on completion", description: "Send professional invoices from the job card before you pack the hose away." },
+        { title: "Receipt scanning", description: "Log chemical and fuel purchases with GST captured for BAS." },
+        { title: "Before/after photos", description: "Attach photos to the job for proof of work and social content later." },
+      ],
+    },
+    industryExamples: [
+      { industry: "Residential driveways", example: "Cluster morning jobs in one suburb; afternoon in another." },
+      { industry: "Deck & patio restoration", example: "Longer jobs with materials costs tracked per visit." },
+      { industry: "Pre-sale house washes", example: "Quick quotes and invoices for agents who need fast turnaround." },
+      { industry: "Strata & commercial", example: "Fixed schedules with recurring monthly routes." },
+      { industry: "Roof cleaning", example: "Attach safety notes and photos to the job record." },
+      { industry: "Solo operator", example: "7-day free trial on Pro — $19 AUD/month after." },
+    ],
+    proofStrip: [
+      { stat: "5+ jobs", label: "Typical solo day — routing matters" },
+      { stat: "AI scan", label: "Receipt capture for chemicals & fuel" },
+      { stat: "7 days", label: "Free trial" },
+    ],
+    faqs: [
+      { question: "Does DayRoute include chemical mixing calculators?", answer: "No — DayRoute focuses on scheduling, routes, invoicing, and expenses. Use your existing chemical protocols; log costs via receipts." },
+      { question: "Can I handle quotes for large commercial jobs?", answer: "DayRoute excels at day-to-day scheduling and on-site invoicing. Complex commercial quotes may still need a detailed proposal — then schedule the job in DayRoute once approved." },
+      { question: "Will it help with Google review photos?", answer: "Before/after photos stored on the job make it easy to post your best work — with permission from the client." },
+      { question: "Is DayRoute better than a paper run sheet?", answer: "For most operators doing 3+ jobs daily, yes — route order and instant invoices recover the subscription quickly." },
+    ],
+    bottomCtaHeading: "More driveways per day",
+    bottomCtaSubtext: "Download DayRoute, map this week's jobs, and optimise your first route. Free for 7 days.",
+    relatedLinks: [
+      { label: "DayRoute for pressure washing", href: "/pressure-washing-business-route-invoicing-app-australia" },
+      { label: "Compare options", href: "/compare" },
+      { label: "Blog: Pricing guide", href: "/blog/pressure-washing-pricing-guide-australia" },
+      { label: "Route planning", href: "/route-planning-for-service-businesses-australia" },
+      { label: "Pricing", href: "/pricing" },
+    ],
+  },
+
+  {
+    pageType: "feature",
+    slug: "best-iphone-app-mobile-service-businesses-australia",
+    seoTitle: "Best iPhone App for Mobile Service Businesses Australia",
+    metaDescription:
+      "Best iPhone app for Australian mobile service businesses: routes, scheduling, invoicing, logbook. Evaluation criteria and how DayRoute fits solos on the road.",
+    h1: "Best iPhone app for mobile service businesses in Australia",
+    shortName: "Best iPhone App",
+    breadcrumbParent: { label: "Compare", href: "/compare" },
+    intro:
+      "If your office is your ute and your desk is your iPhone, you need an app that works offline-friendly, respects Australian tax records, and doesn't force you through desktop setup. Here's what to look for — and how DayRoute compares for solo operators and small teams.",
+    problem: {
+      heading: "Criteria for a true field-service iPhone app",
+      description:
+        "Many 'business apps' are accounting tools with a mobile login bolted on. Mobile service work needs something else.",
+      bullets: [
+        "Native iPhone experience — fast, thumb-friendly, works at the job site",
+        "Route planning and navigation integrated with your job list",
+        "Invoicing and expenses without opening a laptop",
+        "ATO-friendly logbook and GST-aware receipt capture",
+        "Pricing that makes sense for one person before you hire a team",
+      ],
+    },
+    solution: {
+      heading: "Why operators choose DayRoute on iPhone",
+      description:
+        "DayRoute is iPhone-first (iPad supported). Android is on the roadmap — this page is for operators already on Apple devices.",
+      steps: [
+        { title: "Whole day on one screen", description: "Schedule, map, drive times, and job status together — not scattered across apps." },
+        { title: "Invoice in under a minute", description: "Pre-filled client details and line items from the completed job." },
+        { title: "Mileage and receipts automatic", description: "Start a trip for the logbook; scan receipts with AI for GST breakdowns." },
+        { title: "Australian context built in", description: "AUD pricing, BAS summaries, and workflows familiar to Aussie tradies and carers." },
+      ],
+    },
+    industryExamples: [
+      { industry: "Tradies / handyman", example: "See the handyman app page for job photos and Bunnings receipts." },
+      { industry: "NDIS providers", example: "NDIS-formatted invoice templates and travel logging between participants." },
+      { industry: "Mobile detailing", example: "Suburb-clustered booking days with on-site invoices." },
+      { industry: "Pest control", example: "Treatment notes and routes for inspection-heavy weeks." },
+      { industry: "Pet grooming (mobile)", example: "Recurring grooms with ETAs for anxious pet owners." },
+      { industry: "HVAC", example: "Service calls, parts expenses, and invoices from the roof." },
+    ],
+    proofStrip: [
+      { stat: "iPhone", label: "Native App Store app" },
+      { stat: "$19/mo", label: "Pro for solo operators (AUD)" },
+      { stat: "21+", label: "Pre-built service categories in-app" },
+    ],
+    faqs: [
+      { question: "Is DayRoute available on Android?", answer: "Currently DayRoute is on iPhone and iPad via the Apple App Store. Android is planned — check the site for updates." },
+      { question: "Does it work without signal?", answer: "You can view and complete jobs offline. Route optimisation and sync need internet — most operators sync at breakfast or between suburbs." },
+      { question: "How does DayRoute compare to desktop accounting apps?", answer: "Accounting apps handle books; DayRoute handles the day on the road. Many users export summaries to their accountant's platform at BAS time." },
+      { question: "What if I'm comparing several apps?", answer: "Start at /compare for DayRoute vs paper, spreadsheets, and ServiceM8 for solos — then try the 7-day trial on your busiest week." },
+    ],
+    bottomCtaHeading: "Replace your patchwork of iPhone apps",
+    bottomCtaSubtext: "One download. 7-day free trial. Built for Australian mobile professionals.",
+    relatedLinks: [
+      { label: "Compare all options", href: "/compare" },
+      { label: "Field service workflow", href: "/field-service-workflow-app-for-iphone-australia" },
+      { label: "Industries", href: "/industries" },
+      { label: "Features", href: "/features" },
+      { label: "Pricing", href: "/pricing" },
     ],
   },
 ];

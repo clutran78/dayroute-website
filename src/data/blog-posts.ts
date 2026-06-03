@@ -107,8 +107,8 @@ export const blogPosts: BlogPost[] = [
     ],
     relatedPages: [
       { label: "Route planning feature", href: "/route-planning-for-service-businesses-australia" },
-      { label: "Mileage logbook & receipts", href: "/mileage-logbook-receipts-for-service-businesses-australia" },
-      { label: "All industries", href: "/industries" },
+      { label: "DayRoute vs spreadsheet", href: "/dayroute-vs-spreadsheet" },
+      { label: "Compare DayRoute", href: "/compare" },
     ],
     tags: ["route planning", "multi-stop routing", "fuel savings", "field service", "tradies"],
   },
@@ -427,8 +427,8 @@ export const blogPosts: BlogPost[] = [
     ],
     relatedPages: [
       { label: "Cleaning business app", href: "/cleaning-business-scheduling-invoicing-app-australia" },
-      { label: "Route planning", href: "/route-planning-for-service-businesses-australia" },
-      { label: "Mobile invoicing", href: "/mobile-invoicing-after-job-completion-iphone" },
+      { label: "Best scheduling app for cleaners", href: "/best-job-scheduling-app-cleaners-australia" },
+      { label: "Compare DayRoute", href: "/compare" },
     ],
     tags: ["cleaning business", "route planning", "cleaning routes", "fuel savings", "client management"],
   },
@@ -564,7 +564,8 @@ export const blogPosts: BlogPost[] = [
     ],
     relatedPages: [
       { label: "Gardening business app", href: "/gardening-business-scheduling-invoicing-app-australia" },
-      { label: "Mobile invoicing", href: "/mobile-invoicing-after-job-completion-iphone" },
+      { label: "Best route planner for gardeners", href: "/best-route-planner-gardeners-australia" },
+      { label: "Compare DayRoute", href: "/compare" },
     ],
     tags: ["gardening", "quoting", "pricing", "lawn mowing", "hedge trimming", "Australia"],
   },
@@ -758,7 +759,8 @@ export const blogPosts: BlogPost[] = [
     ],
     relatedPages: [
       { label: "Pressure washing app", href: "/pressure-washing-business-route-invoicing-app-australia" },
-      { label: "Mobile invoicing", href: "/mobile-invoicing-after-job-completion-iphone" },
+      { label: "Best app for pressure washing", href: "/best-app-pressure-washing-businesses-australia" },
+      { label: "Compare DayRoute", href: "/compare" },
     ],
     tags: ["pressure washing", "pricing", "driveways", "roof cleaning", "commercial", "Australia"],
   },

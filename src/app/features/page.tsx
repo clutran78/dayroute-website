@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import Image from "next/image";
 import {
   Route,
   Calendar,
@@ -20,6 +19,8 @@ import {
 import { Card, CardContent } from "../../components/ui/card";
 import { Button } from "../../components/ui/button";
 import { AppStoreCTA } from "../../components/app-store-button";
+import { MarketingImage } from "../../components/marketing-image";
+import { marketingImages, allMarketingShowcase } from "../../data/marketing-images";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -46,7 +47,7 @@ const coreFeatures = [
       "Job status updates (pending, in progress, completed)",
       "Notes and special instructions",
     ],
-    screenshot: "/screenshots/today.png",
+    screenshot: marketingImages.runTheDay,
   },
   {
     icon: Route,
@@ -59,7 +60,7 @@ const coreFeatures = [
       "Google Maps integration",
       "One-tap navigation to each stop",
     ],
-    screenshot: "/screenshots/route-map.png",
+    screenshot: marketingImages.planRoute,
   },
   {
     icon: MapPin,
@@ -72,7 +73,7 @@ const coreFeatures = [
       "Distance and time estimates",
       "Visual route line",
     ],
-    screenshot: "/screenshots/google-maps.png",
+    screenshot: marketingImages.stayOnJob,
   },
   {
     icon: Bell,
@@ -85,11 +86,17 @@ const coreFeatures = [
       "SMS & iMessage 'On My Way' alerts",
       "Calendar integration",
     ],
-    screenshot: "/screenshots/eta-message.png",
+    screenshot: marketingImages.planRoute,
   },
 ];
 
-const clientFeatures = [
+const clientFeatures: {
+  icon: typeof Users;
+  title: string;
+  description: string;
+  details: string[];
+  screenshot?: string;
+}[] = [
   {
     icon: Users,
     title: "Client Management",
@@ -102,6 +109,7 @@ const clientFeatures = [
       "Default pricing per client",
       "Job history",
     ],
+    screenshot: marketingImages.clients,
   },
   {
     icon: Calendar,
@@ -129,7 +137,7 @@ const financialFeatures = [
       "Category suggestions",
       "Stored on-device for privacy",
     ],
-    screenshot: "/screenshots/bas-summary.png",
+    screenshot: marketingImages.receipts,
   },
   {
     icon: DollarSign,
@@ -142,7 +150,7 @@ const financialFeatures = [
       "Income vs expense reports",
       "Export-ready data",
     ],
-    screenshot: "/screenshots/bas-summary.png",
+    screenshot: marketingImages.bas,
   },
   {
     icon: FileText,
@@ -155,7 +163,7 @@ const financialFeatures = [
       "Send via SMS or WhatsApp",
       "PDF export",
     ],
-    screenshot: "/screenshots/invoice.png",
+    screenshot: marketingImages.invoice,
   },
   {
     icon: Car,
@@ -168,11 +176,17 @@ const financialFeatures = [
       "Business vs personal trips",
       "ATO-compliant records",
     ],
-    screenshot: "/screenshots/trip-tracking.png",
+    screenshot: marketingImages.logbook,
   },
 ];
 
-const teamFeatures = [
+const teamFeatures: {
+  icon: typeof Users;
+  title: string;
+  description: string;
+  details: string[];
+  screenshot?: string;
+}[] = [
   {
     icon: Users,
     title: "Team Management",
@@ -184,6 +198,7 @@ const teamFeatures = [
       "Owner/Admin/Member roles",
       "Manage from one dashboard",
     ],
+    screenshot: marketingImages.team,
   },
   {
     icon: MapPin,
@@ -227,19 +242,29 @@ export default function FeaturesPage() {
   return (
     <div className="flex flex-col">
       {/* Hero */}
-      <section className="relative overflow-hidden py-24 sm:py-32">
+      <section className="relative overflow-hidden py-16 sm:py-24 lg:py-28">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">
-              Powerful features for
-              <br />
-              <span className="text-primary">field service professionals</span>
-            </h1>
-            <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
-              Everything you need to plan routes, manage jobs, track expenses,
-              and run your mobile business efficiently.
-            </p>
+          <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+            <div className="flex-1 text-center lg:text-left">
+              <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">
+                Powerful features for
+                <br />
+                <span className="text-primary">field service professionals</span>
+              </h1>
+              <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto lg:mx-0">
+                Everything you need to plan routes, manage jobs, track expenses,
+                and run your mobile business efficiently.
+              </p>
+            </div>
+            <div className="flex-1 w-full flex justify-center lg:justify-end">
+              <MarketingImage
+                src={marketingImages.australianPros}
+                alt="DayRoute — built for Australian field professionals with ABN, GST and BAS-ready reports"
+                priority
+                className="max-w-[280px] sm:max-w-[320px]"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -261,18 +286,15 @@ export default function FeaturesPage() {
                 key={feature.title} 
                 className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 lg:gap-12 items-center`}
               >
-                {/* Screenshot - hidden on mobile, shown on tablet+ */}
-                <div className="hidden md:block w-full lg:w-1/2">
-                  <div className="relative aspect-[9/16] max-w-[280px] mx-auto rounded-3xl overflow-hidden shadow-2xl border border-border/50">
-                    <Image
+                {"screenshot" in feature && feature.screenshot && (
+                  <div className="hidden md:block w-full lg:w-1/2">
+                    <MarketingImage
                       src={feature.screenshot}
-                      alt={`${feature.title} screenshot`}
-                      fill
-                      className="object-cover"
+                      alt={`${feature.title} — DayRoute`}
                     />
                   </div>
-                </div>
-                
+                )}
+
                 {/* Content */}
                 <div className="w-full lg:w-1/2">
                   <Card className="overflow-hidden">
@@ -321,6 +343,14 @@ export default function FeaturesPage() {
             <h2 className="text-3xl font-bold">
               Keep your clients organised
             </h2>
+          </div>
+
+          <div className="mb-12 flex justify-center">
+            <MarketingImage
+              src={marketingImages.clients}
+              alt="DayRoute — know every client at a glance with notes, history and quick rebooking"
+              className="max-w-[300px]"
+            />
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -375,19 +405,15 @@ export default function FeaturesPage() {
                 key={feature.title} 
                 className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 lg:gap-12 items-center`}
               >
-                {/* Screenshot - hidden on mobile, shown on tablet+ */}
-                <div className="hidden md:block w-full lg:w-1/2">
-                  <div className="relative aspect-[9/16] max-w-[280px] mx-auto rounded-3xl overflow-hidden shadow-2xl border border-border/50">
-                    <Image
+                {feature.screenshot && (
+                  <div className="hidden md:block w-full lg:w-1/2">
+                    <MarketingImage
                       src={feature.screenshot}
-                      alt={`${feature.title} screenshot`}
-                      fill
-                      className="object-cover"
+                      alt={`${feature.title} — DayRoute`}
                     />
                   </div>
-                </div>
-                
-                {/* Content */}
+                )}
+
                 <div className="w-full lg:w-1/2">
                   <Card className="overflow-hidden">
                     <CardContent className="p-6 sm:p-8">
@@ -438,6 +464,14 @@ export default function FeaturesPage() {
             </p>
           </div>
 
+          <div className="mb-12 flex justify-center">
+            <MarketingImage
+              src={marketingImages.team}
+              alt="DayRoute — keep the team in sync with live locations, job assignment and expense approvals"
+              className="max-w-[300px]"
+            />
+          </div>
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {teamFeatures.map((feature) => (
               <Card key={feature.title} className="overflow-hidden">
@@ -473,38 +507,24 @@ export default function FeaturesPage() {
         </div>
       </section>
 
-      {/* Mobile Screenshot Gallery - only visible on mobile */}
-      <section className="py-16 md:hidden bg-card/50">
+      {/* Mobile gallery — marketing graphics on small screens */}
+      <section className="py-16 lg:hidden bg-card/50">
         <div className="mx-auto max-w-7xl px-4">
           <div className="text-center mb-8">
             <h2 className="text-2xl font-bold">See DayRoute in action</h2>
-            <p className="mt-2 text-muted-foreground">Swipe through screenshots</p>
+            <p className="mt-2 text-muted-foreground">Swipe to explore</p>
           </div>
-          
-          {/* Horizontal scroll gallery */}
+
           <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory -mx-4 px-4">
-            {[
-              { src: "/screenshots/today.png", label: "Daily Schedule" },
-              { src: "/screenshots/route-map.png", label: "Route Planning" },
-              { src: "/screenshots/google-maps.png", label: "Navigation" },
-              { src: "/screenshots/complete-job.png", label: "Job Completion" },
-              { src: "/screenshots/invoice.png", label: "Invoicing" },
-              { src: "/screenshots/invoice-share.png", label: "Send Invoice" },
-              { src: "/screenshots/bas-summary.png", label: "BAS Summary" },
-              { src: "/screenshots/odometer.png", label: "Odometer" },
-              { src: "/screenshots/trip-tracking.png", label: "Trip Tracking" },
-              { src: "/screenshots/eta-message.png", label: "ETA Messages" },
-            ].map((item) => (
-              <div key={item.src} className="flex-shrink-0 snap-center">
-                <div className="relative w-48 aspect-[9/16] rounded-2xl overflow-hidden shadow-lg border border-border/50">
-                  <Image
-                    src={item.src}
-                    alt={item.label}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <p className="mt-2 text-center text-sm text-muted-foreground">{item.label}</p>
+            {allMarketingShowcase.map((item) => (
+              <div key={item.src} className="flex-shrink-0 snap-center w-[200px]">
+                <MarketingImage
+                  src={item.src}
+                  alt={item.alt}
+                  className="max-w-none w-full"
+                  sizes="200px"
+                />
+                <p className="mt-2 text-center text-sm font-medium">{item.label}</p>
               </div>
             ))}
           </div>

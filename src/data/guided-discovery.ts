@@ -76,6 +76,13 @@ export interface Recommendation {
  * Industry-specific page mapping. If a niche page exists for this industry,
  * it's listed here. Falls back to /industries if not.
  */
+/** BOFU guides — used when user is exploring or comparing tools. */
+const bofuPages: Record<string, { url: string; label: string }> = {
+  gardening: { url: "/best-route-planner-gardeners-australia", label: "Best route planner for gardeners" },
+  cleaning: { url: "/best-job-scheduling-app-cleaners-australia", label: "Best scheduling app for cleaners" },
+  "pressure-washing": { url: "/best-app-pressure-washing-businesses-australia", label: "Best app for pressure washing" },
+};
+
 const industryPages: Record<string, { url: string; label: string }> = {
   gardening: { url: "/gardening-business-scheduling-invoicing-app-australia", label: "DayRoute for Gardeners" },
   cleaning: { url: "/cleaning-business-scheduling-invoicing-app-australia", label: "DayRoute for Cleaners" },
@@ -105,13 +112,24 @@ export function getRecommendation(intentId: string, industryId: string): Recomme
   const industry = industryOptions.find((i) => i.id === industryId);
   const industryLabel = industry?.label ?? "your business";
 
-  // "Just exploring" — send to industries hub
+  // "Just exploring" — compare hub first; industry-specific BOFU when available
   if (intentId === "exploring") {
+    const bofu = bofuPages[industryId];
+    if (bofu) {
+      return {
+        heading: `Comparing tools for ${industryLabel}?`,
+        explanation: `Our honest guide covers what to look for in a ${industryLabel.toLowerCase()} app — criteria first, then how DayRoute fits. You can also browse all industries.`,
+        recommendedPage: bofu.url,
+        recommendedPageLabel: bofu.label,
+        primaryCtaLabel: "Download on the App Store",
+        secondaryCtaLabel: "Book Free 15-Min Setup",
+      };
+    }
     return {
       heading: `Great — let's show you around`,
-      explanation: `The industries page shows every service category DayRoute supports, with links to detailed pages for each one.`,
-      recommendedPage: "/industries",
-      recommendedPageLabel: "Browse all industries",
+      explanation: `The compare page helps if you're on paper, spreadsheets, or another app. The industries page lists every category DayRoute supports.`,
+      recommendedPage: "/compare",
+      recommendedPageLabel: "Compare DayRoute",
       primaryCtaLabel: "Download on the App Store",
       secondaryCtaLabel: "Book Free 15-Min Setup",
     };
