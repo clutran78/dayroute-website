@@ -88,6 +88,63 @@ const benefits = [
   "Track work and costs (logbook, expenses, receipts)",
 ];
 
+/**
+ * Real problems field-service operators face, each paired with how DayRoute
+ * fixes it. This is the core "selling / solution" section — left = the pain in
+ * the operator's own words, right = the DayRoute fix.
+ */
+const problemSolutions = [
+  {
+    problem: "\u201cI quote off the top of my head.\u201d",
+    solution:
+      "Pick your trade and DayRoute loads ready-made services with price guides. Quote in under a minute.",
+  },
+  {
+    problem: "\u201cI forget to invoice, then forget who\u2019s paid.\u201d",
+    solution:
+      "Send a GST-correct invoice by text or email before you leave the driveway. See who still owes you at a glance.",
+  },
+  {
+    problem: "\u201cMy receipts live in the glovebox till tax time.\u201d",
+    solution:
+      "Snap a photo and DayRoute reads the receipt — amount, date, details — logged instantly.",
+  },
+  {
+    problem: "\u201cI never track my work kms.\u201d",
+    solution:
+      "A built-in GPS logbook records work trips automatically and reminds you when you get home. ATO-ready.",
+  },
+  {
+    problem: "\u201cCustomers ring all day asking where I am.\u201d",
+    solution:
+      "DayRoute texts them for you: ETA, running-late alerts and a 15-minutes-away heads-up.",
+  },
+  {
+    problem: "\u201cI waste fuel doubling back across town.\u201d",
+    solution:
+      "DayRoute orders your day\u2019s jobs the smart way and navigates you door to door.",
+  },
+  {
+    problem: "\u201cBAS time is spreadsheets at 9pm Sunday.\u201d",
+    solution:
+      "Income, expenses and GST sorted as you go. Your BAS is ready when you are.",
+  },
+];
+
+/**
+ * Short feature labels for the compact feature strip under the problems.
+ */
+const featureStrip = [
+  "Smart daily route planning",
+  "One-tap GST invoicing",
+  "AI receipt scanning",
+  "Automatic ATO mileage logbook",
+  "Automated customer ETA texts",
+  "BAS-ready reporting",
+  "iPhone, iPad & Mac",
+  "Cloud sync & backup",
+];
+
 export default function HomePage() {
   const [showFloatingCta, setShowFloatingCta] = useState(false);
 
@@ -121,21 +178,20 @@ export default function HomePage() {
 
             {/* Warm pre-heading */}
             <p className="text-sm sm:text-base text-muted-foreground mb-3">
-              G&apos;day. Flat-out all day on the road?
+              G&apos;day. Still running your business from the glovebox?
             </p>
 
             {/* Headline - responsive text sizes */}
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">
-              Plan smarter routes.
+              Run your whole trade from your phone —
               <br />
-              <span className="text-primary">Finish jobs faster.</span>
+              <span className="text-primary">not your glovebox.</span>
             </h1>
 
             {/* Subheadline */}
             <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-2">
-              DayRoute is a field-service day planner for Aussie tradies, cleaners, 
-              maintenance crews, NDIS providers and home-visit clinicians. It helps 
-              turn a messy day of jobs and driving into a clear, organised run.
+              DayRoute turns quoting, invoicing, receipts, mileage and tax into a
+              few taps on site — so you stop doing admin at 9pm on a Sunday.
             </p>
 
             {/* Benefit bullets - stack on mobile, inline on larger screens */}
@@ -178,17 +234,85 @@ export default function HomePage() {
                 className="w-full sm:w-auto min-h-[48px] text-base"
                 asChild
               >
-                <Link href="/features">
-                  Learn More
+                <Link href="/pricing">
+                  See Pricing
                   <ChevronRight className="ml-1 h-4 w-4" />
                 </Link>
               </Button>
             </div>
 
-            {/* Proof line */}
-            <p className="mt-6 text-xs sm:text-sm text-muted-foreground italic">
-              Built by an Aussie tradie turned app founder for field crews who live on the road.
+            {/* App Store trust badge under the primary CTAs */}
+            <div className="mt-5 flex justify-center">
+              <AppStoreCTA showBadge location="hero-badge" />
+            </div>
+
+            {/* Trust / proof line */}
+            <p className="mt-6 text-xs sm:text-sm text-muted-foreground">
+              Built in Australia for tradies, gardeners, cleaners, NDIS &amp;
+              home-care pros, and small crews. From $19.99/month — 7-day free trial.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== PROBLEM → SOLUTION ===== */}
+      <section className="py-16 sm:py-24 border-y border-border">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10 sm:mb-14">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold">
+              Sound familiar? DayRoute fixes it.
+            </h2>
+            <p className="mt-3 sm:mt-4 text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+              The real headaches of running a mobile business — and exactly how
+              DayRoute sorts each one from your phone, on site.
+            </p>
+          </div>
+
+          {/* Pain (left) → Fix (right) rows */}
+          <div className="space-y-3 sm:space-y-4">
+            {problemSolutions.map((item) => (
+              <div
+                key={item.problem}
+                className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-0 rounded-2xl border border-border overflow-hidden"
+              >
+                {/* The pain, in the operator's words */}
+                <div className="flex items-start gap-3 p-4 sm:p-5 bg-card/40">
+                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-destructive/10 text-destructive text-sm font-bold">
+                    ?
+                  </span>
+                  <p className="text-sm sm:text-base font-medium italic text-muted-foreground">
+                    {item.problem}
+                  </p>
+                </div>
+                {/* The DayRoute fix */}
+                <div className="flex items-start gap-3 p-4 sm:p-5 bg-primary/5 md:border-l border-border">
+                  <Check className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+                  <p className="text-sm sm:text-base">{item.solution}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Feature strip */}
+          <div className="mt-10 sm:mt-12 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+            {featureStrip.map((label) => (
+              <span
+                key={label}
+                className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1.5 text-xs sm:text-sm font-medium text-primary"
+              >
+                <Check className="h-3.5 w-3.5" />
+                {label}
+              </span>
+            ))}
+          </div>
+
+          {/* CTA under the problem/solution block */}
+          <div className="mt-10 text-center">
+            <AppStoreCTA
+              size="lg"
+              className="min-h-[48px]"
+              location="problem-solution"
+            />
           </div>
         </div>
       </section>
@@ -427,7 +551,7 @@ export default function HomePage() {
                   For solo operators
                 </p>
                 <p className="text-2xl sm:text-3xl font-bold">
-                  $19
+                  $19.99
                   <span className="text-sm sm:text-base font-normal text-muted-foreground">
                     /mo
                   </span>
@@ -467,13 +591,16 @@ export default function HomePage() {
                   For teams up to 10 users
                 </p>
                 <p className="text-2xl sm:text-3xl font-bold">
-                  From $49
+                  From $49.99
                   <span className="text-sm sm:text-base font-normal text-muted-foreground">
                     /mo
                   </span>
                 </p>
                 <p className="text-xs sm:text-sm text-muted-foreground">
-                  3 users: $49/mo • 10 users: $99/mo
+                  3 users: $49.99/mo • 10 users: $99.99/mo
+                </p>
+                <p className="mt-1 text-xs sm:text-sm font-semibold text-primary">
+                  just ~$10 per user on Team 10
                 </p>
                 <ul className="mt-5 sm:mt-6 space-y-2 sm:space-y-3">
                   {[
@@ -499,7 +626,16 @@ export default function HomePage() {
             </Card>
           </div>
 
-          <div className="mt-10 sm:mt-12 text-center">
+          {/* Comparison callout — value vs per-seat platforms */}
+          <div className="mt-8 sm:mt-10 max-w-3xl mx-auto rounded-2xl border border-primary/30 bg-primary/5 p-5 sm:p-6 text-center">
+            <p className="text-sm sm:text-base font-semibold">
+              The big platforms charge around{" "}
+              <span className="text-primary">$49 per user/month</span>. A DayRoute
+              crew of 10 costs less than one seat elsewhere.
+            </p>
+          </div>
+
+          <div className="mt-8 sm:mt-10 text-center">
             <Button className="min-h-[44px]" asChild>
               <Link href="/pricing">View full pricing</Link>
             </Button>
@@ -660,11 +796,11 @@ export default function HomePage() {
             
             <div className="relative max-w-2xl">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold">
-                Ready to take control of your day?
+                Stop running your business from the glovebox.
               </h2>
               <p className="mt-3 sm:mt-4 text-base sm:text-lg text-muted-foreground">
-                Join thousands of Australian mobile professionals who plan
-                smarter and finish faster with DayRoute.
+                Start running it from DayRoute — quoting, invoicing, receipts,
+                mileage and tax, all from your phone. 7-day free trial.
               </p>
               <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <AppStoreCTA

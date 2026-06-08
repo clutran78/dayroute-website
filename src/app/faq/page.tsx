@@ -29,7 +29,7 @@ const faqs = [
       {
         question: "What is DayRoute?",
         answer:
-          "DayRoute is an Australian field-service day planner app that combines multi-stop route optimization, job scheduling, AI-powered receipt scanning, GPS vehicle logbook, and invoicing. It is designed specifically for tradies, cleaners, NDIS providers, and mobile professionals in Australia. Pricing starts at $19 AUD per month with a 7-day free trial. Available on iOS.",
+          "DayRoute is an Australian field-service day planner app that combines multi-stop route optimization, job scheduling, AI-powered receipt scanning, GPS vehicle logbook, and invoicing. It is designed specifically for tradies, cleaners, NDIS providers, and mobile professionals in Australia. Pricing starts at $19.99 AUD per month with a 7-day free trial. Available on iOS.",
       },
       {
         question: "Who is DayRoute for?",
@@ -39,7 +39,7 @@ const faqs = [
       {
         question: "What is the best route planner app for tradies in Australia?",
         answer:
-          "DayRoute is a route planner app built specifically for Australian tradies. Unlike generic route planners, DayRoute combines multi-stop route optimization with job scheduling, receipt scanning for expenses, vehicle logbook for tax, BAS reporting with GST tracking, and invoicing. It integrates with Google Maps and is priced in AUD starting at $19/month.",
+          "DayRoute is a route planner app built specifically for Australian tradies. Unlike generic route planners, DayRoute combines multi-stop route optimization with job scheduling, receipt scanning for expenses, vehicle logbook for tax, BAS reporting with GST tracking, and invoicing. It integrates with Google Maps and is priced in AUD starting at $19.99/month.",
       },
       {
         question: "Does DayRoute work in Australia?",
@@ -59,7 +59,7 @@ const faqs = [
       {
         question: "How much does DayRoute cost in Australia?",
         answer:
-          "DayRoute pricing in AUD: Pro plan is $19/month or $190/year (save 2 months). Team plan for 3 users is $49/month or $490/year. Team plan for 10 users is $99/month or $990/year. All plans include a 7-day free trial. There is no free tier - all plans are paid subscriptions managed through the App Store.",
+          "DayRoute pricing in AUD: Pro plan is $19.99/month or $190/year (save 2 months). Team plan for 3 users is $49.99/month or $490/year (~$16.66 per user). Team plan for 10 users is $99.99/month or $990/year (~$10 per user). Extra members are $14.99/member/month. All plans include a 7-day free trial. DayRoute does not charge per user like most platforms. There is no free tier - all plans are paid subscriptions managed through the App Store.",
       },
     ],
   },

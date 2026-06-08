@@ -92,7 +92,7 @@ const bestPages = [
 
 const proofFacts = [
   { stat: "7 days", label: "Free Pro trial" },
-  { stat: "$19/mo", label: "Solo Pro plan (AUD)" },
+  { stat: "$19.99/mo", label: "Solo Pro plan (AUD)" },
   { stat: "iPhone", label: "Native App Store app" },
   { stat: "BAS-ready", label: "Income & expense exports" },
 ];

@@ -904,7 +904,7 @@ export const seoPages: SeoPage[] = [
       { question: "Does DayRoute replace my accounting software?", answer: "No. DayRoute is a mobile field-service tool — not a full accounting platform. It handles the parts of your day that accounting software isn't designed for: route planning, job scheduling, on-site invoicing, and receipt scanning. Your accountant can continue using whatever accounting platform they prefer for bookkeeping and lodgement." },
       { question: "Can my accountant use DayRoute's data?", answer: "Yes. DayRoute generates income, expense, and GST summaries that your accountant can use for BAS lodgement and end-of-year tax. You can share these reports directly — they import into any accounting platform." },
       { question: "How is DayRoute different from accounting software?", answer: "Accounting software focuses on bookkeeping, tax, and compliance. DayRoute focuses on the fieldwork side: planning routes, managing jobs, invoicing on the spot, and scanning receipts. They complement each other — DayRoute handles the work, your accountant handles the books." },
-      { question: "How much does DayRoute cost?", answer: "DayRoute Pro starts at $19 AUD/month with a 7-day free trial. It covers route planning, job scheduling, invoicing, receipt scanning, and vehicle logbook — all the tools a field worker needs in one app." },
+      { question: "How much does DayRoute cost?", answer: "DayRoute Pro starts at $19.99 AUD/month with a 7-day free trial. It covers route planning, job scheduling, invoicing, receipt scanning, and vehicle logbook — all the tools a field worker needs in one app." },
     ],
     relatedLinks: [
       { label: "All features", href: "/features" },
@@ -1020,7 +1020,7 @@ export const seoPages: SeoPage[] = [
     proofStrip: [
       { stat: "30–60 min", label: "Typical daily driving saved with route planning" },
       { stat: "7 days", label: "Free Pro trial — no credit card required" },
-      { stat: "$19/mo", label: "Pro plan for solo operators (AUD)" },
+      { stat: "$19.99/mo", label: "Pro plan for solo operators (AUD)" },
     ],
     testimonial: {
       quote: "I used to spend Sunday night typing up invoices. Now they're sent before I leave each job.",
@@ -1102,7 +1102,7 @@ export const seoPages: SeoPage[] = [
       { question: "Can I export data if I want a spreadsheet for my accountant?", answer: "Yes. DayRoute produces income, expense, and GST summaries you can share. Your accountant can still use Excel or their platform — you just stop maintaining the day-to-day sheet yourself." },
       { question: "I already have client lists in Google Sheets — do I start again?", answer: "You'll re-enter active clients once (usually a few minutes per client). Many operators do it over a quiet evening rather than mid-season." },
       { question: "Does DayRoute work if my partner also schedules jobs?", answer: "The Team plan supports shared scheduling for small crews. Solo operators use Pro; growing teams can add users when needed." },
-      { question: "Is a spreadsheet cheaper than DayRoute?", answer: "The sheet itself is free — your time isn't. If you spend even 30 minutes a day on admin, the cost of that time usually exceeds DayRoute Pro at $19 AUD/month." },
+      { question: "Is a spreadsheet cheaper than DayRoute?", answer: "The sheet itself is free — your time isn't. If you spend even 30 minutes a day on admin, the cost of that time usually exceeds DayRoute Pro at $19.99 AUD/month." },
     ],
     bottomCtaHeading: "Replace your patchwork of tabs",
     bottomCtaSubtext: "Try DayRoute free for 7 days. Plan tomorrow's jobs, optimise the route, and invoice on the spot.",
@@ -1145,7 +1145,7 @@ export const seoPages: SeoPage[] = [
       steps: [
         { title: "Route-first daily planning", description: "Optimise stop order, see drive times, and navigate job to job — designed around how solo operators actually spend the day." },
         { title: "Fast on-site invoicing", description: "Complete a job and send an invoice in seconds from your phone — no office session required." },
-        { title: "Simple solo pricing", description: "DayRoute Pro starts at $19 AUD/month with a 7-day free trial — built for one person, not a seat calculator." },
+        { title: "Simple solo pricing", description: "DayRoute Pro starts at $19.99 AUD/month with a 7-day free trial — built for one person, not a seat calculator." },
         { title: "Logbook and receipts included", description: "GPS trip tracking and AI receipt scanning support BAS-ready records without bolting on extra tools." },
       ],
     },
@@ -1158,7 +1158,7 @@ export const seoPages: SeoPage[] = [
       { industry: "Growing company (5+)", example: "ServiceM8's team workflows and integrations may be the better long-term fit." },
     ],
     proofStrip: [
-      { stat: "$19/mo", label: "DayRoute Pro for solos (AUD)" },
+      { stat: "$19.99/mo", label: "DayRoute Pro for solos (AUD)" },
       { stat: "iPhone", label: "Native app — built for the road" },
       { stat: "7 days", label: "Free trial — try before you commit" },
     ],
@@ -1223,7 +1223,7 @@ export const seoPages: SeoPage[] = [
       { industry: "Landscaping (small crew)", example: "Team plan shares the day's schedule when you add a second operator." },
       { industry: "One-off clean-ups", example: "Drop callouts into the optimised day without rebuilding the whole week." },
       { industry: "Commercial gardens", example: "Fixed-price jobs invoice immediately after completion." },
-      { industry: "Solo operator", example: "Pro plan from $19 AUD/month with 7-day free trial." },
+      { industry: "Solo operator", example: "Pro plan from $19.99 AUD/month with 7-day free trial." },
     ],
     proofStrip: [
       { stat: "45 min", label: "Driving time saved daily (example gardener, Brisbane)" },
@@ -1293,7 +1293,7 @@ export const seoPages: SeoPage[] = [
       { industry: "Commercial offices", example: "Fixed-price invoicing immediately after each site." },
       { industry: "Holiday rentals", example: "Tight turnarounds with reliable arrival windows for property managers." },
       { industry: "Small cleaning team", example: "Team plan for shared schedules when you hire your first helper." },
-      { industry: "Solo cleaner", example: "Pro from $19 AUD/month — 7-day free trial." },
+      { industry: "Solo cleaner", example: "Pro from $19.99 AUD/month — 7-day free trial." },
     ],
     proofStrip: [
       { stat: "30 min", label: "Daily driving saved (example cleaner, Sydney)" },
@@ -1363,7 +1363,7 @@ export const seoPages: SeoPage[] = [
       { industry: "Pre-sale house washes", example: "Quick quotes and invoices for agents who need fast turnaround." },
       { industry: "Strata & commercial", example: "Fixed schedules with recurring monthly routes." },
       { industry: "Roof cleaning", example: "Attach safety notes and photos to the job record." },
-      { industry: "Solo operator", example: "7-day free trial on Pro — $19 AUD/month after." },
+      { industry: "Solo operator", example: "7-day free trial on Pro — $19.99 AUD/month after." },
     ],
     proofStrip: [
       { stat: "5+ jobs", label: "Typical solo day — routing matters" },
@@ -1431,7 +1431,7 @@ export const seoPages: SeoPage[] = [
     ],
     proofStrip: [
       { stat: "iPhone", label: "Native App Store app" },
-      { stat: "$19/mo", label: "Pro for solo operators (AUD)" },
+      { stat: "$19.99/mo", label: "Pro for solo operators (AUD)" },
       { stat: "21+", label: "Pre-built service categories in-app" },
     ],
     faqs: [

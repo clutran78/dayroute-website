@@ -49,7 +49,10 @@ export function AppStoreCTA({
   newTab = true,
   location,
 }: AppStoreCTAProps) {
-  const label = ctaText ?? "Download on the App Store";
+  // Default to the punchy, conversion-focused label. The app is iOS-only and
+  // live, so this still links to the App Store (the 7-day trial starts in-app).
+  // Pass ctaText="Download on the App Store" if you need the literal label.
+  const label = ctaText ?? "Start Free";
 
   // Apple badge style (black pill with Apple logo + two-line text)
   if (showBadge) {
@@ -170,7 +173,7 @@ export function SubscribeCTA({
   ctaText,
   location,
 }: SubscribeCTAProps) {
-  const label = ctaText ?? "Start 7-day free trial";
+  const label = ctaText ?? "Start Free";
 
   return (
     <Button size={size} variant={variant} asChild className={cn("min-h-[44px]", className)}>

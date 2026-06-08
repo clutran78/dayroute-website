@@ -19,12 +19,12 @@ import { REVENUECAT_PRODUCTS } from "../../lib/app-store-config";
 export const metadata: Metadata = {
   title: "Pricing - Plans for Tradies, NDIS Providers & Field Service Teams",
   description:
-    "DayRoute pricing for Australian tradies, NDIS providers, cleaners & mobile service professionals. Pro from $19/month. Team plans from $49/month. All plans include 7-day free trial.",
+    "DayRoute pricing for Australian tradies, NDIS providers, cleaners & mobile service teams. Pro $19.99/mo. Team from just ~$10 per user. 7-day free trial. No per-head pricing.",
   alternates: { canonical: "/pricing" },
   openGraph: {
-    title: "DayRoute Pricing - Plans for Every Business Size",
+    title: "DayRoute Pricing - From ~$10 Per User, Not $49",
     description:
-      "Pro and Team plans with 7-day free trial. All prices in AUD. Perfect for tradies, NDIS providers, and mobile service teams.",
+      "Pro and Team plans with a 7-day free trial. The big platforms charge ~$49 per user/month — a DayRoute crew of 10 costs less than one seat elsewhere. All prices in AUD.",
   },
 };
 
@@ -38,7 +38,7 @@ const soloPlans = [
     productId: REVENUECAT_PRODUCTS.proMonthly, // Links to App Store product ID
     name: "Pro Monthly",
     subtitle: "For solo operators",
-    price: "$19",
+    price: "$19.99",
     period: "/month",
     billingNote: "Billed monthly",
     isPopular: true,
@@ -90,11 +90,12 @@ const teamPlans = [
     yearlyProductId: REVENUECAT_PRODUCTS.team3Yearly,   // Links to App Store product ID
     name: "Team",
     subtitle: "Up to 3 users",
-    monthlyPrice: "$49",
+    monthlyPrice: "$49.99",
     yearlyPrice: "$490",
+    perUser: "just ~$16.66 per user / month",
     maxUsers: 3,
     isBestValue: true,
-    badge: "Best for small teams",
+    badge: "Most popular for crews",
     hasFreeTrial: true,
     features: [
       "Everything in Pro",
@@ -111,11 +112,12 @@ const teamPlans = [
     yearlyProductId: REVENUECAT_PRODUCTS.team10Yearly,   // Links to App Store product ID
     name: "Team",
     subtitle: "Up to 10 users",
-    monthlyPrice: "$99",
+    monthlyPrice: "$99.99",
     yearlyPrice: "$990",
+    perUser: "just ~$10 per user / month",
     maxUsers: 10,
     isBestValue: false,
-    badge: null,
+    badge: "Best value per user",
     hasFreeTrial: true,
     features: [
       "Everything in Team (3 users)",
@@ -127,11 +129,68 @@ const teamPlans = [
 ];
 
 // =============================================================================
+// EXTRA MEMBER ADD-ON — add seats to any Team plan anytime
+// =============================================================================
+const extraMember = {
+  monthlyPrice: "$14.99",
+  yearlyPrice: "$149.99",
+};
+
+// =============================================================================
+// PRICING FAQ SCHEMA (JSON-LD)
+// Helps these pricing answers show as rich results in Google search.
+// Keep questions/answers in sync with the visible FAQ section below.
+// =============================================================================
+const pricingFaqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "How much does DayRoute cost?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "DayRoute Pro is $19.99 AUD/month or $190/year for solo operators. Team plans are $49.99/month for up to 3 users (~$16.66 per user) and $99.99/month for up to 10 users (~$10 per user). Extra members are $14.99/member/month. All plans include a 7-day free trial.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Does DayRoute charge per user?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "No. DayRoute Team plans cover a whole crew for one price — up to 3 or up to 10 users. The big platforms often charge around $49 per user per month, so a DayRoute crew of 10 costs less than a single seat elsewhere.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How does the 7-day free trial work?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "All plans start with a 7-day free trial. Download the app, pick your plan, and get full access. Cancel anytime during the trial and you won't be charged. Subscriptions are managed through your Apple ID.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Is DayRoute available for Android?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "DayRoute is currently available on iOS (iPhone & iPad). Android support is on our roadmap.",
+      },
+    },
+  ],
+};
+
+// =============================================================================
 // PRICING PAGE COMPONENT
 // =============================================================================
 export default function PricingPage() {
   return (
     <div className="flex flex-col">
+      {/* Pricing FAQ structured data for rich search results */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pricingFaqSchema) }}
+      />
       {/* ===== HERO SECTION ===== */}
       <section className="relative overflow-hidden py-16 sm:py-24 lg:py-32">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
@@ -141,8 +200,9 @@ export default function PricingPage() {
               Simple, transparent pricing
             </h1>
             <p className="mt-4 sm:mt-6 text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-2">
-              Built for tradies, NDIS providers, cleaners, and mobile service
-              professionals across Australia. All plans include a{" "}
+              One price for your whole crew — not charged per head. Built for
+              tradies, NDIS providers, cleaners, and mobile service pros across
+              Australia. All plans include a{" "}
               <span className="text-primary font-semibold">
                 7-day free trial
               </span>
@@ -319,6 +379,11 @@ export default function PricingPage() {
                     </span>
                   </div>
 
+                  {/* Per-user value — the killer angle vs per-seat platforms */}
+                  <p className="mb-2 text-xs sm:text-sm font-semibold text-primary">
+                    {plan.perUser}
+                  </p>
+
                   {/* Yearly option with savings */}
                   <div className="mb-5 sm:mb-6 p-2.5 sm:p-3 rounded-lg bg-secondary/50">
                     <p className="text-xs sm:text-sm">
@@ -363,6 +428,27 @@ export default function PricingPage() {
                 </CardFooter>
               </Card>
             ))}
+          </div>
+
+          {/* Extra member add-on note */}
+          <p className="mt-6 text-center text-sm text-muted-foreground max-w-2xl mx-auto">
+            Need more seats? Add extra members to any Team plan anytime for{" "}
+            <span className="font-semibold text-foreground">
+              {extraMember.monthlyPrice}/member/month
+            </span>{" "}
+            (or {extraMember.yearlyPrice}/member/year).
+          </p>
+
+          {/* Comparison callout — the value angle vs per-seat platforms */}
+          <div className="mt-8 sm:mt-10 max-w-3xl mx-auto rounded-2xl border border-primary/30 bg-primary/5 p-5 sm:p-7 text-center">
+            <p className="text-base sm:text-lg font-semibold">
+              The big platforms charge around{" "}
+              <span className="text-primary">$49 per user / month</span>.
+            </p>
+            <p className="mt-2 text-sm sm:text-base text-muted-foreground">
+              A DayRoute crew of 10 costs less than a single seat elsewhere — and
+              mileage tracking is built in, so you don&apos;t pay for a second app.
+            </p>
           </div>
         </div>
       </section>

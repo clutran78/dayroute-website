@@ -314,7 +314,7 @@ const faqs = [
   {
     question: "How much does DayRoute cost?",
     answer:
-      "Pro starts at $19 AUD/month. Team plans start at $49 AUD/month for up to 3 users. All plans include a 7-day free trial. See the pricing page for full details.",
+      "Pro starts at $19.99 AUD/month. Team plans start at $49.99 AUD/month for up to 3 users (~$16.66 per user). All plans include a 7-day free trial. See the pricing page for full details.",
   },
   {
     question: "Is DayRoute available on Android?",
