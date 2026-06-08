@@ -136,6 +136,13 @@ export default function RootLayout({
       "NDIS travel and support worker scheduling",
     ],
     foundingDate: "2024",
+    // Founder entity — gives AI a consistent person tied to the brand.
+    founder: {
+      "@type": "Person",
+      name: "Adrian Stroe",
+      jobTitle: "Founder",
+      url: "https://dayroute.com.au/about",
+    },
     foundingLocation: {
       "@type": "Place",
       address: {
