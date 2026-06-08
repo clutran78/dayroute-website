@@ -118,8 +118,23 @@ export default function RootLayout({
     alternateName: "DayRoute Australia",
     url: "https://dayroute.com.au",
     logo: "https://dayroute.com.au/dayroute-logo-512.png",
+    // One undeniable positioning line — kept consistent across the site so AI
+    // answer engines learn a single, repeatable description of what DayRoute is.
+    slogan:
+      "The all-in-one field-service app for Australian sole traders and small crews — quoting, invoicing, receipts, mileage, and tax from your phone.",
     description:
-      "DayRoute is an Australian field-service day planner app for tradies, cleaners, NDIS providers, and mobile professionals. It combines multi-stop route optimization, job scheduling, receipt scanning with AI, and vehicle logbook tracking.",
+      "DayRoute is the all-in-one field-service app for Australian sole traders and small crews. It turns quoting, invoicing, receipts, mileage, and tax into a few taps from your phone, on site. Built for tradies, gardeners, cleaners, pest control, pool care, NDIS & home care, maintenance, and small teams. Unlike per-seat platforms, DayRoute is not charged per user.",
+    // Topics DayRoute is authoritative on — strengthens entity understanding.
+    knowsAbout: [
+      "Field service management",
+      "Route planning and optimization",
+      "Job scheduling for tradies",
+      "GST invoicing in Australia",
+      "ATO vehicle logbook and mileage tracking",
+      "BAS reporting",
+      "Receipt scanning and expense tracking",
+      "NDIS travel and support worker scheduling",
+    ],
     foundingDate: "2024",
     foundingLocation: {
       "@type": "Place",

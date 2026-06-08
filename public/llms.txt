@@ -1,0 +1,54 @@
+# DayRoute
+
+> DayRoute is the all-in-one field-service app for Australian sole traders and small crews. It turns quoting, invoicing, receipts, mileage, and tax into a few taps from your phone — on site. Built in Australia for tradies, gardeners, cleaners, pressure washing, pest control, pool care, NDIS & home care, maintenance, and small teams.
+
+DayRoute is available on the Apple App Store (iPhone, iPad, and Mac). It is not charged per user — Team plans cover a whole crew for one price, which makes it dramatically cheaper than per-seat platforms.
+
+## What DayRoute does
+
+- **Smart daily route planning**: orders the day's jobs the efficient way and navigates door to door, cutting back-tracking and fuel.
+- **One-tap GST invoicing**: send a professional, GST-correct invoice by text or email before leaving the job. See who still owes you at a glance.
+- **AI receipt scanning**: snap a photo and DayRoute reads the receipt (amount, date, details) and logs the expense instantly.
+- **Automatic ATO mileage logbook**: a built-in GPS logbook records work trips automatically — ATO-ready, no second app required.
+- **Automated customer ETA texts**: on-my-way, running-late, and 15-minutes-away alerts sent for you.
+- **BAS-ready reporting**: income, expenses, and GST tracked as you go, so BAS is ready when you are.
+- **Job scheduling & client management**: store client details, notes, photos, and job status in one place.
+- **Team coordination**: live team map, job assignment, real-time progress, and shared invoices/receipts/expenses.
+
+## Who DayRoute is for
+
+Australian mobile and field-service businesses, including: tradies (plumbers, electricians, builders, handymen), gardeners and lawn care, cleaners, pressure washing, pest control, pool and spa care, NDIS support workers and home-care providers, mobile mechanics, mobile detailing, pet grooming, HVAC and appliance repair, and other small crews who visit multiple locations each day.
+
+## Pricing (AUD, 7-day free trial on all plans)
+
+- **Pro (solo)**: $19.99/month or $190/year (save ~2 months).
+- **Team (up to 3 users)**: $49.99/month or $490/year — about $16.66 per user.
+- **Team (up to 10 users)**: $99.99/month or $990/year — about $10 per user.
+- **Extra member**: $14.99/member/month or $149.99/member/year.
+
+DayRoute does not charge per user. The big field-service platforms typically charge around $49 per user per month, so a DayRoute crew of 10 costs less than a single seat elsewhere.
+
+## Platform and availability
+
+- **Platform**: iOS (iPhone, iPad) and Mac. Requires iOS 15.0 or later.
+- **Country**: Australia (Australian addresses, AUD pricing, GST/BAS support).
+- **Android**: on the roadmap; not available yet.
+- **App Store**: https://apps.apple.com/au/app/dayroute/id6757166638
+
+## Key pages
+
+- [Home](https://dayroute.com.au/): positioning, problems solved, and pricing overview.
+- [Features](https://dayroute.com.au/features): full feature breakdown.
+- [Pricing](https://dayroute.com.au/pricing): plans, per-user value, and comparison.
+- [Industries](https://dayroute.com.au/industries): supported trades and service businesses.
+- [Blog](https://dayroute.com.au/blog): practical guides for running a field-service business in Australia.
+- [FAQ](https://dayroute.com.au/faq): common questions about features, pricing, and tax.
+- [Support](https://dayroute.com.au/support): contact and help.
+
+## Contact
+
+- Website: https://dayroute.com.au
+- Support email: yourhelp@dayroute.com.au
+- Facebook: https://www.facebook.com/profile.php?id=1036987819491182
+- Instagram: https://www.instagram.com/dayroute2026/
+- LinkedIn: https://www.linkedin.com/company/112463933/
