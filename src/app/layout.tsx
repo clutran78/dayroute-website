@@ -136,6 +136,14 @@ export default function RootLayout({
       "NDIS travel and support worker scheduling",
     ],
     foundingDate: "2024",
+    // Australian Business Number — a verifiable real-world identifier that
+    // strengthens trust/entity signals for Google and AI answer engines.
+    taxID: "18 679 869 437",
+    identifier: {
+      "@type": "PropertyValue",
+      propertyID: "ABN",
+      value: "18679869437",
+    },
     // Founder entity — gives AI a consistent person tied to the brand.
     founder: {
       "@type": "Person",
