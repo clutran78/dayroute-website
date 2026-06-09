@@ -159,6 +159,11 @@ export function Footer() {
               Made in Australia 🇦🇺
             </p>
           </div>
+
+          {/* Legal entity + ABN — a trust signal for visitors (real, registered business). */}
+          <p className="mt-4 text-center text-xs text-muted-foreground/70">
+            DayRoute is a product of Regal Green Captains Pty Ltd · ABN 18 679 869 437
+          </p>
         </div>
       </div>
     </footer>
