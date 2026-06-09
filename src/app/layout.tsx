@@ -136,14 +136,26 @@ export default function RootLayout({
       "NDIS travel and support worker scheduling",
     ],
     foundingDate: "2024",
-    // Australian Business Number — a verifiable real-world identifier that
-    // strengthens trust/entity signals for Google and AI answer engines.
+    // Legal entity that owns the DayRoute brand and holds the ABN/ACN below.
+    // "DayRoute" is the product/brand; the registered company is this. Matching
+    // these to the public ABN register is what builds the trust signal.
+    legalName: "Regal Green Captains Pty Ltd",
+    // Verifiable real-world identifiers — these line up exactly with the public
+    // ABN register (abr.business.gov.au), which strengthens trust/entity signals
+    // for Google and AI answer engines.
     taxID: "18 679 869 437",
-    identifier: {
-      "@type": "PropertyValue",
-      propertyID: "ABN",
-      value: "18679869437",
-    },
+    identifier: [
+      {
+        "@type": "PropertyValue",
+        propertyID: "ABN",
+        value: "18679869437",
+      },
+      {
+        "@type": "PropertyValue",
+        propertyID: "ACN",
+        value: "679869437",
+      },
+    ],
     // Founder entity — gives AI a consistent person tied to the brand.
     founder: {
       "@type": "Person",
