@@ -1,13 +1,14 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { Sparkles, Rocket, HeadphonesIcon, ChevronRight } from "lucide-react";
+import { Sparkles, Rocket, HeadphonesIcon, ChevronRight, CalendarCheck } from "lucide-react";
 import { Button } from "../../components/ui/button";
 import { AppStoreCTA } from "../../components/app-store-button";
+import { BookingForm } from "../../components/booking-form";
 
 export const metadata: Metadata = {
-  title: "Book Free Setup - Get Started with DayRoute",
+  title: "Book a Free Setup Call - Get Started with DayRoute",
   description:
-    "Get started with DayRoute in minutes. The app guides you through setup, but if you need a hand, our support team is here to help.",
+    "Request a free 15-minute setup call with the DayRoute team. The app is quick to set up on your own, but if you'd like a hand getting started, we're happy to help.",
   alternates: { canonical: "/book-free-setup" },
 };
 
@@ -74,9 +75,29 @@ export default function BookFreeSetupPage() {
 
           {/* Personality line */}
           <p className="mt-8 text-xs text-muted-foreground/60 italic">
-            We&apos;re working on a live booking option for personalised setup calls. 
-            Stay tuned — it&apos;s coming soon!
+            Prefer a personal hand? Request a free 15-minute setup call below.
           </p>
+        </div>
+      </section>
+
+      {/* ===== REQUEST A SETUP CALL ===== */}
+      <section className="py-12 sm:py-16 border-t border-border bg-card/40">
+        <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center justify-center h-12 w-12 rounded-xl bg-primary/10 mb-4">
+              <CalendarCheck className="h-6 w-6 text-primary" />
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">
+              Request a free 15-minute setup call
+            </h2>
+            <p className="mt-3 text-sm sm:text-base text-muted-foreground">
+              Leave your details and a couple of times that suit you. We&apos;ll get
+              back to you to confirm and walk you through getting started.
+            </p>
+          </div>
+
+          {/* Self-hosted lead capture form */}
+          <BookingForm />
         </div>
       </section>
     </div>

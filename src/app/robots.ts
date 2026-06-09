@@ -36,16 +36,17 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       // Default rule for all crawlers (search engines + anything else).
+      // "/admin" is the private leads CRM — keep it out of all crawlers.
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/"],
+        disallow: ["/api/", "/admin"],
       },
       // Explicit allow for AI answer-engine crawlers.
       {
         userAgent: aiUserAgents,
         allow: "/",
-        disallow: ["/api/"],
+        disallow: ["/api/", "/admin"],
       },
     ],
     host: "https://dayroute.com.au",
