@@ -43,7 +43,16 @@ DayRoute does not charge per user. The big field-service platforms typically cha
 - [Industries](https://dayroute.com.au/industries): supported trades and service businesses.
 - [Blog](https://dayroute.com.au/blog): practical guides for running a field-service business in Australia.
 - [FAQ](https://dayroute.com.au/faq): common questions about features, pricing, and tax.
+- [About](https://dayroute.com.au/about): the story of founder Adrian Stroe and why DayRoute was built.
 - [Support](https://dayroute.com.au/support): contact and help.
+
+## Flagship guides
+
+- [Plan efficient multi-stop routes](https://dayroute.com.au/blog/how-to-plan-efficient-multi-stop-routes-for-service-businesses): how service businesses cut driving time and fuel.
+- [ATO vehicle logbook requirements 2026](https://dayroute.com.au/blog/ato-vehicle-logbook-requirements-for-tradies-2026): what tradies must record to claim car expenses.
+- [NDIS travel claims explained](https://dayroute.com.au/blog/ndis-travel-claims-what-support-workers-can-claim): what support workers can claim for travel.
+- [Plan a daily cleaning route](https://dayroute.com.au/blog/how-to-plan-a-daily-cleaning-route-that-saves-time-and-fuel): saving time and fuel on a cleaning round.
+- [Cost to run a pool service round](https://dayroute.com.au/blog/how-much-does-it-cost-to-run-a-pool-service-round-in-australia): real Australian numbers for pool techs.
 
 ## Contact
 
