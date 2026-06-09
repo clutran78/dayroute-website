@@ -18,6 +18,7 @@ import { Button } from "../components/ui/button";
 import { Card, CardContent } from "../components/ui/card";
 import { AppStoreCTA } from "../components/app-store-button";
 import { GuidedDiscovery } from "../components/guided-discovery";
+import { SocialEmbed } from "../components/social-embed";
 import { MarketingImage } from "../components/marketing-image";
 import { homepageShowcase } from "../data/marketing-images";
 import { useState, useEffect, useRef } from "react";
@@ -749,6 +750,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ===== SOCIAL FEED — live Facebook posts, viewable without login ===== */}
+      <SocialEmbed />
 
       {/* ===== DOWNLOAD NOW ===== */}
       <section id="download-now" className="py-16 sm:py-24 lg:py-32 bg-card/50">
