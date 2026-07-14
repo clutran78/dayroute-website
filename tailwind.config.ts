@@ -43,6 +43,7 @@ const config: Config = {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
+        tertiary: "hsl(var(--tertiary))",
         teal: {
           400: "#2dd4bf",
           500: "#14b8a6",
@@ -62,7 +63,10 @@ const config: Config = {
         "3xl": "1.5rem",
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        // Satoshi is the primary UI/body font (loaded via Fontshare).
+        sans: ["Satoshi", "var(--font-inter)", "system-ui", "sans-serif"],
+        // Cabinet Grotesk for large display headlines.
+        display: ["Cabinet Grotesk", "Satoshi", "system-ui", "sans-serif"],
       },
     },
   },

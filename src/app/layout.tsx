@@ -393,6 +393,15 @@ export default function RootLayout({
         
         {/* Apple Smart App Banner - shows download banner in Safari on iOS */}
         <meta name="apple-itunes-app" content={`app-id=${APPLE_APP_ID}`} />
+
+        {/* Fonts — Fontshare (Satoshi for body, Cabinet Grotesk for display).
+            Preconnect first so the fonts start downloading ASAP; display=swap
+            avoids invisible text (good for LCP). */}
+        <link rel="preconnect" href="https://api.fontshare.com" crossOrigin="anonymous" />
+        <link
+          rel="stylesheet"
+          href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&f[]=cabinet-grotesk@700,800,900&display=swap"
+        />
         
         {/* Structured Data - Organization (establishes entity for AI) */}
         <script

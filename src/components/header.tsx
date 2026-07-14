@@ -31,6 +31,16 @@ const navigation = [
  */
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  // Track scroll so the bar stays transparent at the very top, then gains a
+  // blur + hairline border once the user scrolls (benchmark nav behaviour).
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   // Close mobile menu on escape key
   useEffect(() => {
@@ -54,9 +64,16 @@ export function Header() {
   }, [mobileMenuOpen]);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-lg border-b border-border/50">
+    <header
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        scrolled
+          ? "bg-background/70 backdrop-blur-md border-b border-border"
+          : "bg-transparent border-b border-transparent",
+      )}
+    >
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
+        <div className="flex h-16 md:h-[68px] items-center justify-between">
           {/* Logo */}
           <Link 
             href="/" 
@@ -92,8 +109,7 @@ export function Header() {
                 data-location="nav"
               >
                 <Download className="h-4 w-4" />
-                <span className="hidden lg:inline">Download on the App Store</span>
-                <span className="lg:hidden">Download</span>
+                <span>Start Free</span>
               </Link>
             </Button>
           </div>
@@ -133,63 +149,46 @@ export function Header() {
         </div>
       </nav>
 
-      {/* Mobile menu panel - slides down */}
+      {/* Mobile menu — full-screen overlay (not a dropdown). Large centred
+          links, fades + eases in. Body scroll is locked while it's open. */}
       <div
         className={cn(
-          "md:hidden fixed inset-x-0 top-16 bottom-0 z-40 transition-all duration-300 ease-in-out",
-          mobileMenuOpen 
-            ? "opacity-100 pointer-events-auto" 
-            : "opacity-0 pointer-events-none"
+          "md:hidden fixed inset-0 z-40 bg-background/98 backdrop-blur-xl transition-all duration-300 ease-in-out",
+          mobileMenuOpen
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none",
         )}
       >
-        {/* Backdrop */}
-        <div 
-          className="absolute inset-0 bg-background/80 backdrop-blur-sm"
-          onClick={() => setMobileMenuOpen(false)}
-        />
-        
-        {/* Menu content */}
-        <div 
-          className={cn(
-            "relative bg-background border-b border-border shadow-xl transition-transform duration-300",
-            mobileMenuOpen ? "translate-y-0" : "-translate-y-4"
-          )}
-        >
-          <div className="px-4 py-6 space-y-1 max-h-[calc(100vh-4rem)] overflow-y-auto">
-            {/* Navigation links - large touch targets (min 48px height) */}
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="flex items-center rounded-xl px-4 py-4 text-base font-medium text-foreground hover:bg-secondary transition-colors min-h-[48px]"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {item.name}
-              </Link>
-            ))}
-            
-            {/* Divider */}
-            <div className="py-4">
-              <div className="border-t border-border" />
-            </div>
-            
-            {/* CTA buttons - full width, large touch targets */}
-            <div className="space-y-3 pt-2">
-              <Button className="w-full h-12 text-base gap-2" asChild>
-                <Link 
-                  href={APP_STORE_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setMobileMenuOpen(false)}
-                  data-cta="app_store"
-                  data-location="nav-mobile-menu"
-                >
-                  <Download className="h-5 w-5" />
-                  Download on the App Store
-                </Link>
-              </Button>
-            </div>
-          </div>
+        <div className="flex h-full flex-col items-center justify-center gap-2 px-6">
+          {navigation.map((item, i) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              onClick={() => setMobileMenuOpen(false)}
+              className={cn(
+                "font-display text-3xl font-bold text-foreground/90 hover:text-primary transition-all duration-300 py-2",
+                mobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0",
+              )}
+              style={{ transitionDelay: mobileMenuOpen ? `${i * 60}ms` : "0ms" }}
+            >
+              {item.name}
+            </Link>
+          ))}
+
+          {/* Single dominant CTA */}
+          <Button size="lg" className="mt-8 w-full max-w-xs gap-2" asChild>
+            <Link
+              href={APP_STORE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMobileMenuOpen(false)}
+              data-cta="app_store"
+              data-location="nav-mobile-menu"
+            >
+              <Download className="h-5 w-5" />
+              Start Free
+            </Link>
+          </Button>
         </div>
       </div>
     </header>

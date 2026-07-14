@@ -20,6 +20,8 @@ import { AppStoreCTA } from "../components/app-store-button";
 import { GuidedDiscovery } from "../components/guided-discovery";
 import { SocialEmbed } from "../components/social-embed";
 import { MarketingImage } from "../components/marketing-image";
+import { HeroRoute } from "../components/hero-route";
+import { ScrollReveal } from "../components/scroll-reveal";
 import { homepageShowcase } from "../data/marketing-images";
 import { useState, useEffect, useRef } from "react";
 
@@ -64,29 +66,6 @@ const features = [
     description:
       "Start on your own, then add team members as you grow. Keep everyone on the same schedule and reduce 'where are you?' calls.",
   },
-];
-
-/**
- * Industries/professions that benefit from DayRoute.
- */
-const industries = [
-  "Tradies",
-  "Cleaners",
-  "Gardeners",
-  "NDIS Providers",
-  "Home-visit Clinicians",
-  "Maintenance Workers",
-  "Mobile Dog Groomers",
-  "Pest Control",
-];
-
-/**
- * Key benefits shown in the hero section.
- */
-const benefits = [
-  "Reduce driving time with multi-stop routing",
-  "Stay on schedule with job cards + reminders",
-  "Track work and costs (logbook, expenses, receipts)",
 ];
 
 /**
@@ -164,75 +143,45 @@ export default function HomePage() {
   return (
     <div className="flex flex-col">
       {/* ===== HERO SECTION ===== */}
-      <section className="relative overflow-hidden">
-        {/* Background gradient effects */}
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] sm:w-[800px] h-[600px] sm:h-[800px] bg-primary/10 rounded-full blur-3xl opacity-30" />
+      <section className="relative flex min-h-[88vh] items-center overflow-hidden">
+        {/* Animated route/GPS backdrop with parallax (behind everything). */}
+        <HeroRoute />
 
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32">
+        <div className="relative z-10 mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 py-24 sm:py-28">
           <div className="text-center">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 sm:px-4 py-1.5 text-xs sm:text-sm font-medium text-primary mb-6">
-              <Sparkles className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-              <span>Built for Australian mobile professionals</span>
+            {/* Eyebrow label */}
+            <div className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-4 py-1.5 text-primary mb-7">
+              <Sparkles className="h-4 w-4" />
+              <span className="label-caps">Built for Australian mobile pros</span>
             </div>
 
-            {/* Warm pre-heading */}
-            <p className="text-sm sm:text-base text-muted-foreground mb-3">
-              G&apos;day. Still running your business from the glovebox?
-            </p>
-
-            {/* Headline - responsive text sizes */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">
-              Run your whole trade from your phone —
-              <br />
+            {/* Massive two-weight display headline — teal highlights ONE phrase. */}
+            <h1 className="font-display text-[clamp(2.75rem,9vw,7.5rem)] font-extrabold leading-[1.03] text-white">
+              Run your whole trade
+              <br className="hidden sm:block" /> from your phone —{" "}
               <span className="text-primary">not your glovebox.</span>
             </h1>
 
-            {/* Subheadline */}
-            <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-2">
+            {/* Subheadline — capped near 68ch for comfortable reading. */}
+            <p className="mx-auto mt-6 sm:mt-8 max-w-[62ch] text-base sm:text-lg md:text-xl leading-relaxed text-muted-foreground">
               DayRoute turns quoting, invoicing, receipts, mileage and tax into a
               few taps on site — so you stop doing admin at 9pm on a Sunday.
             </p>
 
-            {/* Benefit bullets - stack on mobile, inline on larger screens */}
-            <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row sm:flex-wrap justify-center gap-2 sm:gap-4 lg:gap-6 px-2">
-              {benefits.map((benefit) => (
-                <div
-                  key={benefit}
-                  className="flex items-center gap-2 text-sm text-muted-foreground justify-center sm:justify-start"
-                >
-                  <Check className="h-4 w-4 text-primary flex-shrink-0" />
-                  <span className="text-left">{benefit}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* "Perfect for" chips in hero */}
-            <div className="mt-6 flex flex-wrap items-center justify-center gap-2 px-2">
-              <span className="text-xs sm:text-sm text-muted-foreground">Perfect for:</span>
-              {["Tradies", "Cleaners", "NDIS Providers", "Home-visit Clinicians"].map((industry) => (
-                <span
-                  key={industry}
-                  className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-xs sm:text-sm font-medium text-primary"
-                >
-                  {industry}
-                </span>
-              ))}
-            </div>
-
-            {/* CTAs - stack on mobile, row on tablet+ */}
-            {/* download anchor for deep linking */}
-            <div id="download" className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-4 sm:px-0">
+            {/* ONE dominant CTA + one quiet ghost link. download anchor kept. */}
+            <div
+              id="download"
+              className="mt-9 sm:mt-11 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-4 sm:px-0"
+            >
               <AppStoreCTA
                 size="lg"
-                className="w-full sm:w-auto min-h-[48px] text-base"
+                className="w-full sm:w-auto text-base"
                 location="hero"
               />
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="w-full sm:w-auto min-h-[48px] text-base"
+              <Button
+                size="lg"
+                variant="outline"
+                className="w-full sm:w-auto text-base"
                 asChild
               >
                 <Link href="/pricing">
@@ -242,16 +191,27 @@ export default function HomePage() {
               </Button>
             </div>
 
-            {/* App Store trust badge under the primary CTAs */}
-            <div className="mt-5 flex justify-center">
+            {/* Small App Store badge — secondary, not a third equal button. */}
+            <div className="mt-6 flex justify-center opacity-90">
               <AppStoreCTA showBadge location="hero-badge" />
             </div>
 
-            {/* Trust / proof line */}
-            <p className="mt-6 text-xs sm:text-sm text-muted-foreground">
-              Built in Australia for tradies, gardeners, cleaners, NDIS &amp;
-              home-care pros, and small crews. From $19.99/month — 7-day free trial.
-            </p>
+            {/* Trust stat strip — instant credibility (all real, no invented numbers). */}
+            <div className="mx-auto mt-10 flex max-w-2xl flex-wrap items-center justify-center gap-x-8 gap-y-4 text-center">
+              {[
+                { big: "App Store", small: "Live on iPhone, iPad & Mac" },
+                { big: "7 days", small: "Free trial, no card" },
+                { big: "Aussie-built", small: "By a working tradie" },
+              ].map((stat, i) => (
+                <div key={stat.big} className="flex items-center gap-8">
+                  {i > 0 && <span className="hidden sm:block h-8 w-px bg-border" />}
+                  <div>
+                    <p className="font-display text-xl font-bold text-white">{stat.big}</p>
+                    <p className="text-xs text-tertiary">{stat.small}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -424,36 +384,30 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* Responsive grid: 1 col mobile, 2 col tablet, 3 col desktop */}
+          {/* Premium glass cards — fade+rise in, staggered 80ms each. */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            {features.map((feature) => (
-              <Card
-                key={feature.title}
-                className="group hover:border-primary/50 transition-colors"
-              >
-                <CardContent className="p-5 sm:p-6">
-                  <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl bg-primary/10 mb-3 sm:mb-4 group-hover:bg-primary/20 transition-colors">
-                    <feature.icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
-                  </div>
-                  <h3 className="text-base sm:text-lg font-semibold mb-2">
-                    {feature.title}
-                  </h3>
-                  <p className="text-sm sm:text-base text-muted-foreground">
-                    {feature.description}
-                  </p>
-                </CardContent>
-              </Card>
+            {features.map((feature, i) => (
+              <ScrollReveal key={feature.title} delay={(i % 3) * 80}>
+                <Card className="group h-full hover:border-primary/40">
+                  <CardContent className="p-6 sm:p-7">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 mb-4 group-hover:bg-primary/20 transition-colors">
+                      <feature.icon className="h-6 w-6 text-primary" />
+                    </div>
+                    <h3 className="text-lg font-semibold mb-2">
+                      {feature.title}
+                    </h3>
+                    <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </ScrollReveal>
             ))}
           </div>
 
           <div className="mt-10 sm:mt-12 text-center">
-            <Button 
-              variant="default" 
-              className="min-h-[44px] bg-gradient-to-r from-primary to-primary/80 shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:scale-105 transition-all duration-300 ring-2 ring-primary/20 ring-offset-2 ring-offset-background animate-pulse hover:animate-none" 
-              asChild
-            >
+            <Button variant="outline" size="lg" asChild>
               <Link href="/features">
-                <Sparkles className="mr-2 h-4 w-4" />
                 View all features
                 <ChevronRight className="ml-1 h-4 w-4" />
               </Link>

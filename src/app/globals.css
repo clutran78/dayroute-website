@@ -8,26 +8,32 @@
    ============================================================================= */
 @layer base {
   :root {
-    --background: 222 47% 4%;
-    --foreground: 210 40% 98%;
-    --card: 222 47% 8%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222 47% 8%;
-    --popover-foreground: 210 40% 98%;
+    /* Near-black neutral canvas (#0A0A0F) — the single dark ground the whole
+       design sits on. Cool-neutral hue (240) so it reads black, not navy. */
+    --background: 240 20% 5%;
+    --foreground: 0 0% 100%; /* pure white — reserved for headlines */
+    /* Surfaces: #111113–#18181B range for cards/sections. */
+    --card: 240 6% 7%;
+    --card-foreground: 0 0% 100%;
+    --popover: 240 6% 7%;
+    --popover-foreground: 0 0% 100%;
+    /* ONE accent only — DayRoute's existing teal. Never add a second. */
     --primary: 168 76% 42%;
-    --primary-foreground: 222 47% 4%;
-    --secondary: 217 33% 17%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 65%;
-    --accent: 217 33% 17%;
-    --accent-foreground: 210 40% 98%;
+    --primary-foreground: 240 20% 5%;
+    --secondary: 240 5% 11%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 240 5% 11%;
+    --muted-foreground: 240 5% 65%; /* #A1A1AA — secondary body text */
+    --tertiary: 240 4% 34%; /* #52525B — tertiary / hints */
+    --accent: 240 5% 11%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 62% 50%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217 33% 17%;
-    --input: 217 33% 17%;
+    --destructive-foreground: 0 0% 100%;
+    /* Hairline borders — subtle white at ~8% reads as 1px rgba(255,255,255,.08). */
+    --border: 240 6% 15%;
+    --input: 240 6% 15%;
     --ring: 168 76% 42%;
-    --radius: 0.75rem;
+    --radius: 0.875rem; /* 14px — benchmark card radius */
   }
 }
 
@@ -41,6 +47,22 @@
   
   body {
     @apply bg-background text-foreground antialiased;
+    /* Satoshi is the body typeface (loaded from Fontshare in layout). */
+    font-family: "Satoshi", var(--font-inter), system-ui, sans-serif;
+  }
+
+  /* Display face for big headlines — Cabinet Grotesk, tight leading. */
+  .font-display {
+    font-family: "Cabinet Grotesk", "Satoshi", system-ui, sans-serif;
+    letter-spacing: -0.02em;
+  }
+
+  /* Only uppercase labels get letter-spacing (per the design system). */
+  .label-caps {
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.72rem;
+    font-weight: 600;
   }
   
   /* Prevent horizontal overflow on the entire page */
@@ -86,16 +108,16 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: hsl(222 47% 4%);
+  background: hsl(240 20% 5%);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(217 33% 17%);
+  background: hsl(240 6% 15%);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(217 33% 25%);
+  background: hsl(240 6% 22%);
 }
 
 /* =============================================================================
@@ -163,8 +185,81 @@
 }
 
 /* =============================================================================
+   GLASS SURFACE
+   Frosted card: translucent white fill + blur + hairline border. Used for the
+   premium feature cards so they lift off the near-black canvas.
+   ============================================================================= */
+@layer components {
+  .glass {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+}
+
+/* =============================================================================
+   SCROLL REVEAL
+   Elements start slightly lowered + transparent, then fade+rise into place
+   when they enter the viewport (class toggled by the ScrollReveal component).
+   Transform/opacity only, so it stays on the GPU at 60fps.
+   ============================================================================= */
+@layer utilities {
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.5s ease-out,
+      transform 0.5s ease-out;
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =============================================================================
+   HERO ROUTE ANIMATION
+   The dashed line "draws" itself along the route path behind the headline,
+   and the GPS pin gently pulses. GPU-only (stroke-dashoffset + opacity).
+   ============================================================================= */
+@keyframes route-draw {
+  from {
+    stroke-dashoffset: 1200;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes pin-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+.route-line {
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+  animation: route-draw 4s ease-in-out forwards;
+}
+
+.route-pin {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pin-pulse 3s ease-in-out infinite;
+}
+
+/* =============================================================================
    ANIMATION UTILITIES
-   Respect reduced motion preferences
+   Respect reduced motion preferences — freeze all motion into a static frame.
    ============================================================================= */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -174,5 +269,12 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .route-line {
+    stroke-dashoffset: 0 !important;
   }
 }
